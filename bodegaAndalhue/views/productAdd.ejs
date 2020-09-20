@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel='stylesheet' href='/stylesheets/register.css'>
+</head>
+
+<body class="fondoBeige">
+
+    <header>
+        <div class="contenedor">
+            <div class="logo-menu">
+                <div class="logo">
+                    <img src="/img/logo_bodega.svg" alt="logo_bodega">
+                    <h3>vinos orgánicos</h3>
+                </div>
+
+                <!--   BTN MENU MOBILE -->
+                <!--   <nav class="btn-nav">
+                    <a href=""><i class="fas fa-bars"></i></a>
+                </nav> -->
+                <!--   MENU TABLET-PC -->
+                <!--    <nav class="menu-ppal">
+                    <ul class="menu">
+                        <li>
+                            <a href="">productos</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="">
+                                        <hr>agregar</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>editar</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>lista</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">novedades</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="">
+                                        <hr>agregar</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>editar</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>lista</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div> -->
+                <!--  MENU MOBILE POPUP-->
+                <!--             <nav class="menu-popup">
+                <ul class="menu">
+                    <li>
+                        <a href="">productos</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="">
+                                    <hr>agregar</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>editar</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>lista</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">novedades</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="">
+                                    <hr>agregar</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>editar</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>lista</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav> -->
+            </div>
+    </header>
+
+    <main>
+        <section class="contenedor">
+            <h1 class="titulo-seccion">AGREGAR PRODUCTO</h1>
+            <h3>Producto Id#</h3>
+            <form class="formLogin" action="javascript:void(0)" method="POST">
+                <div class="labelInput">
+                    <label for="categoria">Categoría *</label>
+                    <select id="categoria">
+                        <option value="" disabled selected> Selecciona categoría</option>
+                        <option value="tinto">tinto</option>
+                        <option value="blanco">blanco</option>
+                        <option value="rosado">rosado</option>
+                        <option value="brut">brut</option>
+                        <option value="extra brut">extra brut</option>
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="linea">Línea *</label>
+                    <select id="linea">
+                        <option value="" disabled selected> Selecciona línea</option>
+                        <option value="lineaA">Línea A</option>
+                        <option value="lineaB">Línea B</option>
+                        <option value="LineaC">Línea C</option>
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="varietal">Varietal *</label>
+                    <select id="varietal">
+                        <option value="" disabled selected> Selecciona varietal</option>
+                        <optgroup label="Monovarietal">
+                            <option value="bonarda">Bonarda</option>
+                            <option value="cabernet">Cabernet Sauvignon</option>
+                            <option value="chardonnay">Chardonnay</option>
+                            <option value="malbec">Malbec</option>
+                            <option value="merlot">Merlot</option>
+                            <option value="syrah">Syrah</option>
+                            <option value="torrontes">Torrontés</option>
+                        </optgroup>
+                        <optgroup label="Bivarietal">
+                            <option value="bon-mal">Blend: Bonarda - Malbec</option>
+                            <option value="cab-mal">Blend: Cabernet - Malbec </option>
+                            <option value="char-pin">Blend: Chardonnay - Pinot Noir</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="calidad">Calidad *</label>
+                    <select id="calidad">
+                        <option value="" disabled selected> Selecciona calidad</option>
+                        <option value="clasico">Clásico</option>
+                        <option value="reserva">Reserva</option>
+                        <option value="brut">Brut</option>
+                        <option value="extra-brut">Extra Brut</option>              
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="anio">Añada *</label>
+                    <select id="anio">
+                        <option value="" disabled selected> Selecciona añada</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>                 
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="presentacion">Presentación *</label>
+                    <select id="presentacion">
+                        <option value="" disabled selected> Selecciona la presentación</option>
+                        <option value="caja-ind">Estuche individual</option>
+                        <option value="caja-bot_copa">Estuche botella + copa</option>
+                        <option value="caja-2">Caja x 2unid.</option>
+                        <option value="caja-3">Caja x 3unid.</option>
+                        <option value="caja-6">Caja x 6unid.</option>
+                        <option value="caja-12">Caja x 12unid.</option>
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="precio">Precio *</label>
+                    <input type="text" name="precio" id="precio">
+                </div>
+                <div class="labelInput">
+                    <label for="descuento">Descuento *</label>
+                    <select id="descuento">
+                        <option value="0">Sin descuento</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                        <option value="15">15%</option>
+                        <option value="20">20%</option>
+                        <option value="25">25%</option>
+                        <option value="30">30%</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>                 
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="cata">Notas de Cata *</label>
+                    <textarea name="cata" id="cata"></textarea>
+                </div>
+                <div class="labelInput">
+                    <label for="maridaje">Maridaje *</label>
+                    <textarea name="maridaje" id="maridaje"></textarea>
+                </div>
+                <div class="labelInput">
+                    <label for="temperatura">Temperatura *</label>
+                    <select id="temperatura">
+                    <option value="" disabled selected> Selecciona la temperatura ideal</option>
+                    <option value="14">14º</option>
+                    <option value="15">15º</option>
+                    <option value="16">16º</option>
+                    <option value="17">17º</option>
+                    <option value="18">18º</option>
+                    </select>
+                </div>
+                <div class="labelInput">
+                    <label for="img-prod">Imagen *</label>
+                    <input type="file" name="img-prod" id="img-prod">
+                </div>
+                <div class="labelInput">
+                    <label for="ficha-tecnica">Ficha Técnica *</label>
+                    <input type="file" name="ficha-tecnica" id="ficha-tecnica">
+                </div>
+                <div class="labelInput"><button type="submit" id="cargar-prod" class="btn-border">agregar</button>
+                    <button type="reset" id="limpiar-form" class="btn-border">limpiar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

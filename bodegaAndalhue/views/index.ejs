@@ -1,11 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/tienda.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
 </head>
+
 <body>
-  
+    <header>
+        <div class="contenedor">
+            <div class="logo-menu">
+                <div class="logo">
+                    <img src="/img/logo_bodega.svg" alt="logo_bodega">
+                    <h3>vinos orgánicos</h3>
+                </div>
+
+                <!--   BTN MENU MOBILE -->
+                <nav class="btn-nav">
+                    <a href=""><i class="fas fa-bars"></i></a>
+                </nav>
+                <!--   MENU TABLET-PC -->
+                <nav class="menu-ppal">
+                    <ul class="menu">
+                        <li id="activo">
+                            <a href="">inicio</a>
+                        </li>
+                        <li>
+                            <a href="">bodega</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="">
+                                        <hr>viñedos</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>producción</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>certificación orgánica</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">vinos</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="">
+                                        <hr>línea A</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>línea B</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>línea C</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">turismo</a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="">
+                                        <hr>Visitas guiadas</a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <hr>Degustaciones</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="">novedades</a></li>
+                        <li><a href="">tienda</a></li>
+                        <li><a href="">contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!--  MENU MOBILE POPUP-->
+            <nav class="menu-popup">
+                <ul class="menu">
+                    <li id="activo">
+                        <a href="">inicio</a>
+                    </li>
+                    <li>
+                        <a href="">bodega</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="">
+                                    <hr>viñedos</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>producción</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>certificación orgánica</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">vinos</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="">
+                                    <hr>línea A</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>línea B</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>línea C</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Turismo</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="">
+                                    <hr>Visitas guiadas</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <hr>Degustaciones</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="">novedades</a></li>
+                    <li><a href="">tienda</a></li>
+                    <li><a href="">contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="contenedor">
+            <!-- ENCABEZADO SECCION -->
+            <h1 class="titulo-seccion">TIENDA ONLINE</h1>
+            <section class="buscador-filtro-login">
+                <div class="buscador-filtro">
+                    <form action="">
+                        <input type="search"><i class="fas fa-search"></i>
+                    </form>
+                    <img src="/img/icon-filter.svg" alt="icono-filtrar">
+                </div>
+                <a href="/loginRegister">login</a>
+            </section>
+        </div>
+
+        <!-- SECCION BANNER -->
+        <section class="banner">
+            <article class="img-flechas">
+                <img src="/img/img-promos.jpg" alt="promos">
+                <div class="cont-flechas">
+                    <div class="flechas">
+                        <i class="fas fa-angle-left"></i>
+                        <i class="fas fa-angle-right"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="icon-circulo">
+                <ul>
+                    <li><i class="fas fa-circle activo"></i></li>
+                    <li><i class="fas fa-circle"></i></li>
+                    <li><i class="fas fa-circle"></i></li>
+                </ul>
+            </article>
+        </section>
+
+        <!--  MENÚ LÍNEAS -->
+        <nav class="lineas">
+            <a href="" class="border-bottom border-right">LÍNEA A</a>
+            <a href="" class="border-bottom border-right">LÍNEA B</a>
+            <a href="">LÍNEA C</a>
+        </nav>
+
+        <!-- PRODUCTOS -->
+        <h3 class="subtitulo-seccion">PRODUCTOS DESTACADOS</h3>
+        <section class="contenedor prod-destacados">
+            <article class="producto border-bottom">
+                <a href="/productDetail">
+                    <div class="img-desc">
+                        <img src="/img/img-tinto.jpg" alt="vino">
+                        <p class="descuento">-20%</p>
+                    </div>
+                    <div class="prod-items">
+                        <h6 class="categoria">TINTO</h6>
+                        <p class="descripcion">LÍNEA A Cabernet Reserva 2017. Caja x 6unid.</p>
+                        <div class="menosMas">
+                            <i class="fas fa-minus-circle"></i>
+                            <p class="cantidad">1</p>
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="precio">
+                            <h5 class="antes">$3.600</h5>
+                            <h5 class="ahora">$2.880-</h5>
+                        </div>
+                        <button class="btn-relleno">Agregar</button>
+                    </div>
+                </a>
+            </article>
+            <article class="producto border-bottom">
+                <a href="/productDetail">
+                    <div class="img-desc">
+                        <img src="/img/img-tinto.jpg" alt="vino">
+                        <p class="descuento">-10%</p>
+                    </div>
+                    <div class="prod-items">
+                        <h6 class="categoria">TINTO</h6>
+                        <p class="descripcion">LÍNEA B Malbec 2019. Caja x 6unid.</p>
+                        <div class="menosMas">
+                            <i class="fas fa-minus-circle"></i>
+                            <p class="cantidad">1</p>
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="precio">
+                            <h5 class="antes">$2.500</h5>
+                            <h5 class="ahora">$2.250-</h5>
+                        </div>
+                        <button class="btn-relleno">Agregar</button>
+                    </div>
+                </a>
+            </article>
+            <article class="producto">
+                <a href="/productDetail">
+                    <div class="img-desc">
+                        <img src="/img/img-tinto.jpg" alt="vino">
+                        <p class="descuento">-15%</p>
+                    </div>
+                    <div class="prod-items">
+                        <h6 class="categoria">TINTO</h6>
+                        <p class="descripcion">LÍNEA C Syrah 2019. Caja x 6unid.</p>
+                        <div class="menosMas">
+                            <i class="fas fa-minus-circle"></i>
+                            <p class="cantidad">1</p>
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="precio">
+                            <h5 class="antes">$2.300</h5>
+                            <h5 class="ahora">$1.955-</h5>
+                        </div>
+                        <button class="btn-relleno">Agregar</button>
+                    </div>
+                </a>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <section class="contenedor info-footer">
+            <article class="map-footer">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3338.771766364369!2d-68.94546718480738!3d-33.19385788084808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967dd82f41ea7c63%3A0xa2174586d68047e1!2sRP86%20%26%20Cobos%2C%20Mendoza!5e0!3m2!1ses-419!2sar!4v1600290893301!5m2!1ses-419!2sar"
+                    width="100%" height="108px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </article>
+            <article class="atencion">
+                <h5>Atención al cliente</h5>
+                <ul>
+                    <a href="">
+                        <li>contacto@bodegaandalhue.com</li>
+                    </a>
+                    <a href="">
+                        <li><i class="fab fa-whatsapp"></i><strong> +54 9 261 3 000000</strong></li>
+                    </a>
+                </ul>
+            </article>
+            <article class="divisor border-bottom"></article>
+            <article class="legales-redes">
+                <div class="legales">
+                    <p>BEBER CON MODERACIÓN – PROHIBIDA SU VENTA A MENORES DE 18 AÑOS.</p>
+                    <p>Todos los derechos reservados</p>
+                </div>
+                <div class="redes">
+                    <p class="seguinos">Seguinos en</p>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </article>
+        </section>
+    </footer>
 </body>
+
 </html>
