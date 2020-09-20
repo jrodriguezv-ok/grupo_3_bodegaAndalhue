@@ -116,7 +116,7 @@
             <form class="formLogin" action="javascript:void(0)" method="POST">
                 <div class="labelInput">
                     <label for="categoria">Categoría *</label>
-                    <select id="categoria">
+                    <select id="categoria" required>
                         <option value="" disabled selected> Selecciona categoría</option>
                         <option value="tinto">tinto</option>
                         <option value="blanco">blanco</option>
@@ -127,7 +127,7 @@
                 </div>
                 <div class="labelInput">
                     <label for="linea">Línea *</label>
-                    <select id="linea">
+                    <select id="linea" required>
                         <option value="" disabled selected> Selecciona línea</option>
                         <option value="lineaA">Línea A</option>
                         <option value="lineaB">Línea B</option>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="labelInput">
                     <label for="varietal">Varietal *</label>
-                    <select id="varietal">
+                    <select id="varietal" required>
                         <option value="" disabled selected> Selecciona varietal</option>
                         <optgroup label="Monovarietal">
                             <option value="bonarda">Bonarda</option>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="labelInput">
                     <label for="calidad">Calidad *</label>
-                    <select id="calidad">
+                    <select id="calidad" required>
                         <option value="" disabled selected> Selecciona calidad</option>
                         <option value="clasico">Clásico</option>
                         <option value="reserva">Reserva</option>
@@ -166,7 +166,7 @@
                 </div>
                 <div class="labelInput">
                     <label for="anio">Añada *</label>
-                    <select id="anio">
+                    <select id="anio" required>
                         <option value="" disabled selected> Selecciona añada</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
@@ -183,7 +183,7 @@
                 </div>
                 <div class="labelInput">
                     <label for="presentacion">Presentación *</label>
-                    <select id="presentacion">
+                    <select id="presentacion" required>
                         <option value="" disabled selected> Selecciona la presentación</option>
                         <option value="caja-ind">Estuche individual</option>
                         <option value="caja-bot_copa">Estuche botella + copa</option>
@@ -195,11 +195,11 @@
                 </div>
                 <div class="labelInput">
                     <label for="precio">Precio *</label>
-                    <input type="text" name="precio" id="precio">
+                    <input type="text" name="precio" id="precio" required>
                 </div>
                 <div class="labelInput">
                     <label for="descuento">Descuento *</label>
-                    <select id="descuento">
+                    <select id="descuento" required>
                         <option value="0">Sin descuento</option>
                         <option value="5">5%</option>
                         <option value="10">10%</option>
@@ -215,15 +215,15 @@
                 </div>
                 <div class="labelInput">
                     <label for="cata">Notas de Cata *</label>
-                    <textarea name="cata" id="cata"></textarea>
+                    <textarea name="cata" id="cata" required></textarea>
                 </div>
                 <div class="labelInput">
                     <label for="maridaje">Maridaje *</label>
-                    <textarea name="maridaje" id="maridaje"></textarea>
+                    <textarea name="maridaje" id="maridaje" required></textarea>
                 </div>
                 <div class="labelInput">
                     <label for="temperatura">Temperatura *</label>
-                    <select id="temperatura">
+                    <select id="temperatura" required>
                     <option value="" disabled selected> Selecciona la temperatura ideal</option>
                     <option value="14">14º</option>
                     <option value="15">15º</option>
@@ -234,13 +234,14 @@
                 </div>
                 <div class="labelInput">
                     <label for="img-prod">Imagen *</label>
-                    <input type="file" name="img-prod" id="img-prod">
+                    <input type="file" name="img-prod" id="img-prod" required>
                 </div>
                 <div class="labelInput">
                     <label for="ficha-tecnica">Ficha Técnica *</label>
-                    <input type="file" name="ficha-tecnica" id="ficha-tecnica">
+                    <input type="file" name="ficha-tecnica" id="ficha-tecnica" required>
                 </div>
-                <div class="labelInput"><button type="submit" id="cargar-prod" class="btn-border">agregar</button>
+                <div class="labelInput">
+                    <button type="submit" id="cargar-prod" class="btn-border">agregar</button>
                     <button type="reset" id="limpiar-form" class="btn-border">limpiar</button>
                 </div>
             </form>
