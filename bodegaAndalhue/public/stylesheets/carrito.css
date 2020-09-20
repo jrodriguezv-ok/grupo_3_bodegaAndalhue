@@ -1,0 +1,181 @@
+ /* CARRITO DE COMPRAS // PRODUCT CART */
+ 
+ .containerProduct {
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     padding: 10px 0;
+ }
+ 
+ .imgProduct {
+     width: 41px;
+     height: 40px;
+     margin: 0 auto;
+     display: flex;
+     justify-content: center;
+ }
+ 
+ .imgProduct img {
+     width: 100%;
+     margin: 0;
+     align-self: center;
+ }
+ 
+ .productDetail {
+     width: 60%;
+     font-size: 12px;
+     line-height: 14px;
+ }
+ 
+ .productControls {
+     width: 39.5%;
+     order: 1;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+ }
+ 
+ .fondoGris input[type="number"] {
+     background: none;
+ }
+ 
+ .btn-eliminar {
+     width: 55%;
+     order: 2;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-start;
+     border: none;
+     margin-left: 15px;
+ }
+ 
+ .btn-eliminar button {
+     background-color: none;
+ }
+ 
+ .precioProducto {
+     width: 20%;
+     font-size: 12px;
+     text-align: center;
+ }
+ /* Iconos del Artículo + y -  */
+ 
+ .fas.fa-plus-circle {
+     color: #c4af64;
+ }
+ 
+ .fas.fa-minus-circle {
+     color: #c4af64;
+ }
+ 
+ input.quantity {
+     width: 25px;
+     border: none;
+     text-align: center;
+ }
+ /* container es la clase del MAIN */
+ 
+ .contenedor {
+     width: 90%;
+     margin: 0 auto;
+ }
+ /* SUBTOTAL */
+ 
+ .contenedorSubtotal {
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     margin-top: 10px;
+     margin-bottom: 20px;
+ }
+ 
+ .subtotal {
+     background-color: #c4af64;
+     color: white;
+     font-size: 12px;
+     width: 100%;
+     padding: 10px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     border-radius: 3px;
+ }
+ 
+ .left {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .left h2,
+ .left h3,
+ .right h2,
+ .right h3 {
+     margin: 7px 0;
+ }
+ 
+ .right {
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     text-align: right;
+ }
+ 
+ .clasebotonfi {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ /* ----------------------------------- */
+ /* MEDIAS QUERY */
+ 
+ @media (min-width: 426px) {
+     .containerProduct {
+         width: 100%;
+         align-items: center;
+     }
+     .imgProduct {
+         width: 15%;
+         max-height: 60px;
+     }
+     .imgProduct img {
+         max-width: 50px;
+         margin: 5px;
+     }
+     .productDetail {
+         width: 45%;
+     }
+     .productControls {
+         width: 15%;
+         border: grey;
+         order: 0;
+     }
+     .btn-eliminar {
+         width: 10%;
+         order: 0;
+     }
+     .precioProducto {
+         width: 10%;
+         order: 1;
+     }
+     .contenedorSubtotal {
+         width: 100%;
+         justify-content: flex-end;
+     }
+     .subtotal {
+         max-width: 280px;
+     }
+     .clasebotonfi {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-end;
+     }
+ }
+ 
+ @media (min-width: 769px) {
+     .contenedor>section {
+         max-width: 1000px;
+         margin-left: auto;
+         margin-right: auto;
+     }
+ }

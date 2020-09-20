@@ -1,0 +1,220 @@
+/* HEADER */
+
+header {
+    width: 100%;
+    background-color: #3F4140;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.logo-menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo-menu .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-menu .logo img {
+    width: 200px;
+}
+
+.logo-menu .logo h3 {
+    display: none;
+}
+
+.logo-menu .btn-nav a {
+    color: #C4AF64;
+    font-size: 2.6em;
+    cursor: pointer;
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    background-color: inherit;
+    border: none;
+}
+
+.logo-menu .btn-nav i {
+    margin-top: 8px;
+}
+
+.logo-menu .menu-ppal {
+    display: none;
+}
+
+.menu-popup {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgba(63, 65, 64, 0.9);
+    border-radius: 0 0 0 5px;
+    top: 80px;
+    right: 0;
+    color: white;
+    z-index: 10;
+}
+
+
+/* 
+.btn-nav a:hover>.menu-popup {
+    display: flex;
+} */
+
+.menu-popup .menu {
+    margin: 10px 0;
+}
+
+.menu-popup .menu li {
+    border-bottom: 1px solid #C4AF64;
+    width: 140px;
+    margin: 0 20px;
+}
+
+.menu-popup .menu li>a {
+    color: white;
+    padding: 10px 0;
+    text-transform: lowercase;
+    font-size: 0.9em;
+    font-weight: 500;
+    width: 140px;
+    display: block;
+}
+
+#activo {
+    color: #BFA02E;
+}
+
+.menu-popup .menu .submenu {
+    display: none;
+    font-size: 0.8em;
+    padding-bottom: 5px;
+}
+
+.menu-popup .menu .submenu li {
+    border-bottom: 0px;
+}
+
+.menu-popup .menu .submenu li hr {
+    height: 1px;
+    width: 14%;
+    margin: 0;
+    position: relative;
+    left: -20px;
+    top: 8px;
+}
+
+.menu-popup .submenu li>a {
+    width: 120px;
+    padding: 6px 0;
+}
+
+.menu-popup .menu li:hover>.submenu {
+    display: block;
+}
+
+
+/* MEDIA QUERY TABLET */
+
+@media (min-width:426px) {
+    .logo-menu .logo h3 {
+        display: block;
+        margin-left: 20px;
+        color: white;
+        font-style: italic;
+        font-weight: 300;
+        letter-spacing: 0.07em;
+    }
+    .menu-popup {
+        width: 250px;
+    }
+    .menu-popup .menu {
+        margin: 20px 0;
+    }
+    .menu-popup .menu li {
+        width: 190px;
+        margin: 0 30px;
+    }
+    .menu-popup .menu li>a {
+        font-size: 1em;
+        width: 190px;
+    }
+    .menu-popup .menu .submenu li hr {
+        width: 11%;
+        left: -30px;
+        top: 11px;
+    }
+}
+
+
+/* MEDIA QUERY PC */
+
+@media (min-width:769px) {
+    .logo-menu .btn-nav {
+        display: none;
+    }
+    .menu-popup {
+        display: none;
+    }
+    .logo-menu .menu-ppal {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 60%;
+    }
+    .menu-ppal .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 500px;
+        text-align: right;
+    }
+    .menu-ppal .menu li {
+        position: relative;
+    }
+    .menu-ppal .menu li>a {
+        color: white;
+        font-size: 0.95em;
+        font-weight: 400;
+        display: block;
+    }
+    .menu-ppal .menu .submenu {
+        display: none;
+        font-size: 0.8em;
+        position: absolute;
+        background-color: rgba(63, 65, 64, 0.9);
+        border-radius: 0 0 2px 2px;
+        width: 150px;
+        top: 48px;
+        color: white;
+        text-align: left;
+        padding-bottom: 10px;
+        z-index: 10;
+    }
+    .menu-ppal .menu .submenu li hr {
+        height: 1px;
+        width: 15px;
+        margin: 0;
+        position: relative;
+        top: 8px;
+        left: -20px;
+    }
+    .menu-ppal .submenu li>a {
+        width: 100%;
+        padding: 6px 10px 6px 20px;
+    }
+    .menu-ppal .menu li:hover>.submenu {
+        display: block;
+    }
+}

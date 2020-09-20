@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #3F4140;
+}
+
+a {
+    text-decoration: none;
+    color: #3F4140;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background: none;
+    appearance: none;
+}
+
+.border-bottom {
+    border-bottom: solid 1px #C4AF64;
+}
+
+.border-right {
+    border-right: solid 1px #C4AF64;
+}
+
+.btn-border {
+    width: 122px;
+    height: 24px;
+    border: solid 1px #BFA02E;
+    border-radius: 15px;
+    color: #BFA02E;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+    background-color: none;
+    cursor: pointer;
+}
+
+.btn-border-max {
+    width: 178px;
+    height: 24px;
+    border: solid 1px #BFA02E;
+    border-radius: 15px;
+    color: #BFA02E;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background-color: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-border:hover,
+.btn-border-max:hover {
+    background-color: #BFA02E;
+    color: white;
+    transition: ease-in 0.3s;
+}
+
+.btn-relleno {
+    width: 122px;
+    height: 24px;
+    background-color: #BFA02E;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.btn-relleno:hover {
+    background-color: white;
+    color: #BFA02E;
+    border: solid 1px #BFA02E;
+    transition: ease-in 0.3s;
+}
+
+.contenedor {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.titulo-seccion {
+    font-size: 1.30em;
+    font-weight: 300;
+    font-style: italic;
+    color: #C4AF64;
+    width: 100%;
+    border-top: solid 3px #C4AF64;
+    border-bottom: solid 3px #C4AF64;
+    text-align: center;
+    margin: 15px auto 0px;
+    padding: 7px 0;
+    text-transform: uppercase;
+}
+
+.subtitulo-seccion {
+    font-style: italic;
+    font-size: 1em;
+    text-align: center;
+    padding-top: 26px;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+.enunciado-mayor {
+    font-size: 1.3em;
+    text-align: center;
+    font-style: italic;
+    color: #C4AF64;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+
+.enunciado-menor {
+    font-size: 1em;
+    text-align: center;
+    font-style: italic;
+    color: #C4AF64;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+
+.fondoGris {
+    background-color: rgba(63, 65, 64, 0.1);
+}
+
+.fondoBeige {
+    background-color: rgba(196, 175, 100, 0.25);
+}
