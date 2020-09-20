@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register1</title>
+    <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
     <link rel='stylesheet' href='/stylesheets/register.css'>
+
 </head>
 
 <body>
@@ -157,55 +158,21 @@
             <img src="/img/slider_register.jpg">
         </div>
         <section class="contenedor">
-            <h3 class="enunciado-mayor">Completá tu registro</h3>
+            <h3 class="enunciado-mayor">Iniciá tu sesión</h3>
             <form class="formLogin" enctype="multipart/form-data" action="javascript:void(0)" method="POST">
-                <div class="labelInput">
-                    <label for="nombre">Nombre *</label>
-                    <input type="text" name="nombre" id="nombre">
-                </div>
-                <div class="labelInput">
-                    <label for="apellido">Apellido *</label>
-                    <input type="text" name="apellido" id="apellido">
-                </div>
-                <div class="labelInput">
-                    <label for="nacimiento">Fecha de Nacimiento *</label>
-                    <input type="date" name="nacimiento" id="nacimiento">
-                </div>
-                <div class="labelInput">
-                    <label for="direccion">Dirección *</label>
-                    <input type="text" name="direccion" id="direccion">
-                </div>
-                <div class="labelInput">
-                    <label for="localidad">Localidad *</label>
-                    <input type="text" name="localidad" id="localidad">
-                </div>
-                <div class="labelInput">
-                    <label for="pais">País *</label>
-                    <select id="pais">
-                    <!-- <option value="" disabled selected>Selecciona tu país</option> -->
-                    <option value="argentina">Argentina</option>
-                    <option value="brasil">Brasil</option>
-                    <option value="bolivia">Bolivia</option>
-                    <option value="chile">Chile</option>
-                    <option value="colombia">Colombia</option>
-                    <option value="ecuador">Ecuador</option>
-                    <option value="paraguay">Paraguay</option>
-                    <option value="perú">Perú</option>
-                    <option value="uruguay">Uruguay</option>
-                    </select>
-                </div>
 
+                <div class="labelInput"> <label for="Correo electrónico *">Correo electrónico *</label>
+                    <input type="email" name="email" id="email"></div>
                 <div class="labelInput">
-                    <label for="email">Correo electrónico *</label>
-                    <input type="email" name="email" id="email">
-                </div>
-                <div class="labelInput">
-                    <label for="password">Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <button type="submit" id="registro" class="btn-border-max">registrate</button>
+
+                    <label for=" Contraseña *"> Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
+                    <input type="password" name="password" id="password"></div>
+
+                <button type="submit" id="login" class="btn-border-max">accedé</button>
+
             </form>
         </section>
+
     </main>
 
     <footer>
@@ -240,7 +207,6 @@
             </article>
         </section>
     </footer>
-
 </body>
 
 </html>
