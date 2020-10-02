@@ -67,8 +67,14 @@
       padding-left: 5px;
   }
   
-  .formLogin button {
+  .formLogin button,
+  .formLogin a {
       margin: 25px auto 0;
+  }
+  
+  .formLogin a {
+      line-height: 1.7em;
+      font-weight: 400;
   }
   
   .btn-centrado {
@@ -93,9 +99,9 @@
       .formLogin {
           max-width: 1000px;
       }
-      .formLogin label {
+      /*   .formLogin label {
           font-size: ;
-      }
+      } */
       .poesia {
           font-size: 1.2em;
       }
