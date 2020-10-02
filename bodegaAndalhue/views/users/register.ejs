@@ -13,30 +13,39 @@
                 </div>
                 <section class="contenedor">
                     <h3 class="enunciado-mayor">Completá tu registro</h3>
-                    <form class="formLogin" enctype="multipart/form-data" action="javascript:void(0)" method="POST">
-                        <div class="labelInput">
-                            <label for="nombre">Nombre *</label>
-                            <input type="text" name="nombre" id="nombre" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="apellido">Apellido *</label>
-                            <input type="text" name="apellido" id="apellido" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="nacimiento">Fecha de Nacimiento *</label>
-                            <input type="date" name="nacimiento" id="nacimiento" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="direccion">Dirección *</label>
-                            <input type="text" name="direccion" id="direccion" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="localidad">Localidad *</label>
-                            <input type="text" name="localidad" id="localidad" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="pais">País *</label>
-                            <select id="pais" required>
+                    <% if(typeof errors != "undefined") { %>
+                        <ul>
+                            <% for(var i = 0; i < errors.length; i++) { %>
+                                <li>
+                                    <%= errors[i].msg %>
+                                </li>
+                                <% } %>
+                        </ul>
+                        <% } %>
+                            <form class="formLogin" action="/users/register" method="POST">
+                                <div class="labelInput">
+                                    <label for="nombre">Nombre *</label>
+                                    <input type="text" name="nombre" id="nombre" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="apellido">Apellido *</label>
+                                    <input type="text" name="apellido" id="apellido" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="nacimiento">Fecha de Nacimiento *</label>
+                                    <input type="date" name="nacimiento" id="nacimiento" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="direccion">Dirección *</label>
+                                    <input type="text" name="direccion" id="direccion" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="localidad">Localidad *</label>
+                                    <input type="text" name="localidad" id="localidad" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="pais">País *</label>
+                                    <select id="pais" required>
                     <!-- <option value="" disabled selected>Selecciona tu país</option> -->
                     <option value="argentina">Argentina</option>
                     <option value="brasil">Brasil</option>
@@ -48,18 +57,18 @@
                     <option value="perú">Perú</option>
                     <option value="uruguay">Uruguay</option>
                     </select>
-                        </div>
+                                </div>
 
-                        <div class="labelInput">
-                            <label for="email">Correo electrónico *</label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="password">Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
-                            <input type="password" name="password" id="password" required>
-                        </div>
-                        <button type="submit" id="registro" class="btn-border-max">registrate</button>
-                    </form>
+                                <div class="labelInput">
+                                    <label for="email">Correo electrónico *</label>
+                                    <input type="email" name="email" id="email" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="password">Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
+                                    <input type="password" name="password" id="password" required>
+                                </div>
+                                <button type="submit" id="registro" class="btn-border-max">registrate</button>
+                            </form>
                 </section>
             </main>
             <%- include('../partials/footer')%>
