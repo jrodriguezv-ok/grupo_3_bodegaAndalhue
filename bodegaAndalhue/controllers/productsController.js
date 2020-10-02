@@ -81,6 +81,12 @@ const productsController = {
     },
 
     destroy: (req, res, next) => {
+        let newProducts = products.filter(function(product) {
+            return product.id != req.params.id
+        });
+
+        fs.writeFileSync(__dirname + "/../data/productsDB.json", JSON.stringify(newProducts));
+        res.redirect('/products/list');
 
     },
     cart: (req, res, next) => {

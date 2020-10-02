@@ -35,5 +35,5 @@ router.get('/destroy/:id', productsController.destroy);
 
 // CARRITO DE COMPRAS
 router.get('/cart', productsController.cart);
-
+/* router.post('/cart', productsController.storeCart); */
 module.exports = router;
