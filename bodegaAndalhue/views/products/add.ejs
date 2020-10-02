@@ -11,60 +11,60 @@
                 <section class="contenedor">
                     <h1 class="titulo-seccion">AGREGAR PRODUCTO</h1>
                     <h3>Producto Id#</h3>
-                    <form class="formLogin" action="javascript:void(0)" method="POST">
+                    <form class="formLogin" action="/products/add" method="POST" enctype="multipart/form-data">
                         <div class="labelInput">
-                            <label for="categoria">Categoría *</label>
-                            <select id="categoria" required>
+                            <label for="category">Categoría *</label>
+                            <select name="category" id="category" required>
                         <option value="" disabled selected> Selecciona categoría</option>
-                        <option value="tinto">tinto</option>
-                        <option value="blanco">blanco</option>
-                        <option value="rosado">rosado</option>
-                        <option value="brut">brut</option>
-                        <option value="extra brut">extra brut</option>
+                        <option value="TINTO">tinto</option>
+                        <option value="BLANCO">blanco</option>
+                        <option value="ROSADO">rosado</option>
+                        <option value="BRUT">brut</option>
+                        <option value="EXTRA BRUT">extra brut</option>
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="linea">Línea *</label>
-                            <select id="linea" required>
+                            <label for="line">Línea *</label>
+                            <select name="line" id="line" required>
                         <option value="" disabled selected> Selecciona línea</option>
-                        <option value="lineaA">Línea A</option>
-                        <option value="lineaB">Línea B</option>
-                        <option value="LineaC">Línea C</option>
+                        <option value="Línea A">Línea A</option>
+                        <option value="Línea B">Línea B</option>
+                        <option value="Línea C">Línea C</option>
                     </select>
                         </div>
                         <div class="labelInput">
                             <label for="varietal">Varietal *</label>
-                            <select id="varietal" required>
+                            <select name="varietal" id="varietal" required>
                         <option value="" disabled selected> Selecciona varietal</option>
                         <optgroup label="Monovarietal">
-                            <option value="bonarda">Bonarda</option>
-                            <option value="cabernet">Cabernet Sauvignon</option>
-                            <option value="chardonnay">Chardonnay</option>
-                            <option value="malbec">Malbec</option>
-                            <option value="merlot">Merlot</option>
-                            <option value="syrah">Syrah</option>
-                            <option value="torrontes">Torrontés</option>
+                            <option value="Bonarda">Bonarda</option>
+                            <option value="Cabernet">Cabernet Sauvignon</option>
+                            <option value="Chardonnay">Chardonnay</option>
+                            <option value="Malbec">Malbec</option>
+                            <option value="Merlot">Merlot</option>
+                            <option value="Syrah">Syrah</option>
+                            <option value="Torrontés">Torrontés</option>
                         </optgroup>
                         <optgroup label="Bivarietal">
-                            <option value="bon-mal">Blend: Bonarda - Malbec</option>
-                            <option value="cab-mal">Blend: Cabernet - Malbec </option>
-                            <option value="char-pin">Blend: Chardonnay - Pinot Noir</option>
+                            <option value="Bonarda - Malbec">Blend: Bonarda - Malbec</option>
+                            <option value="Cabernet - Malbec">Blend: Cabernet - Malbec </option>
+                            <option value="Chardonnay - Pinot Noir">Blend: Chardonnay - Pinot Noir</option>
                         </optgroup>
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="calidad">Calidad *</label>
-                            <select id="calidad" required>
+                            <label for="quality">Calidad *</label>
+                            <select name="quality" id="quality" required>
                         <option value="" disabled selected> Selecciona calidad</option>
-                        <option value="clasico">Clásico</option>
-                        <option value="reserva">Reserva</option>
-                        <option value="brut">Brut</option>
-                        <option value="extra-brut">Extra Brut</option>              
+                        <option value="Clásico">Clásico</option>
+                        <option value="Reserva">Reserva</option>
+                        <option value="Brut">Brut</option>
+                        <option value="Extra-brut">Extra Brut</option>              
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="anio">Añada *</label>
-                            <select id="anio" required>
+                            <label for="vintage">Añada *</label>
+                            <select name="vintage" id="vintage" required>
                         <option value="" disabled selected> Selecciona añada</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
@@ -80,24 +80,24 @@
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="presentacion">Presentación *</label>
-                            <select id="presentacion" required>
+                            <label for="display">Presentación *</label>
+                            <select name="display" id="display" required>
                         <option value="" disabled selected> Selecciona la presentación</option>
-                        <option value="caja-ind">Estuche individual</option>
-                        <option value="caja-bot_copa">Estuche botella + copa</option>
-                        <option value="caja-2">Caja x 2unid.</option>
-                        <option value="caja-3">Caja x 3unid.</option>
-                        <option value="caja-6">Caja x 6unid.</option>
-                        <option value="caja-12">Caja x 12unid.</option>
+                        <option value="Estuche individual">Estuche individual</option>
+                        <option value="Estuche botella + copa">Estuche botella + copa</option>
+                        <option value="Caja x 2unid.">Caja x 2unid.</option>
+                        <option value="Caja x 3unid.">Caja x 3unid.</option>
+                        <option value="Caja x 6unid.">Caja x 6unid.</option>
+                        <option value="Caja x 12unid.">Caja x 12unid.</option>
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="precio">Precio *</label>
-                            <input type="text" name="precio" id="precio" required>
+                            <label for="price">Precio *</label>
+                            <input type="text" name="price" id="price" required>
                         </div>
                         <div class="labelInput">
-                            <label for="descuento">Descuento *</label>
-                            <select id="descuento" required>
+                            <label for="discount">Descuento *</label>
+                            <select name="discount" id="discount" required>
                         <option value="0">Sin descuento</option>
                         <option value="5">5%</option>
                         <option value="10">10%</option>
@@ -105,23 +105,22 @@
                         <option value="20">20%</option>
                         <option value="25">25%</option>
                         <option value="30">30%</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>                 
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>                           
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="cata">Notas de Cata *</label>
-                            <textarea name="cata" id="cata" required></textarea>
+                            <label for="tasting">Notas de Cata *</label>
+                            <textarea name="tasting" id="tasting" required></textarea>
                         </div>
                         <div class="labelInput">
-                            <label for="maridaje">Maridaje *</label>
-                            <textarea name="maridaje" id="maridaje" required></textarea>
+                            <label for="pairing">Maridaje *</label>
+                            <textarea name="pairing" id="pairing" required></textarea>
                         </div>
                         <div class="labelInput">
-                            <label for="temperatura">Temperatura *</label>
-                            <select id="temperatura" required>
+                            <label for="temperature">Temperatura *</label>
+                            <select name="temperature" id="temperature" required>
                     <option value="" disabled selected> Selecciona la temperatura ideal</option>
                     <option value="14">14º</option>
                     <option value="15">15º</option>
@@ -131,12 +130,12 @@
                     </select>
                         </div>
                         <div class="labelInput">
-                            <label for="img-prod">Imagen *</label>
-                            <input type="file" name="img-prod" id="img-prod" required>
+                            <label for="image">Imagen *</label>
+                            <input type="file" name="image" id="image" required>
                         </div>
                         <div class="labelInput">
-                            <label for="ficha-tecnica">Ficha Técnica *</label>
-                            <input type="file" name="ficha-tecnica" id="ficha-tecnica" required>
+                            <label for="datasheet">Ficha Técnica *</label>
+                            <input type="file" name="datasheet" id="datasheet" required>
                         </div>
                         <div class="labelInput">
                             <button type="submit" id="cargar-prod" class="btn-border">agregar</button>

@@ -22,16 +22,24 @@
                         <div class="ruta">
                             <ul>
                                 <a href="" id="linea">
-                                    <li>> LÍNEA A</li>
+                                    <li>>
+                                        <%= productSelected.line %>
+                                    </li>
                                 </a>
                                 <a href="" id="varietal">
-                                    <li>> Cabernet</li>
+                                    <li>>
+                                        <%= productSelected.varietal %>
+                                    </li>
                                 </a>
                                 <a href="" id="categoria">
-                                    <li>> Reserva</li>
+                                    <li>>
+                                        <%= productSelected.quality %>
+                                    </li>
                                 </a>
                                 <a href="" id="anio">
-                                    <li>> 2017</li>
+                                    <li>>
+                                        <%= productSelected.vintage %>
+                                    </li>
                                 </a>
                             </ul>
                         </div>
@@ -42,20 +50,34 @@
                     <section class="detalle-prod">
                         <!-- producto -->
                         <article class="img-desc">
-                            <img src="/img/img-tinto.jpg" alt="vino">
-                            <p class="descuento">-20%</p>
+                            <img src="/img/products/<%= productSelected.image %>" alt="vino">
+                            <p class="descuento">
+                                <% if(productSelected.discount != 0){ %>
+                                    <%= productSelected.discount + "%" %>
+                                        <% } %>
+                            </p>
                         </article>
                         <article class="prod-items">
-                            <h6 class="categoria">TINTO</h6>
-                            <p class="descripcion">LÍNEA A Cabernet Reserva 2017. Caja x 6unid. Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                            <h6 class="categoria">
+                                <%= productSelected.category %>
+                            </h6>
+                            <p class="descripcion">
+                                <%= productSelected.line + ' ' + productSelected.varietal + ' ' + productSelected.quality + ' ' + productSelected.vintage + ' ' + productSelected.display  %>
+                            </p>
                             <div class="menosMas">
                                 <i class="fas fa-minus-circle"></i>
                                 <p class="cantidad">1</p>
                                 <i class="fas fa-plus-circle"></i>
                             </div>
                             <div class="precio">
-                                <h5 class="antes">$3.600</h5>
-                                <h5 class="ahora">$2.880-</h5>
+                                <h5 class="antes">
+                                    <% if(productSelected.discount != 0){ %>
+                                        <%= "$"+ productSelected.price %>
+                                            <% } %>
+                                </h5>
+                                <h5 class="ahora">
+                                    <%= '$'+ toThousand(productSelected.price - (productSelected.price * (productSelected.discount / 100)))+ '-' %>
+                                </h5>
                             </div>
                             <button class="btn-relleno">Agregar</button>
                         </article>
@@ -73,13 +95,18 @@
                             </div>
                             <div class="detalle">
                                 <h5>NOTAS DE CATA</h5>
-                                <p>Posee un color rojo rubí intenso con tintes azulados, típicos de la variedad. Aparecen notas de frutas rojas y negras como la cereza madura y la grosella; acomplejadas por la vainilla que aporta el roble, también aparecen
-                                    especies como el clavo de olor y la pimienta negra.</p>
+                                <p>
+                                    <%= productSelected.tasting %>
+                                </p>
                                 <h5>MARIDAJE</h5>
-                                <p>Ideal para acompañar asados de carne roja, pastas y comidas condimentadas.</p>
+                                <p>
+                                    <%= productSelected.pairing %>
+                                </p>
                                 <h5>TEMPERATURA</h5>
-                                <p>18ºC</p>
-                                <button class="btn-border-max">FICHA TÉCNICA</button>
+                                <p>
+                                    <%= productSelected.temperature + 'ºC' %>
+                                </p>
+                                <a href="<%= productSelected.datasheet %>" download> <button class="btn-border-max">FICHA TÉCNICA</button></a>
                             </div>
                             <div class="info-adic">
                                 <ul>
@@ -115,7 +142,7 @@
                             <article class="producto ">
                                 <a href="/productDetail">
                                     <div class="img-desc">
-                                        <img src="/img/img-tinto.jpg" alt="vino">
+                                        <img src="/img/img-tinto.png" alt="vino">
                                         <!-- <p class="descuento">-20%</p> -->
                                     </div>
                                     <div class="prod-items">
@@ -137,7 +164,7 @@
                             <article class="producto prod-2">
                                 <a href="/productDetail">
                                     <div class="img-desc">
-                                        <img src="/img/img-tinto.jpg" alt="vino">
+                                        <img src="/img/img-tinto.png" alt="vino">
                                         <!-- <p class="descuento">-20%</p> -->
                                     </div>
                                     <div class="prod-items">
@@ -159,7 +186,7 @@
                             <article class="producto prod-3">
                                 <a href="/productDetail">
                                     <div class="img-desc">
-                                        <img src="/img/img-tinto.jpg" alt="vino">
+                                        <img src="/img/img-tinto.png" alt="vino">
                                         <p class="descuento">-20%</p>
                                     </div>
                                     <div class="prod-items">

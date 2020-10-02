@@ -1,4 +1,4 @@
-<%- include('partials/head', {title: 'Carrito de Compras'})%>
+<%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
 
     <body>
@@ -48,72 +48,47 @@
                 <!-- PRODUCTOS -->
                 <h3 class="subtitulo-seccion">PRODUCTOS DESTACADOS</h3>
                 <section class="contenedor prod-destacados">
-                    <article class="producto border-bottom">
-                        <a href="/productDetail">
-                            <div class="img-desc">
-                                <img src="/img/img-tinto.jpg" alt="vino">
-                                <p class="descuento">-20%</p>
-                            </div>
-                            <div class="prod-items">
-                                <h6 class="categoria">TINTO</h6>
-                                <p class="descripcion">LÍNEA A Cabernet Reserva 2017. Caja x 6unid.</p>
-                                <div class="menosMas">
-                                    <i class="fas fa-minus-circle"></i>
-                                    <p class="cantidad">1</p>
-                                    <i class="fas fa-plus-circle"></i>
+                    <% if (products != undefined){
+                            for (var i= 0; i< products.length; i++) { 
+                                var product = products[i];
+                        %>
+                        <article class="producto border-bottom">
+                            <a href="/products/detail/<%= product.id %>">
+                                <div class="img-desc">
+                                    <img src="/img/products/<%= product.image %>" alt="vino">
+                                    <p class="descuento">
+                                        <% if(product.discount != 0){ %>
+                                            <%= product.discount + "%" %>
+                                                <% } %>
+                                    </p>
                                 </div>
-                                <div class="precio">
-                                    <h5 class="antes">$3.600</h5>
-                                    <h5 class="ahora">$2.880-</h5>
+                                <div class="prod-items">
+                                    <h6 class="categoria">
+                                        <%= product.category %>
+                                    </h6>
+                                    <p class="descripcion">
+                                        <%= product.line + ' ' + product.varietal + ' ' + product.quality + ' ' + product.vintage + ' ' + product.display  %>
+                                    </p>
+                                    <div class="menosMas">
+                                        <a href=""><i class="fas fa-minus-circle"></i></a>
+                                        <p class="cantidad">1</p>
+                                        <a href=""><i class="fas fa-plus-circle"></i></a>
+                                    </div>
+                                    <div class="precio">
+                                        <h5 class="antes">
+                                            <% if(product.discount != 0){ %>
+                                                <%= "$"+ product.price %>
+                                                    <% } %>
+                                        </h5>
+                                        <h5 class="ahora">
+                                            <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
+                                        </h5>
+                                    </div>
+                                    <button class="btn-relleno">Agregar</button>
                                 </div>
-                                <button class="btn-relleno">Agregar</button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="producto border-bottom">
-                        <a href="/productDetail">
-                            <div class="img-desc">
-                                <img src="/img/img-tinto.jpg" alt="vino">
-                                <p class="descuento">-10%</p>
-                            </div>
-                            <div class="prod-items">
-                                <h6 class="categoria">TINTO</h6>
-                                <p class="descripcion">LÍNEA B Malbec 2019. Caja x 6unid.</p>
-                                <div class="menosMas">
-                                    <i class="fas fa-minus-circle"></i>
-                                    <p class="cantidad">1</p>
-                                    <i class="fas fa-plus-circle"></i>
-                                </div>
-                                <div class="precio">
-                                    <h5 class="antes">$2.500</h5>
-                                    <h5 class="ahora">$2.250-</h5>
-                                </div>
-                                <button class="btn-relleno">Agregar</button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="producto">
-                        <a href="/productDetail">
-                            <div class="img-desc">
-                                <img src="/img/img-tinto.jpg" alt="vino">
-                                <p class="descuento">-15%</p>
-                            </div>
-                            <div class="prod-items">
-                                <h6 class="categoria">TINTO</h6>
-                                <p class="descripcion">LÍNEA C Syrah 2019. Caja x 6unid.</p>
-                                <div class="menosMas">
-                                    <i class="fas fa-minus-circle"></i>
-                                    <p class="cantidad">1</p>
-                                    <i class="fas fa-plus-circle"></i>
-                                </div>
-                                <div class="precio">
-                                    <h5 class="antes">$2.300</h5>
-                                    <h5 class="ahora">$1.955-</h5>
-                                </div>
-                                <button class="btn-relleno">Agregar</button>
-                            </div>
-                        </a>
-                    </article>
+                            </a>
+                        </article>
+                        <% }} %>
                 </section>
             </main>
             <%- include('partials/footer')%>

@@ -71,6 +71,10 @@
       margin: 25px auto 0;
   }
   
+  .btn-centrado {
+      margin: 0 auto;
+  }
+  
   @media(min-width:426px) {
       .formLogin {
           flex-direction: row;

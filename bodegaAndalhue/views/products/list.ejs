@@ -1,1 +1,94 @@
-LISTADO DE PRODUCTOS
+<%- include('../partials/head', {title: 'Listado de productos'})%>
+    <link rel='stylesheet' href='/stylesheets/lista.css'>
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+
+
+    <body class="fondoBeige">
+
+        <%- include('../partials/header-admin')%>
+
+            <main>
+                <section class="contenedor">
+                    <h1 class="titulo-seccion">LISTA DE PRODUCTOS</h1>
+                    <article class="tablaProd">
+                        <ul class="etiquetas border-bottom">
+                            <li class="xxsmall">Id</li>
+                            <li class="xsmall">Cat.</li>
+                            <li class="small">Línea</li>
+                            <li class="small">Varietal</li>
+                            <li class="small">Calidad</li>
+                            <li class="xsmall">Año</li>
+                            <li class="medium">Presentación</li>
+                            <li class="small">Precio</li>
+                            <li class="xsmall">Dto</li>
+                            <li class="large">Notas</li>
+                            <li class="large">Maridaje</li>
+                            <li class="xsmall">ºC</li>
+                            <li class="large">Imagen</li>
+                            <li class="large">Ficha</li>
+                            <li class="xsmall"><i class="fas fa-edit"></i></li>
+                            <li class="xsmall"><i class="fas fa-trash-alt"></i></li>
+                        </ul>
+
+                        <% if(products != undefined){
+                        for(var i = 0; i < products.length; i++){ %>
+                            <ul class="etiquetas2 border-bottom">
+                                <li class="xxsmall">
+                                    <%= products[i].id %>
+                                </li>
+                                <li class="xsmall">
+                                    <%= products[i].category.slice(0,4) %>
+                                </li>
+                                <li class="small">
+                                    <%= products[i].line %>
+                                </li>
+                                <li class="small">
+                                    <%= products[i].varietal %>
+                                </li>
+                                <li class="small">
+                                    <%= products[i].quality %>
+                                </li>
+                                <li class="xsmall">
+                                    <%= products[i].vintage %>
+                                </li>
+                                <li class="medium">
+                                    <%= products[i].display %>
+                                </li>
+                                <li class="small">
+                                    <%= products[i].price %>
+                                </li>
+                                <li class="xsmall">
+                                    <%= products[i].discount %>
+                                </li>
+                                <li class="large">
+                                    <%= products[i].tasting.slice(0,65) %>
+                                </li>
+                                <li class="large">
+                                    <%= products[i].pairing.slice(0,65) %>
+                                </li>
+                                <li class="xsmall">
+                                    <%= products[i].temperature %>
+                                </li>
+                                <li class="large">
+                                    <%= products[i].image %>
+                                </li>
+                                <li class="large">
+                                    <%= products[i].datasheet %>
+                                </li>
+                                <a href="/products/edit/<%= products[i].id %>" class="xsmall"><i class="fas fa-edit"></i></a>
+                                <a href="/products/destroy/<%= products[i].id %>" class="xsmall"><i class="fas fa-trash-alt"></i></a>
+                            </ul>
+                            <% }} %>
+                    </article>
+                    <article class="btn-centrado">
+                        <a href="/products/add">
+                            <button class="btn-border-max">Agregar producto</button>
+                        </a>
+                    </article>
+                </section>
+            </main>
+            <footer>
+            </footer>
+    </body>
+
+    </html>

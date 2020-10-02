@@ -1,0 +1,157 @@
+<%- include('../partials/head', {title: 'Editando producto ID '+productToEdit.id})%>
+    <link rel='stylesheet' href='/stylesheets/register.css'>
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+
+
+    <body class="fondoBeige">
+
+        <%- include('../partials/header-admin')%>
+
+            <main>
+                <section class="contenedor">
+                    <h1 class="titulo-seccion">EDITAR PRODUCTO</h1>
+                    <h3>Producto Id:
+                        <%= productToEdit.id %>
+                    </h3>
+                    <form class="formLogin" action="/products/edit/<%= productToEdit.id %>" method="POST" enctype="multipart/form-data">
+                        <div class="labelInput">
+                            <label for="category">Categoría *</label>
+                            <select name="category" id="category">
+                        <option value="<%= productToEdit.category %>"><%= productToEdit.category %></option>
+                        <option value="TINTO">tinto</option>
+                        <option value="BLANCO">blanco</option>
+                        <option value="ROSADO">rosado</option>
+                        <option value="BRUT">brut</option>
+                        <option value="EXTRA BRUT">extra brut</option>
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="line">Línea *</label>
+                            <select name="line" id="line">
+                        <option value="<%= productToEdit.line %>"><%= productToEdit.line %></option>
+                        <option value="Línea A">Línea A</option>
+                        <option value="Línea B">Línea B</option>
+                        <option value="Línea C">Línea C</option>
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="varietal">Varietal *</label>
+                            <select name="varietal" id="varietal">
+                        <option value="<%= productToEdit.varietal %>" ><%= productToEdit.varietal %></option>
+                        <optgroup label="Monovarietal">
+                            <option value="Bonarda">Bonarda</option>
+                            <option value="Cabernet">Cabernet Sauvignon</option>
+                            <option value="Chardonnay">Chardonnay</option>
+                            <option value="Malbec">Malbec</option>
+                            <option value="Merlot">Merlot</option>
+                            <option value="Syrah">Syrah</option>
+                            <option value="Torrontés">Torrontés</option>
+                        </optgroup>
+                        <optgroup label="Bivarietal">
+                            <option value="Bonarda - Malbec">Blend: Bonarda - Malbec</option>
+                            <option value="Cabernet - Malbec">Blend: Cabernet - Malbec </option>
+                            <option value="Chardonnay - Pinot Noir">Blend: Chardonnay - Pinot Noir</option>
+                        </optgroup>
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="quality">Calidad *</label>
+                            <select name="quality" id="quality">
+                        <option value=" <%= productToEdit.quality %>"> <%= productToEdit.quality %></option>
+                        <option value="Clásico">Clásico</option>
+                        <option value="Reserva">Reserva</option>
+                        <option value="Brut">Brut</option>
+                        <option value="Extra-brut">Extra Brut</option>              
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="vintage">Añada *</label>
+                            <select name="vintage" id="vintage">
+                        <option value="<%= productToEdit.vintage %>"><%= productToEdit.vintage %></option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>                 
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="display">Presentación *</label>
+                            <select name="display" id="display">
+                        <option value="<%= productToEdit.display %>"> <%= productToEdit.display %></option>
+                        <option value="Estuche individual">Estuche individual</option>
+                        <option value="Estuche botella + copa">Estuche botella + copa</option>
+                        <option value="Caja x 2unid.">Caja x 2unid.</option>
+                        <option value="Caja x 3unid.">Caja x 3unid.</option>
+                        <option value="Caja x 6unid.">Caja x 6unid.</option>
+                        <option value="Caja x 12unid.">Caja x 12unid.</option>
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="price">Precio *</label>
+                            <input type="text" name="price" id="price" value="<%= productToEdit.price %>" required>
+                        </div>
+                        <div class="labelInput">
+                            <label for="discount">Descuento *</label>
+                            <select name="discount" id="discount">
+                        <option value="<%= productToEdit.discount %>"><%= productToEdit.discount %></option>
+                        <option value="0">Sin descuento</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                        <option value="15">15%</option>
+                        <option value="20">20%</option>
+                        <option value="25">25%</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>                           
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="tasting">Notas de Cata *</label>
+                            <textarea name="tasting" id="tasting" required><%= productToEdit.tasting %></textarea>
+                        </div>
+                        <div class="labelInput">
+                            <label for="pairing">Maridaje *</label>
+                            <textarea name="pairing" id="pairing" required><%= productToEdit.pairing %></textarea>
+                        </div>
+                        <div class="labelInput">
+                            <label for="temperature">Temperatura *</label>
+                            <select name="temperature" id="temperature">
+                    <option value="<%= productToEdit.temperature %>"> <%= productToEdit.temperature %></option>
+                    <option value="14">14º</option>
+                    <option value="15">15º</option>
+                    <option value="16">16º</option>
+                    <option value="17">17º</option>
+                    <option value="18">18º</option>
+                    </select>
+                        </div>
+                        <div class="labelInput">
+                            <label for="image">Imagen *</label>
+                            <input type="file" name="image" id="image" value="<%= productToEdit.image %>">
+                            <%= productToEdit.image %>"
+                        </div>
+                        <div class="labelInput">
+                            <label for="datasheet">Ficha Técnica *</label>
+                            <input type="file" name="datasheet" id="datasheet" value="<%= productToEdit.datasheet %>">
+                            <%= productToEdit.datasheet %>
+                        </div>
+                        <div class="labelInput">
+                            <button type="submit" id="editar-prod" class="btn-border">guardar edición</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+
+            <footer>
+            </footer>
+
+    </body>
+
+    </html>

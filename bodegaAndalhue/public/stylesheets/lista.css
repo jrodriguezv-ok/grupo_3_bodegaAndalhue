@@ -1,0 +1,50 @@
+main {
+    min-height: 83vh;
+}
+
+.tablaProd {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 25px 0;
+}
+
+.etiquetas,
+.etiquetas2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 0;
+    text-align: left;
+}
+
+.etiquetas2 {
+    font-size: 0.8em;
+}
+
+.xxsmall {
+    width: 1.7%;
+}
+
+.xsmall {
+    width: 3%;
+}
+
+.small {
+    width: 5%;
+}
+
+.medium {
+    width: 10%;
+}
+
+.large {
+    width: 15%;
+}
+
+.btn-centrado {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 25px;
+}

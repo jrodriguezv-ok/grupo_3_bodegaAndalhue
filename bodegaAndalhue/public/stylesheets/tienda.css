@@ -160,6 +160,7 @@
         .prod-items .categoria {
             margin: 2px auto;
             font-weight: 200;
+            text-align: center;
         }
         
         .prod-items .descripcion {
