@@ -75,6 +75,11 @@
       margin: 0 auto;
   }
   
+  .errores {
+      color: #C4AF64;
+      text-align: center;
+  }
+  
   @media(min-width:426px) {
       .formLogin {
           flex-direction: row;
@@ -93,9 +98,9 @@
       .formLogin {
           max-width: 1000px;
       }
-      .formLogin label {
+      /*.formLogin label {
           font-size: ;
-      }
+      }*/
       .poesia {
           font-size: 1.2em;
       }
