@@ -1,14 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 
-const productsFilePath = path.join(__dirname, '../data/productsDB.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+/*const productsFilePath = path.join(__dirname, '../data/productsDB.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));*/
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+const db = require('../database/models');
+
+
+
 const productsController = {
     list: (req, res, next) => {
-        res.render('products/list', { products: products, toThousand });
+        db.Products.findAll()
+            .then(function(products) {
+                res.render('products/list', { products: products, toThousand });
+            })
+
     },
     add: (req, res, next) => {
         res.render('products/add');
@@ -28,35 +36,106 @@ const productsController = {
         fs.writeFileSync(__dirname + "/../data/productsDB.json", JSON.stringify(products));
         res.redirect("/products/list");
     },
+    create: (req, res, next) => {
+        db.Products.create({
+            cat: req.body.category,
+
+            line: req.body.line,
+
+            varietal: req.body.varietal,
+
+            quality: req.body.quality,
+
+            vintage: req.body.vintage,
+
+            display: req.body.display,
+
+            price: req.body.price,
+
+            discount: req.body.discount,
+
+            tasting: req.body.tasting,
+
+            pairing: req.body.pairing,
+
+            temperature: req.body.temperature,
+
+            image: req.body.image,
+
+            datasheet: req.body.datasheet
+        });
+        res.redirect("/products/list");
+    },
 
     detail: (req, res, next) => {
         var productSelected = req.params.id;
-        for (var i = 0; i < products.length; i++) {
+        db.Products.findByPk(req.params.id)
+            .then(function(products) {
+                res.render('products/detail', { products: products, toThousand, productSelected });
+            })
+
+        /* for (var i = 0; i < products.length; i++) {
             if (productSelected == products[i].id) {
                 productSelected = products[i];
             };
-        };
-        res.render('products/detail', { products: products, toThousand, productSelected });
+        }; */
+
     },
 
     edit: (req, res, next) => {
-
-        let productToEdit = req.params.id;
-        for (var i = 0; i < products.length; i++) {
-            if (products[i].id == productToEdit) {
-                productToEdit = products[i];
-                break;
-            }
-        };
-        if (productToEdit != undefined) {
-            res.render('products/edit', { productToEdit })
-        } else {
-            res.send('No se encontró su producto')
-        };
-        console.log(productToEdit);
+        let productToEdit = db.products.findByPk(req.params.id)
+            .then(function(products) {
+                res.render('products/edit', { products: products });
+            })
+            /*  let productToEdit = req.params.id;
+              for (var i = 0; i < products.length; i++) {
+                  if (products[i].id == productToEdit) {
+                      productToEdit = products[i];
+                      break;
+                  }
+              };
+              if (productToEdit != undefined) {
+                  res.render('products/edit', { productToEdit })
+              } else {
+                  res.send('No se encontró su producto')
+              };
+              console.log(productToEdit);  */
     },
     update: (req, res, next) => {
-        products.forEach(function(product) {
+        db.products.update({
+            cat: req.body.category,
+
+            line: req.body.line,
+
+            varietal: req.body.varietal,
+
+            quality: req.body.quality,
+
+            vintage: req.body.vintage,
+
+            display: req.body.display,
+
+            price: req.body.price,
+
+            discount: req.body.discount,
+
+            tasting: req.body.tasting,
+
+            pairing: req.body.pairing,
+
+            temperature: req.body.temperature,
+
+            image: req.body.image,
+
+            datasheet: req.body.datasheet
+        }, {
+            where: {
+
+                id: req.params.id
+            }
+        });
+        res.redirect("/products/list" + req.params.id);
+        /* products.forEach(function(product) {
             if (product.id == req.params.id) {
                 console.log(req.body);
                 product.category = req.body.category;
@@ -77,17 +156,22 @@ const productsController = {
         console.log(products);
 
         fs.writeFileSync(__dirname + "/../data/productsDB.json", JSON.stringify(products));
-        res.redirect("/products/list");
+        res.redirect("/products/list"); */
     },
 
     destroy: (req, res, next) => {
-        let newProducts = products.filter(function(product) {
-            return product.id != req.params.id
-        });
+        /*   let newProducts = products.filter(function(product) {
+              return product.id != req.params.id
+          });
 
-        fs.writeFileSync(__dirname + "/../data/productsDB.json", JSON.stringify(newProducts));
+          fs.writeFileSync(__dirname + "/../data/productsDB.json", JSON.stringify(newProducts));
+          res.redirect('/products/list'); */
+        db.products.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
         res.redirect('/products/list');
-
     },
     cart: (req, res, next) => {
         res.render('products/cart');
