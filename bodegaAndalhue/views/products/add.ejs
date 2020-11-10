@@ -2,7 +2,6 @@
     <link rel='stylesheet' href='/stylesheets/register.css'>
     <link rel="stylesheet" href="/stylesheets/footer.css">
 
-
     <body class="fondoBeige">
 
         <%- include('../partials/header-admin')%>
@@ -15,81 +14,61 @@
                         <div class="labelInput">
                             <label for="category">Categoría *</label>
                             <select name="category" id="category" required>
-                        <option value="" disabled selected> Selecciona categoría</option>
-                        <option value="TINTO">tinto</option>
-                        <option value="BLANCO">blanco</option>
-                        <option value="ROSADO">rosado</option>
-                        <option value="BRUT">brut</option>
-                        <option value="EXTRA BRUT">extra brut</option>
-                    </select>
+                                <option value="" disabled selected> Selecciona categoría</option>
+                                <% for(let i = 0; i< categories.length; i++){ %>
+                                <option value="<% categories[i].id%>">
+                                    <% categories[i].name %>
+                                </option>
+                                <% }%>
+                            </select>
                         </div>
                         <div class="labelInput">
                             <label for="line">Línea *</label>
                             <select name="line" id="line" required>
-                        <option value="" disabled selected> Selecciona línea</option>
-                        <option value="Línea A">Línea A</option>
-                        <option value="Línea B">Línea B</option>
-                        <option value="Línea C">Línea C</option>
-                    </select>
+                                <option value="" disabled selected> Selecciona línea</option>
+                                <% for(let i = 0; i< lines.length; i++){%>
+                                <option value="<% lines[i].id%>">
+                                    <% lines[i].name %>
+                                </option>
+                                <% }%>
+                            </select>
                         </div>
                         <div class="labelInput">
                             <label for="varietal">Varietal *</label>
                             <select name="varietal" id="varietal" required>
-                        <option value="" disabled selected> Selecciona varietal</option>
-                        <optgroup label="Monovarietal">
-                            <option value="Bonarda">Bonarda</option>
-                            <option value="Cabernet">Cabernet Sauvignon</option>
-                            <option value="Chardonnay">Chardonnay</option>
-                            <option value="Malbec">Malbec</option>
-                            <option value="Merlot">Merlot</option>
-                            <option value="Syrah">Syrah</option>
-                            <option value="Torrontés">Torrontés</option>
-                        </optgroup>
-                        <optgroup label="Bivarietal">
-                            <option value="Bonarda - Malbec">Blend: Bonarda - Malbec</option>
-                            <option value="Cabernet - Malbec">Blend: Cabernet - Malbec </option>
-                            <option value="Chardonnay - Pinot Noir">Blend: Chardonnay - Pinot Noir</option>
-                        </optgroup>
-                    </select>
+                                <option value="" disabled selected> Selecciona varietal</option>
+                                <% for(let i = 0; i< varietals.length; i++){ %>
+                                <option value="<% varietals[i].id%>">
+                                    <% varietals[i].name %>
+                                </option>
+                                <% }%>
+                            </select>
                         </div>
                         <div class="labelInput">
                             <label for="quality">Calidad *</label>
                             <select name="quality" id="quality" required>
-                        <option value="" disabled selected> Selecciona calidad</option>
-                        <option value="Clásico">Clásico</option>
-                        <option value="Reserva">Reserva</option>
-                        <option value="Brut">Brut</option>
-                        <option value="Extra-brut">Extra Brut</option>              
-                    </select>
+                                <option value="" disabled selected> Selecciona calidad</option>
+                                <% for(let i = 0; i< qualities.length; i++){%>
+                                <option value="<% qualities[i].id%>">
+                                    <% qualities[i].name %>
+                                </option>
+                                <% }%>    
+                            </select>
                         </div>
                         <div class="labelInput">
                             <label for="vintage">Añada *</label>
-                            <select name="vintage" id="vintage" required>
-                        <option value="" disabled selected> Selecciona añada</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>                 
-                    </select>
+                            <input type="text" name="vintage" id="vintage" required>
                         </div>
                         <div class="labelInput">
                             <label for="display">Presentación *</label>
                             <select name="display" id="display" required>
-                        <option value="" disabled selected> Selecciona la presentación</option>
-                        <option value="Estuche individual">Estuche individual</option>
-                        <option value="Estuche botella + copa">Estuche botella + copa</option>
-                        <option value="Caja x 2unid.">Caja x 2unid.</option>
-                        <option value="Caja x 3unid.">Caja x 3unid.</option>
-                        <option value="Caja x 6unid.">Caja x 6unid.</option>
-                        <option value="Caja x 12unid.">Caja x 12unid.</option>
-                    </select>
+                                <option value="" disabled selected> Selecciona la presentación</option>
+                                 <% for(let i = 0; i< displays.length; i++){%>
+                                <option value="<% displays[i].id%>">
+                                    <% displays[i].name %>
+                                </option>
+                                <% }%>
+                             </select>
                         </div>
                         <div class="labelInput">
                             <label for="price">Precio *</label>
@@ -97,18 +76,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="discount">Descuento *</label>
-                            <select name="discount" id="discount" required>
-                        <option value="0">Sin descuento</option>
-                        <option value="5">5%</option>
-                        <option value="10">10%</option>
-                        <option value="15">15%</option>
-                        <option value="20">20%</option>
-                        <option value="25">25%</option>
-                        <option value="30">30%</option>
-                        <option value="40">40%</option>
-                        <option value="50">50%</option>
-                        <option value="60">60%</option>                           
-                    </select>
+                            <input type="text" name="discount" id="discount" required>
                         </div>
                         <div class="labelInput">
                             <label for="tasting">Notas de Cata *</label>
@@ -121,13 +89,13 @@
                         <div class="labelInput">
                             <label for="temperature">Temperatura *</label>
                             <select name="temperature" id="temperature" required>
-                    <option value="" disabled selected> Selecciona la temperatura ideal</option>
-                    <option value="14">14º</option>
-                    <option value="15">15º</option>
-                    <option value="16">16º</option>
-                    <option value="17">17º</option>
-                    <option value="18">18º</option>
-                    </select>
+                                <option value="" disabled selected> Selecciona la temperatura ideal</option>
+                                <% for(let i = 0; i< temperatures.length; i++){%>
+                                <option value="<% temperatures[i].id%>">
+                                    <% temperatures[i].name %>
+                                </option>
+                                <% }%>
+                            </select>
                         </div>
                         <div class="labelInput">
                             <label for="image">Imagen *</label>
@@ -145,10 +113,8 @@
                     </form>
                 </section>
             </main>
-
             <footer>
             </footer>
-
     </body>
 
     </html>

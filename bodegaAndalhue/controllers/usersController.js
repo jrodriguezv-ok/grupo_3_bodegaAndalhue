@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const { check, validationResult, body } = require('express-validator');
 
-const fs = require('fs');
-const users = JSON.parse(fs.readFileSync(__dirname + "/../data/users.json"));
+/* const fs = require('fs');
+const users = JSON.parse(fs.readFileSync(__dirname + "/../data/users.json")); */
 
 const usersController = {
     loginRegister: (req, res, next) => {
@@ -14,7 +14,6 @@ const usersController = {
 
     store: (req, res, next) => {
         let errors = validationResult(req);
-
         if (!errors.isEmpty()) {
             res.render("users/register", { errors: errors.errors })
         }
@@ -37,7 +36,6 @@ const usersController = {
 
     enter: (req, res, next) => {
         let errors = validationResult(req);
-
         if (!errors.isEmpty()) {
             res.render("users/login", { errors: errors.errors })
         }

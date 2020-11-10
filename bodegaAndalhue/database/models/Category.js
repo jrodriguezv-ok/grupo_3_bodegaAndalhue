@@ -1,7 +1,7 @@
 const config = require("../config/config")
 
 module.exports = function(sequelize, dataTypes) {
-    let alias = "categories";
+    let alias = "Category";
 
     let cols = {
         id: {

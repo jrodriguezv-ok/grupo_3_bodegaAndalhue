@@ -1,7 +1,7 @@
 const config = require("../config/config")
 
 module.exports = function(sequelize, dataTypes) {
-    let alias = "cart_product";
+    let alias = "Cart_product";
 
     let cols = {
         id: {
@@ -25,7 +25,7 @@ module.exports = function(sequelize, dataTypes) {
 
     }
 
-    let cart_product = sequelize.define(alias, cols, config);
+    let Cart_product = sequelize.define(alias, cols, config);
 
     Cart_product.associate = function(models) {
         Cart_product.belongsToMany(models.Product, {
@@ -38,7 +38,7 @@ module.exports = function(sequelize, dataTypes) {
             foreignKey: "cart_id"
         });
 
-        return cart_product;
+        return Cart_product;
     }
 
 

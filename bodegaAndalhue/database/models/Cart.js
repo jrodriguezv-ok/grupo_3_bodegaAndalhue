@@ -1,7 +1,7 @@
 const config = require("../config/config")
 
 module.exports = function(sequelize, dataTypes) {
-    let alias = "carts";
+    let alias = "Cart";
 
     let cols = {
         id: {
@@ -35,6 +35,14 @@ module.exports = function(sequelize, dataTypes) {
         Cart.belongsTo(models.User, {
             as: "cart_user",
             foreignKey: "user_id"
+        });
+
+        Cart.belongsToMany(models.Product, {
+            as: "products",
+            through: "cart_product",
+            foreignKey: cart_id,
+            otherKey: product_id,
+            timestamps: false
         });
         return Cart;
     }
