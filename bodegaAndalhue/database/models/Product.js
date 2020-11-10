@@ -1,7 +1,7 @@
 const config = require("../config/config")
 
 module.exports = function(sequelize, dataTypes) {
-    let alias = "Products";
+    let alias = "products";
 
     let cols = {
         id: {
@@ -21,15 +21,15 @@ module.exports = function(sequelize, dataTypes) {
 
         display: dataTypes.STRING,
 
-        price: dataTypes.INTEGER,
+        price: dataTypes.DECIMAL,
 
-        discount: dataTypes.STRING,
+        discount: dataTypes.INTEGER,
 
         tasting: dataTypes.STRING,
 
         pairing: dataTypes.STRING,
 
-        temperature: dataTypes.STRING,
+        temperature: dataTypes.DECIMAL,
 
         image_id: dataTypes.INTEGER,
 
@@ -37,12 +37,19 @@ module.exports = function(sequelize, dataTypes) {
     };
 
     let config = {
-        tableName: "Products",
+        tableName: "products",
         timestamps: false
 
     }
 
     let Product = sequelize.define(alias, cols, config);
 
-    return Product;
+    Product.associate = function(models) {
+        Product.belongsTo(models.Category, {
+            as: "categories",
+            foreignKey: "cat_id"
+        });
+        return products;
+    }
+
 }

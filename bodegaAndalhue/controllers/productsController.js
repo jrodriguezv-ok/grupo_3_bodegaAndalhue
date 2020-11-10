@@ -12,7 +12,7 @@ const db = require('../database/models');
 
 const productsController = {
     list: (req, res, next) => {
-        db.Products.findAll()
+        db.products.findAll()
             .then(function(products) {
                 res.render('products/list', { products: products, toThousand });
             })
@@ -34,36 +34,6 @@ const productsController = {
         newProduct.discount = Number(req.body.discount);
         products.push(newProduct);
         fs.writeFileSync(__dirname + "/../data/productsDB.json", JSON.stringify(products));
-        res.redirect("/products/list");
-    },
-    create: (req, res, next) => {
-        db.Products.create({
-            cat: req.body.category,
-
-            line: req.body.line,
-
-            varietal: req.body.varietal,
-
-            quality: req.body.quality,
-
-            vintage: req.body.vintage,
-
-            display: req.body.display,
-
-            price: req.body.price,
-
-            discount: req.body.discount,
-
-            tasting: req.body.tasting,
-
-            pairing: req.body.pairing,
-
-            temperature: req.body.temperature,
-
-            image: req.body.image,
-
-            datasheet: req.body.datasheet
-        });
         res.redirect("/products/list");
     },
 

@@ -1,7 +1,7 @@
 const config = require("../config/config")
 
 module.exports = function(sequelize, dataTypes) {
-    let alias = "Cart";
+    let alias = "carts";
 
     let cols = {
         id: {
@@ -24,12 +24,19 @@ module.exports = function(sequelize, dataTypes) {
     };
 
     let config = {
-        tableName: "Cart",
+        tableName: "carts",
         timestamps: false
 
     }
 
     let Cart = sequelize.define(alias, cols, config);
 
-    return Cart;
+    Cart.associate = function(models) {
+        Cart.belongsTo(models.User, {
+            as: "cart_user",
+            foreignKey: "user_id"
+        });
+        return Cart;
+    }
+
 }

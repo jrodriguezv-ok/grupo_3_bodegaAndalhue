@@ -1,7 +1,7 @@
 const config = require("../config/config")
 
 module.exports = function(sequelize, dataTypes) {
-    let alias = "Users";
+    let alias = "users";
 
     let cols = {
         id: {
@@ -28,12 +28,19 @@ module.exports = function(sequelize, dataTypes) {
     };
 
     let config = {
-        tableName: "Users",
+        tableName: "users",
         timestamps: false
 
     }
 
     let User = sequelize.define(alias, cols, config);
 
-    return User;
+    User.associate = function(models) {
+        User.hasMany(models.Cart, {
+            as: "cart_user",
+            foreignKey: "user_id"
+        });
+
+        return User;
+    }
 }

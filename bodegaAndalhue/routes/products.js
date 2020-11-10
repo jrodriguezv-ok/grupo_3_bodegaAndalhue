@@ -22,7 +22,7 @@ router.get('/list', productsController.list);
 // AGREGAR PRODUCTO
 router.get('/add', productsController.add);
 router.post('/add', upload.any(), productsController.store);
-router.post('/add', upload.any(), productsController.create);
+
 
 // DETALLE PRODUCTO
 router.get('/detail/:id', productsController.detail);
