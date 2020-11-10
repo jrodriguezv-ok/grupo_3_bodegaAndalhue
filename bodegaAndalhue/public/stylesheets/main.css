@@ -37,7 +37,8 @@ button {
     border-right: solid 1px #C4AF64;
 }
 
-.btn-border {
+.btn-border,
+a .btn-border {
     width: 122px;
     height: 24px;
     border: solid 1px #BFA02E;
@@ -46,18 +47,22 @@ button {
     font-size: 1.1em;
     font-weight: 500;
     text-align: center;
+    line-height: 1.5em;
     margin-bottom: 15px;
     background-color: none;
     cursor: pointer;
 }
 
-.btn-border-max {
+.btn-border-max,
+a .btn-border-max {
     width: 178px;
     height: 24px;
     border: solid 1px #BFA02E;
     border-radius: 15px;
     color: #BFA02E;
+    font-size: 1em;
     font-weight: 700;
+    line-height: 1.5em;
     margin-bottom: 15px;
     background-color: none;
     text-align: center;
@@ -65,26 +70,33 @@ button {
 }
 
 .btn-border:hover,
-.btn-border-max:hover {
+.btn-border-max:hover,
+a .btn-border:hover,
+a .btn-border-max:hover {
     background-color: #BFA02E;
     color: white;
     transition: ease-in 0.3s;
 }
 
-.btn-relleno {
+.btn-relleno,
+a .btn-relleno {
     width: 122px;
     height: 24px;
     background-color: #BFA02E;
     border-radius: 15px;
     border: none;
     color: white;
+    font-size: 1em;
+    text-align: center;
+    line-height: 1.5em;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 15px;
     cursor: pointer;
 }
 
-.btn-relleno:hover {
+.btn-relleno:hover,
+a .btn-relleno:hover {
     background-color: white;
     color: #BFA02E;
     border: solid 1px #BFA02E;

@@ -14,7 +14,7 @@
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
-                        <a href="/loginRegister">login</a>
+                        <a href="/users/loginRegister" id="loginAccess">login</a>
                     </section>
                 </div>
 
@@ -84,7 +84,7 @@
                                             <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
                                         </h5>
                                     </div>
-                                    <button class="btn-relleno">Agregar</button>
+                                    <a href="/products/cart" class="btn-relleno">Agregar</a>
                                 </div>
                             </a>
                         </article>

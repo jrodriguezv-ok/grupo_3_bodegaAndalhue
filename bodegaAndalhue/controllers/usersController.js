@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const { check, validationResult, body } = require('express-validator');
+
 const fs = require('fs');
 const users = JSON.parse(fs.readFileSync(__dirname + "/../data/users.json"));
 
@@ -26,7 +27,7 @@ const usersController = {
             newUser.id = 1;
         }
         users.push(newUser);
-        fs.writeFileSync(__dirname + "/../data/users.json", JSON.stringify(users));
+        /*  fs.writeFileSync(__dirname + "/../data/users.json", JSON.stringify(users)); */
         res.render('users/register');
     },
 
@@ -42,18 +43,16 @@ const usersController = {
         }
         let userFind;
         for (var i = 0; i < users.length; i++) {
-
             if (users[i].email == req.body.email) {
                 if (bcrypt.compareSync(req.body.password, users[i].password)) {
                     userFind = users[i];
                     break;
                 }
-
             }
         }
         if (userFind) {
+            res.render('index', { userLogueado: userFind.first_name });
 
-            res.render('users/login');
         } else {
             res.render("users/login", { errorAlLoguear: "Usuario o contraseña inválidos!" });
         }
