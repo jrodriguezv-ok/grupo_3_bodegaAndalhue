@@ -23,7 +23,7 @@ module.exports = function(sequelize, dataTypes) {
 
     Display.associate = function(models) {
         Display.hasMany(models.Product, {
-            as: "products",
+            as: "displays",
             foreignKey: "display_id"
         });
         return Display;

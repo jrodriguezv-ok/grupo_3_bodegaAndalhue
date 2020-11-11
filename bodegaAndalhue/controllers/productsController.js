@@ -5,14 +5,15 @@ const Sequelize = require('sequelize');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
 
-var pedCategories = db.Category.findAll();
-var pedLines = db.Line.findAll();
-var pedVarietals = db.Varietal.findAll();
-var pedQualities = db.Quality.findAll();
-var pedDisplays = db.Display.findAll();
-var pedTemperatures = db.Temperature.findAll();
+
 
 const productsController = {
+    var pedCategories = db.Category.findAll();
+    var pedLines = db.Line.findAll();
+    var pedVarietals = db.Varietal.findAll();
+    var pedQualities = db.Quality.findAll();
+    var pedDisplays = db.Display.findAll();
+    var pedTemperatures = db.Temperature.findAll();
     list: (req, res, next) => {
         db.Product.findAll()
             .then(function(products) {

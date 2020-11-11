@@ -33,7 +33,7 @@ module.exports = function(sequelize, dataTypes) {
 
     Cart.associate = function(models) {
         Cart.belongsTo(models.User, {
-            as: "cart_user",
+            as: "users",
             foreignKey: "user_id"
         });
 

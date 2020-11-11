@@ -23,7 +23,7 @@ module.exports = function(sequelize, dataTypes) {
 
     Temperature.associate = function(models) {
         Temperature.hasMany(models.Product, {
-            as: "products",
+            as: "temperatures",
             foreignKey: "temperature_id"
         });
         return Temperature;
