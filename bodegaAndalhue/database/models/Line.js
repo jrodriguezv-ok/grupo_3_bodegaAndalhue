@@ -25,8 +25,8 @@ module.exports = function(sequelize, dataTypes) {
             as: "lines",
             foreignKey: "line_id"
         });
-        return Line;
+
     }
 
-
+    return Line;
 }

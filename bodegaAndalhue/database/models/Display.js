@@ -26,6 +26,7 @@ module.exports = function(sequelize, dataTypes) {
             as: "displays",
             foreignKey: "display_id"
         });
-        return Display;
+
     }
+    return Display;
 }

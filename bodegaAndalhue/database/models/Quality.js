@@ -26,8 +26,9 @@ module.exports = function(sequelize, dataTypes) {
             as: "qualities",
             foreignKey: "quality_id"
         });
-        return Quality;
+
     }
+    return Quality;
 
 
 }

@@ -31,6 +31,7 @@ module.exports = function(sequelize, dataTypes) {
             as: "cart_user",
             foreignKey: "user_id"
         });
-        return User;
+
     }
+    return User;
 }

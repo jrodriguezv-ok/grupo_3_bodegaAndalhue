@@ -37,14 +37,14 @@ module.exports = function(sequelize, dataTypes) {
             foreignKey: "user_id"
         });
 
-        Cart.belongsToMany(models.Product, {
-            as: "products",
-            through: "cart_product",
-            foreignKey: cart_id,
-            otherKey: product_id,
-            timestamps: false
-        });
-        return Cart;
-    }
+        /*     Cart.belongsToMany(models.Product, {
+                as: "products",
+                through: "cart_product",
+                foreignKey: "cart_id",
+                otherKey: "product_id",
+                timestamps: false
+            }); */
 
+    }
+    return Cart;
 }

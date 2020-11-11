@@ -26,8 +26,9 @@ module.exports = function(sequelize, dataTypes) {
             as: "varietals",
             foreignKey: "varietal_id"
         });
-        return Varietal;
+
     }
+    return Varietal;
 
 
 }

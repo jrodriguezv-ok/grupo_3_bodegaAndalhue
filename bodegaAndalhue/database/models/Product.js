@@ -65,7 +65,7 @@ module.exports = function(sequelize, dataTypes) {
             otherKey: "cart_id",
             timestamps: false
         });
-        return Product;
-    }
 
+    }
+    return Product;
 }

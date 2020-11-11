@@ -26,6 +26,7 @@ module.exports = function(sequelize, dataTypes) {
             as: "temperatures",
             foreignKey: "temperature_id"
         });
-        return Temperature;
+
     }
+    return Temperature;
 }
