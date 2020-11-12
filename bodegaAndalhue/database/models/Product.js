@@ -10,16 +10,16 @@ module.exports = function(sequelize, dataTypes) {
             autoIncrement: true
         },
         cat_id: dataTypes.INTEGER,
-        line: dataTypes.STRING,
-        varietal: dataTypes.STRING,
-        quality: dataTypes.STRING,
-        vintage: dataTypes.STRING,
-        display: dataTypes.STRING,
+        line_id: dataTypes.INTEGER,
+        varietal_id: dataTypes.INTEGER,
+        quality_id: dataTypes.INTEGER,
+        vintage: dataTypes.INTEGER,
+        display_id: dataTypes.INTEGER,
         price: dataTypes.DECIMAL,
         discount: dataTypes.INTEGER,
         tasting: dataTypes.STRING,
         pairing: dataTypes.STRING,
-        temperature: dataTypes.DECIMAL,
+        temperature_id: dataTypes.INTEGER,
         image: dataTypes.STRING,
         datasheet: dataTypes.STRING
     };
@@ -27,7 +27,6 @@ module.exports = function(sequelize, dataTypes) {
     let config = {
         tableName: "products",
         timestamps: false
-
     }
 
     let Product = sequelize.define(alias, cols, config);
