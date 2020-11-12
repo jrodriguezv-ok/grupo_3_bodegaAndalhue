@@ -110,11 +110,11 @@
                                 <% for(let i = 0; i< temperatures.length; i++){ %>
                                     <% if(temperatures[i].id == productToEdit.temperature_id ) { %>
                                     <option value="<% temperatures[i].id%>" selected>
-                                        <% temperatures[i].name %>
+                                        <% temperatures[i].value %>
                                     </option> 
                                 <%} else {%>
                                     <option value="<% temperatures[i].id%>">
-                                        <% temperatures[i].name %>
+                                        <% temperatures[i].value %>
                                     </option> 
                                 <% }}%>
                     </select>

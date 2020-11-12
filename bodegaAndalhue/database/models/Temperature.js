@@ -9,7 +9,7 @@ module.exports = function(sequelize, dataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        name: dataTypes.STRING
+        value: dataTypes.STRING
 
     };
 
