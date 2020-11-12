@@ -13,7 +13,7 @@ module.exports = function(sequelize, dataTypes) {
         line_id: dataTypes.INTEGER,
         varietal_id: dataTypes.INTEGER,
         quality_id: dataTypes.INTEGER,
-        vintage: dataTypes.STRING,
+        vintage: dataTypes.INTEGER,
         display_id: dataTypes.INTEGER,
         price: dataTypes.DECIMAL,
         discount: dataTypes.INTEGER,
@@ -27,7 +27,6 @@ module.exports = function(sequelize, dataTypes) {
     let config = {
         tableName: "products",
         timestamps: false
-
     }
 
     let Product = sequelize.define(alias, cols, config);

@@ -1,4 +1,4 @@
-RETROSPECTIVA SPRINT 6
+RETROSPECTIVA SOBRE SPRINT III
 
 
 1) Comenzar a hacer: Comenzar a subir más seguido los avances de cada integrante al repositorio es una práctica que nos dimos cuenta nos va a permitir tener mayor control sobre el ritmo del proyecto.
