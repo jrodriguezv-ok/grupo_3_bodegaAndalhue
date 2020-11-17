@@ -158,3 +158,22 @@ a .btn-relleno:hover {
 .fondoBeige {
     background-color: rgba(196, 175, 100, 0.25);
 }
+
+.modal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    top: 30%;
+    left: 37%;
+    /*  right: auto;
+    bottom: auto; */
+    width: 25%;
+    height: 40%;
+    padding-top: 5%;
+    background-color: rgba(63, 65, 64, 0.8);
+    border-radius: 2%;
+    z-index: 100;
+}

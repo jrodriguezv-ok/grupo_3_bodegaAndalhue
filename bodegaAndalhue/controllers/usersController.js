@@ -24,9 +24,9 @@ const usersController = {
             town: req.body.town,
             country: req.body.country,
             email: req.body.email,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password, 10)
         })
-        User.password = bcrypt.hashSync(User.password, 10);
+
         res.render('users/register'); //ver cómo redirigir a la vista anterior: tienda o carrito
     },
 

@@ -40,7 +40,7 @@
                                     <%= products[i].category.slice(0,4) %>
                                 </li>
                                 <li class="small">
-                                    <%= products[i].line %>
+                                    <%= products[i].brand %>
                                 </li>
                                 <li class="small">
                                     <%= products[i].varietal %>
@@ -74,6 +74,9 @@
                                 </li>
                                 <li class="large">
                                     <%= products[i].datasheet %>
+                                </li>
+                                <li class="xsmall">
+                                    <%= products[i].state %>
                                 </li>
                                 <a href="/products/edit/<%= products[i].id %>" class="xsmall"><i class="fas fa-edit"></i></a>
                                 <a href="/products/destroy/<%= products[i].id %>" class="xsmall"><i class="fas fa-trash-alt"></i></a>

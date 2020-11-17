@@ -16,19 +16,19 @@
                             <select name="category" id="category" required>
                                 <option value="" disabled selected> Selecciona categoría</option>
                                 <% for(let i = 0; i< categories.length; i++){ %>
-                                <option value="<% categories[i].id%>">
-                                    <% categories[i].name %>
+                                <option value="<%= categories[i].id%>">
+                                    <%= categories[i].name %>
                                 </option>
                                 <% }%>
                             </select>
                         </div>
                         <div class="labelInput">
-                            <label for="line">Línea *</label>
-                            <select name="line" id="line" required>
+                            <label for="brand">Línea *</label>
+                            <select name="brand" id="brand" required>
                                 <option value="" disabled selected> Selecciona línea</option>
-                                <% for(let i = 0; i< lines.length; i++){%>
-                                <option value="<% lines[i].id%>">
-                                    <% lines[i].name %>
+                                <% for(let i = 0; i< brands.length; i++){%>
+                                <option value="<%= brands[i].id%>">
+                                <%= brands[i].name %>
                                 </option>
                                 <% }%>
                             </select>
@@ -38,8 +38,8 @@
                             <select name="varietal" id="varietal" required>
                                 <option value="" disabled selected> Selecciona varietal</option>
                                 <% for(let i = 0; i< varietals.length; i++){ %>
-                                <option value="<% varietals[i].id%>">
-                                    <% varietals[i].name %>
+                                <option value="<%= varietals[i].id%>">
+                                    <%= varietals[i].name %>
                                 </option>
                                 <% }%>
                             </select>
@@ -49,8 +49,8 @@
                             <select name="quality" id="quality" required>
                                 <option value="" disabled selected> Selecciona calidad</option>
                                 <% for(let i = 0; i< qualities.length; i++){%>
-                                <option value="<% qualities[i].id%>">
-                                    <% qualities[i].name %>
+                                <option value="<%= qualities[i].id%>">
+                                    <%= qualities[i].name %>
                                 </option>
                                 <% }%>    
                             </select>
@@ -64,8 +64,8 @@
                             <select name="display" id="display" required>
                                 <option value="" disabled selected> Selecciona la presentación</option>
                                  <% for(let i = 0; i< displays.length; i++){%>
-                                <option value="<% displays[i].id%>">
-                                    <% displays[i].name %>
+                                <option value="<%= displays[i].id%>">
+                                    <%= displays[i].name %>
                                 </option>
                                 <% }%>
                              </select>
@@ -91,8 +91,8 @@
                             <select name="temperature" id="temperature" required>
                                 <option value="" disabled selected> Selecciona la temperatura ideal</option>
                                 <% for(let i = 0; i< temperatures.length; i++){%>
-                                <option value="<% temperatures[i].id%>">
-                                    <% temperatures[i].value %>
+                                <option value="<%= temperatures[i].id%>">
+                                    <%= temperatures[i].value + 'ºC' %>
                                 </option>
                                 <% }%>
                             </select>

@@ -10,7 +10,7 @@ module.exports = function(sequelize, dataTypes) {
             autoIncrement: true
         },
         cat_id: dataTypes.INTEGER,
-        line_id: dataTypes.INTEGER,
+        brand_id: dataTypes.INTEGER,
         varietal_id: dataTypes.INTEGER,
         quality_id: dataTypes.INTEGER,
         vintage: dataTypes.INTEGER,
@@ -36,9 +36,9 @@ module.exports = function(sequelize, dataTypes) {
             as: "categories",
             foreignKey: "cat_id"
         });
-        Product.belongsTo(models.Line, {
-            as: "lines",
-            foreignKey: "line_id"
+        Product.belongsTo(models.Brand, {
+            as: "brands",
+            foreignKey: "brand_id"
         });
         Product.belongsTo(models.Varietal, {
             as: "varietals",

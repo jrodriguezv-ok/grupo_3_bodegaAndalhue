@@ -6,7 +6,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
 
 var pedCategories = db.Category.findAll();
-var pedLines = db.Line.findAll();
+var pedBrands = db.Brand.findAll();
 var pedVarietals = db.Varietal.findAll();
 var pedQualities = db.Quality.findAll();
 var pedDisplays = db.Display.findAll();
@@ -22,11 +22,11 @@ const productsController = {
     },
 
     add: (req, res, next) => {
-        Promise.all([pedCategories, pedLines, pedVarietals, pedQualities, pedDisplays, pedTemperatures])
-            .then(function([categories, lines, varietals, qualities, displays, temperatures]) {
+        Promise.all([pedCategories, pedBrands, pedVarietals, pedQualities, pedDisplays, pedTemperatures])
+            .then(function([categories, brands, varietals, qualities, displays, temperatures]) {
                 res.render('products/add', {
                     categories: categories,
-                    lines: lines,
+                    brands: brands,
                     varietals: varietals,
                     qualities: qualities,
                     displays: displays,
@@ -36,9 +36,10 @@ const productsController = {
     },
 
     store: (req, res, next) => {
+        console.log(req.body, req.files)
         db.Product.create({
             cat_id: req.body.category,
-            line: req.body.line,
+            brand: req.body.brand,
             varietal: req.body.varietal,
             quality: req.body.quality,
             vintage: req.body.vintage,
@@ -49,7 +50,8 @@ const productsController = {
             pairing: req.body.pairing,
             temperature: req.body.temperature,
             image: req.files[0].filename,
-            datasheet: req.files[1].filename
+            datasheet: req.files[1].filename,
+            state: req.body.state
         })
         res.redirect("/products/list");
     },
@@ -58,7 +60,7 @@ const productsController = {
         var productSelected = req.params.id;
         db.Product.findByPk(productSelected, {
                 include: [{ association: "categories" }, { association: "varietals" },
-                    { association: "lines" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }
+                    { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }
                 ]
             })
             .then(function(products) {
@@ -69,14 +71,14 @@ const productsController = {
 
     edit: (req, res, next) => {
         var productToEdit = db.Product.findByPk(req.params.id);
-        Promise.all([productToEdit, pedCategories, pedLines, pedVarietals, pedQualities, pedDisplays, pedTemperatures])
-            .then(function([products, categories, lines, varietals, qualities, displays, temperatures]) {
+        Promise.all([productToEdit, pedCategories, pedBrands, pedVarietals, pedQualities, pedDisplays, pedTemperatures])
+            .then(function([products, categories, brands, varietals, qualities, displays, temperatures]) {
                 productToEdit = products;
                 if (productToEdit != undefined) {
                     res.render('products/edit', {
                         productToEdit: productToEdit,
                         categories: categories,
-                        lines: lines,
+                        brands: brands,
                         varietals: varietals,
                         qualities: qualities,
                         displays: displays,
@@ -91,7 +93,7 @@ const productsController = {
     update: (req, res, next) => {
         db.Product.update({
             cat: req.body.category,
-            line: req.body.line,
+            brand: req.body.brand,
             varietal: req.body.varietal,
             quality: req.body.quality,
             vintage: req.body.vintage,
@@ -102,7 +104,8 @@ const productsController = {
             pairing: req.body.pairing,
             temperature: req.body.temperature,
             image: req.files[0].filename,
-            datasheet: req.files[1].filename
+            datasheet: req.files[1].filename,
+            state: req.body.state
         }, {
             where: {
                 id: req.params.id

@@ -30,16 +30,16 @@
                             </select>
                         </div>
                         <div class="labelInput">
-                            <label for="line">Línea *</label>
-                            <select name="line" id="line">
-                                <% for(let i = 0; i< lines.length; i++){ %>
-                                    <% if(lines[i].id == productToEdit.line_id ) { %>
-                                    <option value="<% lines[i].id%>" selected>
-                                        <% lines[i].name %>
+                            <label for="brand">Línea *</label>
+                            <select name="brand" id="brand">
+                                <% for(let i = 0; i< brands.length; i++){ %>
+                                    <% if(brands[i].id == productToEdit.brand_id ) { %>
+                                    <option value="<% brands[i].id%>" selected>
+                                        <% brands[i].name %>
                                     </option> 
                                     <%} else {%>
-                                        <option value="<% lines[i].id%>">
-                                            <% lines[i].name %>
+                                        <option value="<% brands[i].id%>">
+                                            <% brands[i].name %>
                                         </option> 
                                     <% }}%>
                             </select>
@@ -62,12 +62,17 @@
                         <div class="labelInput">
                             <label for="quality">Calidad *</label>
                             <select name="quality" id="quality">
-                        <option value=" <%= productToEdit.quality %>"> <%= productToEdit.quality %></option>
-                        <option value="Clásico">Clásico</option>
-                        <option value="Reserva">Reserva</option>
-                        <option value="Brut">Brut</option>
-                        <option value="Extra-brut">Extra Brut</option>              
-                    </select>
+                                <% for(let i = 0; i< qualities.length; i++){ %>
+                                    <% if(qualities[i].id == productToEdit.quality_id ) { %>
+                                    <option value="<% qualities[i].id%>" selected>
+                                        <% qualities[i].name %>
+                                    </option> 
+                                <%} else {%>
+                                    <option value="<% qualities[i].id%>">
+                                        <% qualities[i].name %>
+                                    </option> 
+                                <% }}%>
+                            </select>
                         </div>
                         <div class="labelInput">
                             <label for="vintage">Añada *</label>
