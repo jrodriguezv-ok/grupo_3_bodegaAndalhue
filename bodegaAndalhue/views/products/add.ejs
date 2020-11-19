@@ -106,9 +106,23 @@
                             <input type="file" name="datasheet" id="datasheet" required>
                         </div>
                         <div class="labelInput">
-                            <button type="submit" id="cargar-prod" class="btn-border">agregar</button>
-                            <button type="reset" id="limpiar-form" class="btn-border">limpiar</button>
-                            <a href="/products/list" class="btn-border">volver</a>
+                            <label for="state">Estado *</label>
+                            <select name="state" id="state" required>
+                                <option value="" disabled selected> Selecciona su estado</option>
+                                <% for(let i = 0; i< states.length; i++){%>
+                                <option value="<%= states[i].id%>">
+                                    <%= states[i].name %>
+                                </option>
+                                <% }%>
+                            </select>
+                        </div>
+                        <div class="labelInput">
+                            <a href="/" class="btn-border">ir a tienda</a>
+                            <a href="/products/list" class="btn-border">volver al listado</a>
+                        </div>
+                        <div class="labelInput">
+                            <button type="submit" id="cargar-prod" class="btn-relleno">agregar</button>
+                            <button type="reset" id="limpiar-form" class="btn-relleno">limpiar</button>
                         </div>
                     </form>
                 </section>

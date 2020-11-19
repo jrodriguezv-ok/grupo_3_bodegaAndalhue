@@ -1,4 +1,4 @@
-const config = require("../config/config")
+/* const config = require("../config/config") */
 
 module.exports = function(sequelize, dataTypes) {
     let alias = "Temperature";
@@ -9,7 +9,7 @@ module.exports = function(sequelize, dataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        value: dataTypes.STRING
+        value: dataTypes.INTEGER
 
     };
 

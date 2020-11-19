@@ -35,6 +35,6 @@ router.post('/edit/:id', upload.any(), productsController.update);
 router.get('/destroy/:id', productsController.destroy);
 
 // CARRITO DE COMPRAS
-router.get('/cart', productsController.cart);
-/* router.post('/cart', productsController.storeCart); */
+/* router.get('/cart', cartController.cart); */
+/* router.post('/cart', cartController.storeCart); */
 module.exports = router;

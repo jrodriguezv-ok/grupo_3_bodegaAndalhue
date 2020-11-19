@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `basebodegaandalhue`
 --
+CREATE DATABASE  IF NOT EXISTS `basebodegaandalhue` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `basebodegaandalhue`;
 
 -- --------------------------------------------------------
 

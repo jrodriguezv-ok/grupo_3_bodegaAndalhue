@@ -23,17 +23,17 @@
                             <ul>
                                 <a href="" id="linea">
                                     <li>>
-                                        <%= productSelected.brand %>
+                                        <%= productSelected.brands.name %>
                                     </li>
                                 </a>
                                 <a href="" id="varietal">
                                     <li>>
-                                        <%= productSelected.varietal %>
+                                        <%= productSelected.varietals.name %>
                                     </li>
                                 </a>
                                 <a href="" id="categoria">
                                     <li>>
-                                        <%= productSelected.quality %>
+                                        <%= productSelected.qualities.name %>
                                     </li>
                                 </a>
                                 <a href="" id="anio">
@@ -59,10 +59,10 @@
                         </article>
                         <article class="prod-items">
                             <h6 class="categoria">
-                                <%= productSelected.category %>
+                                <%= productSelected.categories.name %>
                             </h6>
                             <p class="descripcion">
-                                <%= productSelected.brand + ' ' + productSelected.varietal + ' ' + productSelected.quality + ' ' + productSelected.vintage + ' ' + productSelected.display  %>
+                                <%= productSelected.brands.name + ' ' + productSelected.varietals.name + ' ' + productSelected.qualities.name + ' ' + productSelected.vintage + ' ' + productSelected.displays.name  %>
                             </p>
                             <div class="menosMas">
                                 <i class="fas fa-minus-circle"></i>
@@ -104,9 +104,9 @@
                                 </p>
                                 <h5>TEMPERATURA</h5>
                                 <p>
-                                    <%= productSelected.temperature + 'ºC' %>
+                                    <%= productSelected.temperatures.value + 'ºC' %>
                                 </p>
-                                <a href="<%= productSelected.datasheet %>" download class="btn-border-max">FICHA TÉCNICA</a>
+                                <a href="<%= productSelected.datasheet %>" download class="btn-border-max">ficha técnica</a>
                             </div>
                             <div class="info-adic">
                                 <ul>

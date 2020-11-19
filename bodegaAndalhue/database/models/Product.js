@@ -21,7 +21,8 @@ module.exports = function(sequelize, dataTypes) {
         pairing: dataTypes.STRING,
         temperature_id: dataTypes.INTEGER,
         image: dataTypes.STRING,
-        datasheet: dataTypes.STRING
+        datasheet: dataTypes.STRING,
+        state_id: dataTypes.INTEGER
     };
 
     let config = {
@@ -55,6 +56,10 @@ module.exports = function(sequelize, dataTypes) {
         Product.belongsTo(models.Temperature, {
             as: "temperatures",
             foreignKey: "temperature_id"
+        });
+        Product.belongsTo(models.State, {
+            as: "states",
+            foreignKey: "state_id"
         });
 
         Product.belongsToMany(models.Cart, {

@@ -161,6 +161,7 @@
             margin: 2px auto;
             font-weight: 200;
             text-align: center;
+            text-transform: uppercase;
         }
         
         .prod-items .descripcion {
