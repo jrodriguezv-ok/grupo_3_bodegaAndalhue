@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { check, validationResult, body } = require('express-validator');
 const db = require('../database/models');
 
@@ -39,23 +39,37 @@ const usersController = {
         if (!errors.isEmpty()) {
             res.render("users/login", { errors: errors.errors })
         };
-        let userFind;
-        db.User.findByPk(req.body.email, {
+        let userFind = false;
+
+
+        db.User.findOne({
+                where: {
+                    email: req.body.email
+                }
+            }, {
                 include: [{ association: "carts" }]
             })
             .then(function(user) {
-                if (user.email == req.body.email) {
+                if (req.body.email == user.email) {
                     if (bcrypt.compareSync(req.body.password, user.password)) {
                         userFind = user;
                     }
+
+                }
+                console.log(bcrypt.compareSync(req.body.password, user.password));
+
+                if (userFind) {
+                    console.log('verdadero')
+                    req.session.usuarioLogueado = userFind;
+                    /*  let usuarioLogueado = req.session.usuarioLogueado;
+                     console.log(usuarioLogueado); */
+                    res.render('users/login', { usuarioLogueado: userFind });
+                } else {
+                    console.log('falso');
+                    res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });
                 }
             })
-        if (userFind) {
-            res.render('index', { userLogueado: userFind.first_name });
-        } else {
-            res.render("users/login", { errorAlLoguear: "Usuario o contraseña inválidos!" });
-        }
     }
-}
+};
 
 module.exports = usersController;
