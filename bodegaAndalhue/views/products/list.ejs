@@ -26,8 +26,9 @@
                             <li class="xsmall">ºC</li>
                             <li class="large">Imagen</li>
                             <li class="large">Ficha</li>
+                            <li class="small">Estado</li>
                             <li class="xsmall"><i class="fas fa-edit"></i></li>
-                            <li class="xsmall"><i class="fas fa-trash-alt"></i></li>
+                            <li class="xxsmall"><i class="fas fa-trash-alt"></i></li>
                         </ul>
 
                         <% if(products != undefined){
@@ -37,22 +38,22 @@
                                     <%= products[i].id %>
                                 </li>
                                 <li class="xsmall">
-                                    <%= products[i].category.slice(0,4) %>
+                                    <%= products[i].categories.name.slice(0,4) %>
                                 </li>
                                 <li class="small">
-                                    <%= products[i].brand %>
+                                    <%= products[i].brands.name %>
                                 </li>
                                 <li class="small">
-                                    <%= products[i].varietal %>
+                                    <%= products[i].varietals.name %>
                                 </li>
                                 <li class="small">
-                                    <%= products[i].quality %>
+                                    <%= products[i].qualities.name %>
                                 </li>
                                 <li class="xsmall">
                                     <%= products[i].vintage %>
                                 </li>
                                 <li class="medium">
-                                    <%= products[i].display %>
+                                    <%= products[i].displays.name %>
                                 </li>
                                 <li class="small">
                                     <%= products[i].price %>
@@ -67,7 +68,7 @@
                                     <%= products[i].pairing.slice(0,65) %>
                                 </li>
                                 <li class="xsmall">
-                                    <%= products[i].temperature %>
+                                    <%= products[i].temperatures.value %>
                                 </li>
                                 <li class="large">
                                     <%= products[i].image %>
@@ -75,21 +76,17 @@
                                 <li class="large">
                                     <%= products[i].datasheet %>
                                 </li>
-                                <li class="xsmall">
-                                    <%= products[i].state %>
+                                <li class="small">
+                                    <%= products[i].states.name %>
                                 </li>
                                 <a href="/products/edit/<%= products[i].id %>" class="xsmall"><i class="fas fa-edit"></i></a>
-                                <a href="/products/destroy/<%= products[i].id %>" class="xsmall"><i class="fas fa-trash-alt"></i></a>
+                                <a href="/products/destroy/<%= products[i].id %>" class="xxsmall"><i class="fas fa-trash-alt"></i></a>
                             </ul>
                             <% }} %>
                     </article>
                     <article class="btn-centrado">
-                        <a href="/products/add">
-                            <button class="btn-border-max">Agregar producto</button>
-                        </a>
-                        <a href="/products">
-                            <button class="btn-border-max">Ir a Tienda</button>
-                        </a>
+                        <a href="/products/add" class="btn-border-max">agregar producto</a>
+                        <a href="/" class="btn-border-max">ir a Tienda</a>
                     </article>
                 </section>
             </main>

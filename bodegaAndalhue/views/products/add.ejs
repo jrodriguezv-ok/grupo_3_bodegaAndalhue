@@ -12,6 +12,17 @@
                     <h3>Producto Id#</h3>
                     <form class="formLogin" action="/products/add" method="POST" enctype="multipart/form-data">
                         <div class="labelInput">
+                            <label for="state">Estado *</label>
+                            <select name="state" id="state" required>
+                                <option value="" disabled selected> Selecciona su estado</option>
+                                <% for(let i = 0; i< states.length; i++){%>
+                                <option value="<%= states[i].id %>">
+                                    <%= states[i].name %>
+                                </option>
+                                <% }%>
+                            </select>
+                        </div>
+                        <div class="labelInput">
                             <label for="category">Categoría *</label>
                             <select name="category" id="category" required>
                                 <option value="" disabled selected> Selecciona categoría</option>
@@ -104,17 +115,6 @@
                         <div class="labelInput">
                             <label for="datasheet">Ficha Técnica *</label>
                             <input type="file" name="datasheet" id="datasheet" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="state">Estado *</label>
-                            <select name="state" id="state" required>
-                                <option value="" disabled selected> Selecciona su estado</option>
-                                <% for(let i = 0; i< states.length; i++){%>
-                                <option value="<%= states[i].id%>">
-                                    <%= states[i].name %>
-                                </option>
-                                <% }%>
-                            </select>
                         </div>
                         <div class="labelInput">
                             <a href="/" class="btn-border">ir a tienda</a>

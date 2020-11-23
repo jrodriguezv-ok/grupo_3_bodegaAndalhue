@@ -13,151 +13,165 @@
                     <h3>Producto Id:
                         <%= productToEdit.id %>
                     </h3>
-                    <form class="formLogin" action="/products/edit/<%= productToEdit.id %>" method="POST" enctype="multipart/form-data">
-                        <div class="labelInput">
-                            <label for="category">Categoría *</label>
-                            <select name="category" id="category">
-                                <% for(let i = 0; i< categories.length; i++){ %>
-                                    <% if(categories[i].id == productToEdit.cat_id ) { %>
-                                    <option value="<% categories[i].id%>" selected>
-                                        <% categories[i].name %>
-                                    </option> 
-                                    <%} else {%>
-                                        <option value="<% categories[i].id%>">
-                                            <% categories[i].name %>
-                                        </option> 
-                                    <% }}%>                       
-                            </select>
-                        </div>
-                        <div class="labelInput">
-                            <label for="brand">Línea *</label>
-                            <select name="brand" id="brand">
+                    <% if(typeof errors != "undefined") { %>
+                        <ul>
+                            <% for(var i = 0; i < errors.length; i++) { %>
+                                <li>
+                                    <%= errors[i].msg %>
+                                </li>
+                                <% } %>
+                        </ul>
+                        <% } %>
+                            <form class="formLogin" action="/products/edit/<%= productToEdit.id %>" method="POST" enctype="multipart/form-data">
+                                <div class="labelInput">
+                                    <label for="state">Estado *</label>
+                                    <select name="state" id="state">
+                                        <% for(let i = 0; i< states.length; i++){ %>
+                                            <% if(states[i].id == productToEdit.state_id ) { %>
+                                            <option value="<%= states[i].id%>" selected>
+                                                <%= states[i].name %>
+                                            </option> 
+                                        <%} else {%>
+                                            <option value="<%= states[i].id%>">
+                                                <%= states[i].name %>
+                                            </option> 
+                                        <% }}%>
+                                    </select>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="category">Categoría *</label>
+                                    <select name="category" id="category">
+                                        <% for(let i = 0; i< categories.length; i++){ %>
+                                            <% if(categories[i].id == productToEdit.cat_id ) { %>
+                                            <option value="<%= categories[i].id%>" selected>
+                                                <%= categories[i].name %>
+                                            </option> 
+                                            <%} else {%>
+                                                <option value="<% categories[i].id%>">
+                                                    <%= categories[i].name %>
+                                                </option> 
+                                            <% }}%>                       
+                                    </select>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="brand">Línea *</label>
+                                    <select name="brand" id="brand">
                                 <% for(let i = 0; i< brands.length; i++){ %>
                                     <% if(brands[i].id == productToEdit.brand_id ) { %>
-                                    <option value="<% brands[i].id%>" selected>
-                                        <% brands[i].name %>
+                                    <option value="<%= brands[i].id%>" selected>
+                                        <%= brands[i].name %>
                                     </option> 
                                     <%} else {%>
-                                        <option value="<% brands[i].id%>">
-                                            <% brands[i].name %>
+                                        <option value="<%= brands[i].id%>">
+                                            <%= brands[i].name %>
                                         </option> 
                                     <% }}%>
                             </select>
-                        </div>
-                        <div class="labelInput">
-                            <label for="varietal">Varietal *</label>
-                            <select name="varietal" id="varietal">
+                                </div>
+                                <div class="labelInput">
+                                    <label for="varietal">Varietal *</label>
+                                    <select name="varietal" id="varietal">
                                 <% for(let i = 0; i< varietals.length; i++){ %>
                                     <% if(varietals[i].id == productToEdit.varietal_id ) { %>
-                                    <option value="<% varietals[i].id%>" selected>
-                                        <% varietals[i].name %>
+                                    <option value="<%= varietals[i].id%>" selected>
+                                        <%= varietals[i].name %>
                                     </option> 
                                 <%} else {%>
-                                    <option value="<% varietals[i].id%>">
-                                        <% varietals[i].name %>
+                                    <option value="<%= varietals[i].id%>">
+                                        <%= varietals[i].name %>
                                     </option> 
                                 <% }}%>
                             </select>
-                        </div>
-                        <div class="labelInput">
-                            <label for="quality">Calidad *</label>
-                            <select name="quality" id="quality">
+                                </div>
+                                <div class="labelInput">
+                                    <label for="quality">Calidad *</label>
+                                    <select name="quality" id="quality">
                                 <% for(let i = 0; i< qualities.length; i++){ %>
                                     <% if(qualities[i].id == productToEdit.quality_id ) { %>
-                                    <option value="<% qualities[i].id%>" selected>
-                                        <% qualities[i].name %>
+                                    <option value="<%= qualities[i].id%>" selected>
+                                        <%= qualities[i].name %>
                                     </option> 
                                 <%} else {%>
-                                    <option value="<% qualities[i].id%>">
-                                        <% qualities[i].name %>
+                                    <option value="<%= qualities[i].id%>">
+                                        <%= qualities[i].name %>
                                     </option> 
                                 <% }}%>
                             </select>
-                        </div>
-                        <div class="labelInput">
-                            <label for="vintage">Añada *</label>
-                            <input type="text" name="vintage" id="vintage" required value="<%= productToEdit.vintage %>">
-                        </div>
-                        <div class="labelInput">
-                            <label for="display">Presentación *</label>
-                            <select name="display" id="display">
+                                </div>
+                                <div class="labelInput">
+                                    <label for="vintage">Añada *</label>
+                                    <input type="text" name="vintage" id="vintage" required value="<%= productToEdit.vintage %>">
+                                </div>
+                                <div class="labelInput">
+                                    <label for="display">Presentación *</label>
+                                    <select name="display" id="display">
                                 <% for(let i = 0; i< displays.length; i++){ %>
                                     <% if(displays[i].id == productToEdit.display_id ) { %>
-                                    <option value="<% displays[i].id%>" selected>
-                                        <% displays[i].name %>
+                                    <option value="<%= displays[i].id%>" selected>
+                                        <%= displays[i].name %>
                                     </option> 
                                 <%} else {%>
-                                    <option value="<% displays[i].id%>">
-                                        <% displays[i].name %>
+                                    <option value="<%= displays[i].id%>">
+                                        <%= displays[i].name %>
                                     </option> 
                                 <% }}%>
                     </select>
-                        </div>
-                        <div class="labelInput">
-                            <label for="price">Precio *</label>
-                            <input type="text" name="price" id="price" value="<%= productToEdit.price %>" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="discount">Descuento *</label>
-                            <input type="text" name="discount" id="discount" value="<%= productToEdit.discount %>" required>
-                        </div>
-                        <div class="labelInput">
-                            <label for="tasting">Notas de Cata *</label>
-                            <textarea name="tasting" id="tasting" required><%= productToEdit.tasting %></textarea>
-                        </div>
-                        <div class="labelInput">
-                            <label for="pairing">Maridaje *</label>
-                            <textarea name="pairing" id="pairing" required><%= productToEdit.pairing %></textarea>
-                        </div>
-                        <div class="labelInput">
-                            <label for="temperature">Temperatura *</label>
-                            <select name="temperature" id="temperature">
+                                </div>
+                                <div class="labelInput">
+                                    <label for="price">Precio *</label>
+                                    <input type="text" name="price" id="price" value="<%= productToEdit.price %>" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="discount">Descuento *</label>
+                                    <input type="text" name="discount" id="discount" value="<%= productToEdit.discount %>" required>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="tasting">Notas de Cata *</label>
+                                    <textarea name="tasting" id="tasting" required><%= productToEdit.tasting %></textarea>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="pairing">Maridaje *</label>
+                                    <textarea name="pairing" id="pairing" required><%= productToEdit.pairing %></textarea>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="temperature">Temperatura *</label>
+                                    <select name="temperature" id="temperature">
                                 <% for(let i = 0; i< temperatures.length; i++){ %>
                                     <% if(temperatures[i].id == productToEdit.temperature_id ) { %>
-                                    <option value="<% temperatures[i].id%>" selected>
-                                        <% temperatures[i].value %>
+                                    <option value="<%= temperatures[i].id%>" selected>
+                                        <%= temperatures[i].value %>
                                     </option> 
                                 <%} else {%>
-                                    <option value="<% temperatures[i].id%>">
-                                        <% temperatures[i].value %>
+                                    <option value="<%= temperatures[i].id%>">
+                                        <%= temperatures[i].value %>
                                     </option> 
                                 <% }}%>
                     </select>
-                        </div>
-                        <div class="labelInput">
-                            <label for="image">Imagen *</label>
-                            <input type="file" name="image" id="image" value="<%= productToEdit.image %>">
-                            <%= productToEdit.image %>"
-                        </div>
-                        <div class="labelInput">
-                            <label for="datasheet">Ficha Técnica *</label>
-                            <input type="file" name="datasheet" id="datasheet" value="<%= productToEdit.datasheet %>">
-                            <%= productToEdit.datasheet %>
-                        </div>
-                        <div class="labelInput">
-                            <label for="state">Estado *</label>
-                            <select name="state" id="state">
-                                <% for(let i = 0; i< states.length; i++){ %>
-                                    <% if(states[i].id == productToEdit.state_id ) { %>
-                                    <option value="<% states[i].id%>" selected>
-                                        <% states[i].name %>
-                                    </option> 
-                                <%} else {%>
-                                    <option value="<% states[i].id%>">
-                                        <% states[i].name %>
-                                    </option> 
-                                <% }}%>
-                            </select>
-                        </div>
-                        <div class="labelInput">
-                            <a href="/" class="btn-border">ir a tienda</a>
-                            <a href="/products/list" class="btn-border">volver al listado</a>
-                        </div>
-                        <div class="labelInput">
-                            <button type="submit" id="cargar-prod" class="btn-relleno">agregar</button>
-                            <button type="reset" id="limpiar-form" class="btn-relleno">limpiar</button>
-                        </div>
-                    </form>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="image">Imagen *</label>
+                                    <input type="file" name="image" id="image" value="<%= productToEdit.image %>">
+                                    <a href="/img/products/<%= productToEdit.image %>" class="a_sin">
+                                        <%= 'Ver imagen actual "'+ productToEdit.image +'"' %>
+                                    </a>
+                                </div>
+                                <div class="labelInput">
+                                    <label for="datasheet">Ficha Técnica *</label>
+                                    <input type="file" name="datasheet" id="datasheet" value="<%= productToEdit.datasheet %>">
+                                    <a href="/img/products/<%= productToEdit.datasheet %>" class="a_sin">
+                                        <%= 'Ver ficha actual "'+ productToEdit.datasheet +'"' %>
+                                    </a>
+                                </div>
+
+                                <div class="labelInput">
+                                    <a href="/" class="btn-border">ir a tienda</a>
+                                    <a href="/products/list" class="btn-border">volver al listado</a>
+                                </div>
+                                <div class="labelInput">
+                                    <button type="submit" id="cargar-prod" class="btn-relleno">guardar</button>
+                                    <button type="reset" id="limpiar-form" class="btn-relleno">limpiar</button>
+                                </div>
+                            </form>
                 </section>
             </main>
 

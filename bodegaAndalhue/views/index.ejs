@@ -65,29 +65,10 @@
                                 </div>
                                 <div class="prod-items">
                                     <h6 class="categoria">
-                                        <% for(let i = 0; i< categories.length; i++){
-                                            var category = categories[i];
-                                         if (product.category_id == category.id){
-                                             var product_category = category.name }}%>
+                                        <%= product.categories.name %>
                                     </h6>
                                     <p class="descripcion">
-                                        <% for(let i = 0; i< brands.length; i++){
-                                            var brand = brands[i];
-                                         if (product.brand_id == brand.id){
-                                             var product_brand = brand.name }}%>
-                                            <% for(let i = 0; i< varietals.length; i++){
-                                             var varietal = varietals[i];
-                                        if (product.varietal_id == varietal.id){
-                                             var product_varietal = varietal.name }}%>
-                                                <% for(let i = 0; i< qualities.length; i++){
-                                                var quality = qualities[i];
-                                           if (product.quality_id == quality.id){
-                                                var product_quality = quality.name }}%>
-                                                    <% for(let i = 0; i< displays.length; i++){
-                                                    var display = displays[i];
-                                               if (product.display_id == display.id){
-                                                    var product_display = display.name }}%>
-                                                        <%= product_brand + ' ' + product_varietal + ' ' + product_quality + ' ' + product.vintage + ' ' + product_display  %>
+                                        <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
                                     </p>
                                     <div class="menosMas">
                                         <a href=""><i class="fas fa-minus-circle"></i></a>

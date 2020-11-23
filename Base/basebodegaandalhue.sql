@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2020 a las 01:40:51
+-- Tiempo de generación: 23-11-2020 a las 20:16:55
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -137,7 +137,7 @@ CREATE TABLE `products` (
   `temperature_id` int(11) NOT NULL,
   `image` varchar(45) DEFAULT NULL,
   `datasheet` longtext DEFAULT NULL,
-  `state` varchar(45) DEFAULT NULL
+  `state_id` int(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -161,6 +161,25 @@ INSERT INTO `qualities` (`id`, `name`) VALUES
 (3, 'Tardío'),
 (4, 'Brut'),
 (5, 'Extra Brut');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `states`
+--
+
+CREATE TABLE `states` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `states`
+--
+
+INSERT INTO `states` (`id`, `name`) VALUES
+(1, 'activo'),
+(2, 'inactivo');
 
 -- --------------------------------------------------------
 
@@ -204,8 +223,8 @@ CREATE TABLE `users` (
   `address` varchar(45) DEFAULT NULL,
   `town` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -285,12 +304,19 @@ ALTER TABLE `products`
   ADD KEY `fk_varietal_id_idx` (`varietal_id`),
   ADD KEY `fk_quality_id_idx` (`quality_id`),
   ADD KEY `fk_display_id_idx` (`display_id`),
-  ADD KEY `fk_temperatures_id_idx` (`temperature_id`);
+  ADD KEY `fk_temperatures_id_idx` (`temperature_id`),
+  ADD KEY `fk_state_id_idx` (`state_id`) USING BTREE;
 
 --
 -- Indices de la tabla `qualities`
 --
 ALTER TABLE `qualities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `states`
+--
+ALTER TABLE `states`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -356,6 +382,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `qualities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `states`
+--
+ALTER TABLE `states`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `temperatures`
