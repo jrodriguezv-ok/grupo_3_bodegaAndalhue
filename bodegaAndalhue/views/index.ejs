@@ -1,5 +1,6 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
+    <script src="/javascript/user-front.js"></script>
 
     <body>
         <%- include('partials/header')%>
@@ -91,7 +92,20 @@
                         </article>
                         <% }} %>
                 </section>
+                <div class="modal">
+                    <h2>
+                        <% if(typeof usuarioLogueado != "undefined"){ %>
+
+                            <%= '¡Hola ' + usuarioLogueado.first_name + '!'%>
+
+                                <% } %>
+
+                    </h2>
+                    <h4>Te logueaste con éxito. Ya podés</h4>
+                    <a href="/" class="btn-border-max">comprar</a>
+                </div>
             </main>
+
             <%- include('partials/footer')%>
     </body>
 

@@ -27,6 +27,7 @@ const usersController = {
             password: bcrypt.hashSync(req.body.password, 10)
         })
 
+
         res.render('users/register'); //ver cómo redirigir a la vista anterior: tienda o carrito
     },
 
@@ -41,7 +42,6 @@ const usersController = {
         };
         let userFind = false;
 
-
         db.User.findOne({
                 where: {
                     email: req.body.email
@@ -54,18 +54,19 @@ const usersController = {
                     if (bcrypt.compareSync(req.body.password, user.password)) {
                         userFind = user;
                     }
-
                 }
-                console.log(bcrypt.compareSync(req.body.password, user.password));
-
                 if (userFind) {
-                    console.log('verdadero')
+
                     req.session.usuarioLogueado = userFind;
-                    /*  let usuarioLogueado = req.session.usuarioLogueado;
-                     console.log(usuarioLogueado); */
-                    res.render('users/login', { usuarioLogueado: userFind });
+                    if (req.body.recordame != undefined) {
+                        res.cookie('recordame', userFind.email, { maxAge: 6000000 })
+                        console.log(req.cookies.recordame)
+                    }
+
+                    res.redirect('/', { usuarioLogueado: userFind });
+
                 } else {
-                    console.log('falso');
+
                     res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });
                 }
             })

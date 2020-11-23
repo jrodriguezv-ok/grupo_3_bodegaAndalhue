@@ -9,6 +9,7 @@ const session = require('express-session');
 var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+var recordameMiddleware = require('./middlewares/recordameMiddleware');
 
 var app = express();
 
@@ -23,9 +24,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "info" }));
 
+app.use(recordameMiddleware);
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
