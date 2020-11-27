@@ -4,14 +4,6 @@
     <body>
         <%- include('../partials/header')%>
             <main>
-                <h2>
-                    <% if(typeof usuarioLogueado != "undefined"){ %>
-
-                        <%= '¡Hola ' + usuarioLogueado.first_name + '!'%>
-
-                            <% } %>
-
-                </h2>
                 <section class="contenedor">
                     <h1 class="titulo-seccion">INICIO DE SESIÓN</h1>
                     <div class="poesia">¿Estás preparada/o para descubrir un mundo <br>de poesía embotellada?</div>
@@ -46,16 +38,17 @@
                                 </h4>
                                 <% } %>
                 </section>
+
+                <div class="modal">
+                    <h2>
+                        <% if(typeof usuario != "undefined"){ %>
+                            <%= '¡Hola ' + usuario.first_name + '!'%>
+                                <% } %>
+                    </h2>
+                    <h4>Te logueaste con éxito. Ya podés</h4>
+                    <a href="/" class="btn-border-max">comprar</a>
+                </div>
             </main>
-            <div class="modal">
-                <h2>
-                    <% if(typeof usuarioLogueado != "undefined"){ %>
-                        <%= '¡Hola ' + usuarioLogueado.first_name + '!'%>
-                            <% } %>
-                </h2>
-                <h4>Te logueaste con éxito. Ya podés</h4>
-                <a href="/" class="btn-border-max">comprar</a>
-            </div>
             <%- include('../partials/footer')%>
     </body>
 

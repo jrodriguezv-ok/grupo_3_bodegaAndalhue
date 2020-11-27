@@ -1,0 +1,55 @@
+<%- include('../partials/head', {title: 'Iniciar sesión'})%>
+    <link rel='stylesheet' href="/stylesheets/profile.css">
+
+    <body>
+        <%- include('../partials/header')%>
+            <main>
+                <section class="contenedor">
+                    <h2 class="titulo-seccion">
+                        <% if(typeof usuario != "undefined"){ %>
+
+                            <%= '¡Hola ' + usuario.first_name + '!'%>
+
+                                <% } %>
+                    </h2>
+                    <ul class="listado">
+                        <div class="items">
+                            <label for="first_name">Nombre: <%=usuario.first_name%></label>
+
+                        </div>
+                        <div class="items">
+                            <label for="last_name">Apellido: <%=usuario.last_name%></label>
+
+                        </div>
+                        <div class="items">
+                            <label for="birthdate">Fecha de Nacimiento: <%=usuario.birthdate%></label>
+
+                        </div>
+                        <div class="items">
+                            <label for="address">Dirección: <%=usuario.address%></label>
+
+                        </div>
+                        <div class="items">
+                            <label for="town">Localidad: <%=usuario.town%></label>
+
+                        </div>
+                        <div class="items">
+                            <label for="country">País: <%=usuario.country%></label>
+
+                        </div>
+                        <div class="items">
+                            <label for="email">Correo electrónico: <%=usuario.email%></label>
+
+                        </div>
+                        <div class="itemsBoton">
+                            <a href="/" id="btn-border-max">Ir a la tienda</a>
+                        </div>
+
+                    </ul>
+                </section>
+
+            </main>
+            <%- include('../partials/footer')%>
+    </body>
+
+    </html>

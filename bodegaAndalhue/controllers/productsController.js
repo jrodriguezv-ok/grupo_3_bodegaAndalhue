@@ -5,9 +5,9 @@ const Sequelize = require('sequelize');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
 
-/* var pedProducts = db.Product.findAll({
+var pedProducts = db.Product.findAll({
     include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }]
-}); */
+});
 var pedCategories = db.Category.findAll({ include: [{ association: "categories" }] });
 var pedBrands = db.Brand.findAll({ include: [{ association: "brands" }] });
 var pedVarietals = db.Varietal.findAll({ include: [{ association: "varietals" }] });
@@ -26,12 +26,22 @@ const productsController = {
                 include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }]
             })
             .then(function(products) {
-                res.render('products/list', {
-                    products: products,
-                    toThousand
-                });
+                if (req.session.usuarioLogueado != undefined) {
+                    res.render('products/list', {
+                        usuario: req.session.usuarioLogueado,
+                        products: products,
+                        toThousand
+                    });
+                } else {
+                    res.render('products/list', {
+                        products: products,
+                        toThousand
+                    });
+                }
             })
+
     },
+
 
     //FORMULARIO AGREGAR PRODUCTO 
     add: (req, res, next) => {

@@ -89,6 +89,14 @@
                         <a href="/" class="btn-border-max">ir a Tienda</a>
                     </article>
                 </section>
+                <h4>
+                    <% if(typeof usuario != "undefined"){ %>
+
+                        <%= '¡Hola ' + usuario.first_name + '!'%>
+
+                            <% } %>
+
+                </h4>
             </main>
             <footer>
             </footer>

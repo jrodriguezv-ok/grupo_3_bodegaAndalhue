@@ -16,19 +16,23 @@ const usersController = {
             res.render("users/register", { errors: errors.errors })
         }
         db.User.create({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            first_name: req.body.first_name,
-            birthdate: req.body.birthdate,
-            address: req.body.address,
-            town: req.body.town,
-            country: req.body.country,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10)
-        })
-
-
-        res.render('users/register'); //ver cómo redirigir a la vista anterior: tienda o carrito
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                first_name: req.body.first_name,
+                birthdate: req.body.birthdate,
+                address: req.body.address,
+                town: req.body.town,
+                country: req.body.country,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10)
+            })
+            .then(user => {
+                req.session.usuarioLogueado = user;
+                if (req.body.recordame != undefined) {
+                    res.cookie('recordame', user.email, { maxAge: 6000000 })
+                }
+                res.redirect('/');
+            })
     },
 
     login: (req, res, next) => {
@@ -40,8 +44,6 @@ const usersController = {
         if (!errors.isEmpty()) {
             res.render("users/login", { errors: errors.errors })
         };
-        let userFind = false;
-
         db.User.findOne({
                 where: {
                     email: req.body.email
@@ -52,25 +54,23 @@ const usersController = {
             .then(function(user) {
                 if (req.body.email == user.email) {
                     if (bcrypt.compareSync(req.body.password, user.password)) {
-                        userFind = user;
+                        req.session.usuarioLogueado = user;
+                        if (req.body.recordame != undefined) {
+                            res.cookie('recordame', user.email, { maxAge: 6000000 })
+                        }
+                        res.redirect('/');
                     }
-                }
-                if (userFind) {
-
-                    req.session.usuarioLogueado = userFind;
-                    if (req.body.recordame != undefined) {
-                        res.cookie('recordame', userFind.email, { maxAge: 6000000 })
-                        console.log(req.cookies.recordame)
-                    }
-
-                    res.redirect('/', { usuarioLogueado: userFind });
-
                 } else {
-
                     res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });
                 }
             })
+    },
+
+    profile: (req, res, next) => {
+        res.render('users/profile', {
+            usuario: req.session.usuarioLogueado
+        });
     }
-};
+}
 
 module.exports = usersController;

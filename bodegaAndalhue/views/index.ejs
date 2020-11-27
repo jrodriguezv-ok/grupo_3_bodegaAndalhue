@@ -15,7 +15,16 @@
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
-                        <a href="/users/loginRegister" id="loginAccess">login</a>
+                        <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
+                        <% if(typeof usuario != "undefined"){ %>
+
+                            <a href="/users/profile" id="loginAccess">Mi cuenta</a>
+
+                            <% } %>
+
+                                <% if(typeof usuario == "undefined"){ %>
+                                    <a href="/users/loginRegister" id="loginAccess">login</a>
+                                    <% } %>
                     </section>
                 </div>
 
@@ -94,9 +103,9 @@
                 </section>
                 <div class="modal">
                     <h2>
-                        <% if(typeof usuarioLogueado != "undefined"){ %>
+                        <% if(typeof usuario != "undefined"){ %>
 
-                            <%= '¡Hola ' + usuarioLogueado.first_name + '!'%>
+                            <%= '¡Hola ' + usuario.first_name + '!'%>
 
                                 <% } %>
 

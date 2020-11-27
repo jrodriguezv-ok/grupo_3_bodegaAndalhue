@@ -8,10 +8,20 @@ var pedProducts = db.Product.findAll({
 const mainController = {
     index: function(req, res, next) {
         pedProducts.then(function(products) {
-            res.render('index', {
-                products: products,
-                toThousand
-            });
+            if (req.session.usuarioLogueado != undefined) {
+                res.render('index', {
+                    usuario: req.session.usuarioLogueado,
+                    products: products,
+                    toThousand
+                });
+
+            } else {
+                res.render('index', {
+                    products: products,
+                    toThousand
+                });
+            }
+
         })
     }
 }

@@ -1,0 +1,49 @@
+.listado {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.items {
+    color: #3F4140;
+    font-style: italic;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    padding-left: 15%;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.itemsBoton {
+    color: #3F4140;
+    font-style: italic;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    padding-left: 28%;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+#btn-border-max {
+    width: 178px;
+    height: 24px;
+    border: solid 1px #BFA02E;
+    border-radius: 15px;
+    color: #BFA02E;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1.5em;
+    margin-bottom: 15px;
+    background-color: none;
+    text-align: center;
+    cursor: pointer;
+    margin: 0, auto;
+}

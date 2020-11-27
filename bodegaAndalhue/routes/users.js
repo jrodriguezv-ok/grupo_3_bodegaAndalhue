@@ -26,4 +26,8 @@ router.post('/login', [
     check("password").not().isEmpty().withMessage("Olvidaste la contraseña")
 ], usersController.enter);
 
+//PROFILE
+
+router.get('/profile', usersController.profile);
+
 module.exports = router;
