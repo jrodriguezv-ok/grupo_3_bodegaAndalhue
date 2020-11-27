@@ -95,7 +95,16 @@
                                             <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
                                         </h5>
                                     </div>
-                                    <a href="/products/cart" class="btn-relleno">Agregar</a>
+                                    <form action="/products/cart/<%= product.id %>" method="POST">
+                                        <input type="number" class="non-display" name="id" value="<%= product.id %>">
+                                        <% if (typeof usuario == 'undefined'){ %>
+                                            <a href="/users/loginRegister" class="btn-relleno">Agregar</a>
+                                            <%}else{%>
+                                                <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                                <!-- traer cantidad -->
+                                                <button type="submit" id="btn-agregarProd">Agregar</button>
+                                                <%}%>
+                                    </form>
                                 </div>
                             </a>
                         </article>
@@ -104,11 +113,8 @@
                 <div class="modal">
                     <h2>
                         <% if(typeof usuario != "undefined"){ %>
-
                             <%= '¡Hola ' + usuario.first_name + '!'%>
-
                                 <% } %>
-
                     </h2>
                     <h4>Te logueaste con éxito. Ya podés</h4>
                     <a href="/" class="btn-border-max">comprar</a>

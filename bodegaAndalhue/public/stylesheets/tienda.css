@@ -209,6 +209,10 @@
             text-decoration: line-through;
             font-weight: 300;
         }
+        
+        .non-display {
+            display: none;
+        }
         /* DETALLE DE PRODUCTO */
         
         .volver-ruta {
