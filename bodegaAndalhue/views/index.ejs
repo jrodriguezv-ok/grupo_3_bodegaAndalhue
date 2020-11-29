@@ -1,29 +1,27 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
     <script src="/javascript/user_front.js"></script>
-    <<<<<<< HEAD <script src="/javascript/quantity_front.js">
-        </script>
-        =======
-        <script src="/javascript/modal_front.js"></script>
-        >>>>>>> 89285bc82c2e187c777ed59fa1215beadab9a5c4
+    <script src="/javascript/quantity_front.js"></script>
+    <script src="/javascript/modal_front.js"></script>
 
-        <body>
-            <%- include('partials/header')%>
-                <main>
-                    <div class="contenedor">
-                        <!-- ENCABEZADO SECCION -->
-                        <h1 class="titulo-seccion">TIENDA ONLINE</h1>
-                        <section class="buscador-filtro-login">
-                            <div class="buscador-filtro">
-                                <form action="">
-                                    <input type="search"><i class="fas fa-search"></i>
-                                </form>
-                                <img src="/img/icon-filter.svg" alt="icono-filtrar">
-                            </div>
-                            <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
-                            <div>
-                                <% if(typeof usuario != "undefined"){ %>
-                                    <span class="menu">
+
+    <body>
+        <%- include('partials/header')%>
+            <main>
+                <div class="contenedor">
+                    <!-- ENCABEZADO SECCION -->
+                    <h1 class="titulo-seccion">TIENDA ONLINE</h1>
+                    <section class="buscador-filtro-login">
+                        <div class="buscador-filtro">
+                            <form action="">
+                                <input type="search"><i class="fas fa-search"></i>
+                            </form>
+                            <img src="/img/icon-filter.svg" alt="icono-filtrar">
+                        </div>
+                        <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
+                        <div>
+                            <% if(typeof usuario != "undefined"){ %>
+                                <span class="menu">
                                     <a href="" id="loginAccess">
                                         <i class="fas fa-user"></i>
                                         <%= usuario.first_name + "  |  " %>
@@ -39,113 +37,113 @@
                                         </li>
                                     </ul>
                                 </span>
-                                    <a href="/products/cart">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </a>
-                                    <% } %>
-                                        <% if(typeof usuario == "undefined"){ %>
-                                            <a href="/users/loginRegister" id="loginAccess">login</a>
-                                            <% } %>
-                            </div>
-                        </section>
-                    </div>
-
-                    <!-- SECCION BANNER -->
-                    <section class="banner">
-                        <article class="img-flechas">
-                            <img src="/img/img-promos.jpg" alt="promos">
-                            <div class="cont-flechas">
-                                <div class="flechas">
-                                    <i class="fas fa-angle-left"></i>
-                                    <i class="fas fa-angle-right"></i>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="icon-circulo">
-                            <ul>
-                                <li><i class="fas fa-circle activo"></i></li>
-                                <li><i class="fas fa-circle"></i></li>
-                                <li><i class="fas fa-circle"></i></li>
-                            </ul>
-                        </article>
+                                <a href="/products/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                <% } %>
+                                    <% if(typeof usuario == "undefined"){ %>
+                                        <a href="/users/loginRegister" id="loginAccess">login</a>
+                                        <% } %>
+                        </div>
                     </section>
+                </div>
 
-                    <!--  MENÚ LÍNEAS -->
-                    <nav class="lineas">
-                        <a href="" class="border-bottom border-right">LÍNEA A</a>
-                        <a href="" class="border-bottom border-right">LÍNEA B</a>
-                        <a href="">LÍNEA C</a>
-                    </nav>
+                <!-- SECCION BANNER -->
+                <section class="banner">
+                    <article class="img-flechas">
+                        <img src="/img/img-promos.jpg" alt="promos">
+                        <div class="cont-flechas">
+                            <div class="flechas">
+                                <i class="fas fa-angle-left"></i>
+                                <i class="fas fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="icon-circulo">
+                        <ul>
+                            <li><i class="fas fa-circle activo"></i></li>
+                            <li><i class="fas fa-circle"></i></li>
+                            <li><i class="fas fa-circle"></i></li>
+                        </ul>
+                    </article>
+                </section>
 
-                    <!-- PRODUCTOS -->
-                    <h3 class="subtitulo-seccion">PRODUCTOS DESTACADOS</h3>
-                    <section class="contenedor prod-destacados">
-                        <% if (products != undefined){
+                <!--  MENÚ LÍNEAS -->
+                <nav class="lineas">
+                    <a href="" class="border-bottom border-right">LÍNEA A</a>
+                    <a href="" class="border-bottom border-right">LÍNEA B</a>
+                    <a href="">LÍNEA C</a>
+                </nav>
+
+                <!-- PRODUCTOS -->
+                <h3 class="subtitulo-seccion">PRODUCTOS DESTACADOS</h3>
+                <section class="contenedor prod-destacados">
+                    <% if (products != undefined){
                             for (var i= 0; i< products.length; i++) { 
                                 var product = products[i];
                         %>
-                            <article class="producto border-bottom">
-                                <a href="/products/detail/<%= product.id %>">
-                                    <div class="img-desc">
-                                        <img src="/img/products/<%= product.image %>" alt="vino">
-                                        <p class="descuento">
-                                            <% if(product.discount != 0){ %>
-                                                <%= product.discount + "%" %>
-                                                    <% } %>
-                                        </p>
-                                    </div>
-                                    <div class="prod-items">
-                                        <h6 class="categoria">
-                                            <%= product.categories.name %>
-                                        </h6>
-                                        <p class="descripcion">
-                                            <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
-                                        </p>
-                                </a>
-                                <div class="menosMas">
-                                    <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
-                                    <p class="cantidad" id="quantity" value="">1</p>
-                                    <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
-                                </div>
-                                <div class="precio">
-                                    <h5 class="antes">
+                        <article class="producto border-bottom">
+                            <a href="/products/detail/<%= product.id %>">
+                                <div class="img-desc">
+                                    <img src="/img/products/<%= product.image %>" alt="vino">
+                                    <p class="descuento">
                                         <% if(product.discount != 0){ %>
-                                            <%= "$"+ product.price %>
+                                            <%= product.discount + "%" %>
                                                 <% } %>
-                                    </h5>
-                                    <h5 class="ahora">
-                                        <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
-                                    </h5>
+                                    </p>
                                 </div>
-                                <form action="/products/cart" method="POST">
-                                    <input type="number" class="non-display" name="id" value="<%= product.id %>">
-                                    <input type="number" class="non-display" name="quantity" id="value_quantity" value="">
-                                    <% if (typeof usuario == 'undefined'){ %>
-                                        <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
-                                        <%}else{%>
-                                            <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
-                                            <!-- traer cantidad -->
-                                            <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
-                                            <%}%>
-                                </form>
-                                </div>
+                                <div class="prod-items">
+                                    <h6 class="categoria">
+                                        <%= product.categories.name %>
+                                    </h6>
+                                    <p class="descripcion">
+                                        <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
+                                    </p>
+                            </a>
+                            <div class="menosMas">
+                                <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                <p class="cantidad" id="quantity" value="">1</p>
+                                <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <div class="precio">
+                                <h5 class="antes">
+                                    <% if(product.discount != 0){ %>
+                                        <%= "$"+ product.price %>
+                                            <% } %>
+                                </h5>
+                                <h5 class="ahora">
+                                    <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
+                                </h5>
+                            </div>
+                            <form action="/products/cart" method="POST">
+                                <input type="number" class="non-display" name="id" value="<%= product.id %>">
+                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="">
+                                <% if (typeof usuario == 'undefined'){ %>
+                                    <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                    <%}else{%>
+                                        <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                        <!-- traer cantidad -->
+                                        <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
+                                        <%}%>
+                            </form>
+                            </div>
 
-                            </article>
-                            <% }} %>
-                    </section>
-                    <% if(typeof usuario != "undefined"){ %>
-                        <div class="modal">
-                            <h2>
-                                <%= '¡Hola ' + usuario.first_name + '!'%>
-                            </h2>
-                            <h4>
-                                Te logueaste con éxito. <br> ¡Ya podés empezar a comprar!
-                            </h4>
-                        </div>
-                        <% } %>
-                </main>
+                        </article>
+                        <% }} %>
+                </section>
+                <% if(typeof usuario != "undefined"){ %>
+                    <div class="modal">
+                        <h2>
+                            <%= '¡Hola ' + usuario.first_name + '!'%>
+                        </h2>
+                        <h4>
+                            Te logueaste con éxito. <br> ¡Ya podés empezar a comprar!
+                        </h4>
+                    </div>
+                    <% } %>
+            </main>
 
-                <%- include('partials/footer')%>
-        </body>
+            <%- include('partials/footer')%>
+    </body>
 
-        </html>
+    </html>

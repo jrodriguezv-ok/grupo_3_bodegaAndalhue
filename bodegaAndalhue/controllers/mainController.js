@@ -45,6 +45,7 @@ const mainController = {
         });
         return res.render('results', { products: products.sort(() => Math.random() - 0.5), search: req.query.search })
     }
+
 }
 
 module.exports = mainController;
