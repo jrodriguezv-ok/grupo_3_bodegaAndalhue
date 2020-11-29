@@ -3,6 +3,7 @@ var router = express.Router();
 const usersController = require('../controllers/usersController')
 const { check, validationResult, body } = require('express-validator');
 
+
 // LOGIN-REGISTER
 router.get('/loginRegister', usersController.loginRegister);
 
@@ -29,5 +30,9 @@ router.post('/login', [
 //PROFILE
 
 router.get('/profile', usersController.profile);
+
+//LOGOUT
+router.get('/logout', usersController.logOut);
+
 
 module.exports = router;

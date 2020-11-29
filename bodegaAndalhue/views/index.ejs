@@ -1,6 +1,7 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
-    <script src="/javascript/user-front.js"></script>
+    <script src="/javascript/user_front.js"></script>
+    <script src="/javascript/modal_front.js"></script>
 
     <body>
         <%- include('partials/header')%>
@@ -15,11 +16,21 @@
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
-                        <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
+                        <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA NOMBRE DEL USUARIO, SINO LOGIN-->
                         <% if(typeof usuario != "undefined"){ %>
-
-                            <a href="/users/profile" id="loginAccess">Mi cuenta</a>
-
+                            <li>
+                                <a href="/users/profile " id="loginAccess">
+                                    <%=usuario.first_name%>
+                                </a>
+                                <!--  <!--  <ul class="submenuCuenta">
+                                    <li>
+                                        <a href="">Mi Perfil</a>
+                                    </li> -->
+                                <li>
+                                    <a href="/users/logout">Cerrar sesión</a>
+                                </li>
+                                </ul>
+                            </li>
                             <% } %>
 
                                 <% if(typeof usuario == "undefined"){ %>
@@ -110,15 +121,16 @@
                         </article>
                         <% }} %>
                 </section>
-                <div class="modal">
-                    <h2>
-                        <% if(typeof usuario != "undefined"){ %>
+                <% if(typeof usuario != "undefined"){ %>
+                    <div class="modal">
+                        <h2>
                             <%= '¡Hola ' + usuario.first_name + '!'%>
-                                <% } %>
-                    </h2>
-                    <h4>Te logueaste con éxito. Ya podés</h4>
-                    <a href="/" class="btn-border-max">comprar</a>
-                </div>
+                        </h2>
+                        <h4>
+                            Te logueaste con éxito. <br> ¡Ya podés empezar a comprar!
+                        </h4>
+                    </div>
+                    <% } %>
             </main>
 
             <%- include('partials/footer')%>
