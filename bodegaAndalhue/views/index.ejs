@@ -1,6 +1,7 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
-    <script src="/javascript/user-front.js"></script>
+    <script src="/javascript/user_front.js"></script>
+    <script src="/javascript/quantity_front.js"></script>
 
     <body>
         <%- include('partials/header')%>
@@ -16,15 +17,32 @@
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
                         <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
-                        <% if(typeof usuario != "undefined"){ %>
-
-                            <a href="/users/profile" id="loginAccess">Mi cuenta</a>
-
-                            <% } %>
-
-                                <% if(typeof usuario == "undefined"){ %>
-                                    <a href="/users/loginRegister" id="loginAccess">login</a>
-                                    <% } %>
+                        <div>
+                            <% if(typeof usuario != "undefined"){ %>
+                                <span class="menu">
+                                    <a href="" id="loginAccess">
+                                        <i class="fas fa-user"></i>
+                                        <%= usuario.first_name + "  |  " %>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="/users/profile">
+                                                <hr>mi perfil</a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <hr>cerrar sesión</a>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <a href="/products/cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                <% } %>
+                                    <% if(typeof usuario == "undefined"){ %>
+                                        <a href="/users/loginRegister" id="loginAccess">login</a>
+                                        <% } %>
+                        </div>
                     </section>
                 </div>
 
@@ -61,7 +79,6 @@
                     <% if (products != undefined){
                             for (var i= 0; i< products.length; i++) { 
                                 var product = products[i];
-                                console.log(product);
                         %>
                         <article class="producto border-bottom">
                             <a href="/products/detail/<%= product.id %>">
@@ -80,33 +97,35 @@
                                     <p class="descripcion">
                                         <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
                                     </p>
-                                    <div class="menosMas">
-                                        <a href=""><i class="fas fa-minus-circle"></i></a>
-                                        <p class="cantidad">1</p>
-                                        <a href=""><i class="fas fa-plus-circle"></i></a>
-                                    </div>
-                                    <div class="precio">
-                                        <h5 class="antes">
-                                            <% if(product.discount != 0){ %>
-                                                <%= "$"+ product.price %>
-                                                    <% } %>
-                                        </h5>
-                                        <h5 class="ahora">
-                                            <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
-                                        </h5>
-                                    </div>
-                                    <form action="/products/cart/<%= product.id %>" method="POST">
-                                        <input type="number" class="non-display" name="id" value="<%= product.id %>">
-                                        <% if (typeof usuario == 'undefined'){ %>
-                                            <a href="/users/loginRegister" class="btn-relleno">Agregar</a>
-                                            <%}else{%>
-                                                <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
-                                                <!-- traer cantidad -->
-                                                <button type="submit" id="btn-agregarProd">Agregar</button>
-                                                <%}%>
-                                    </form>
-                                </div>
                             </a>
+                            <div class="menosMas">
+                                <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                <p class="cantidad" id="quantity" value="">1</p>
+                                <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                            <div class="precio">
+                                <h5 class="antes">
+                                    <% if(product.discount != 0){ %>
+                                        <%= "$"+ product.price %>
+                                            <% } %>
+                                </h5>
+                                <h5 class="ahora">
+                                    <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
+                                </h5>
+                            </div>
+                            <form action="/products/cart" method="POST">
+                                <input type="number" class="non-display" name="id" value="<%= product.id %>">
+                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="">
+                                <% if (typeof usuario == 'undefined'){ %>
+                                    <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                    <%}else{%>
+                                        <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                        <!-- traer cantidad -->
+                                        <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
+                                        <%}%>
+                            </form>
+                            </div>
+
                         </article>
                         <% }} %>
                 </section>

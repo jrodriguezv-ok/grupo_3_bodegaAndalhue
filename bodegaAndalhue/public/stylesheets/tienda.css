@@ -381,7 +381,7 @@
             .detalle-prod .prod-items .precio h5:first-of-type {
                 padding: 5px 5px 5px 0;
             }
-            .detalle-prod .prod-items button {
+            .detalle-prod .prod-items #agregarProd {
                 margin-top: 20px;
             }
             .info-adic p {

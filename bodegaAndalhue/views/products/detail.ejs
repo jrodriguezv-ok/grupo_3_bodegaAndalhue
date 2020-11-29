@@ -1,5 +1,7 @@
 <%- include('../partials/head', {title: 'Detalle de producto'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
+    <script src="/javascript/user_front.js"></script>
+    <script src="/javascript/quantity_front.js"></script>
 
     <body>
         <%- include('../partials/header')%>
@@ -65,9 +67,9 @@
                                 <%= productSelected.brands.name + ' ' + productSelected.varietals.name + ' ' + productSelected.qualities.name + ' ' + productSelected.vintage + ' ' + productSelected.displays.name  %>
                             </p>
                             <div class="menosMas">
-                                <i class="fas fa-minus-circle"></i>
-                                <p class="cantidad">1</p>
-                                <i class="fas fa-plus-circle"></i>
+                                <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                <p class="cantidad" id="quantity" value="">1</p>
+                                <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
                             </div>
                             <div class="precio">
                                 <h5 class="antes">
@@ -79,7 +81,7 @@
                                     <%= '$'+ toThousand(productSelected.price - (productSelected.price * (productSelected.discount / 100)))+ '-' %>
                                 </h5>
                             </div>
-                            <button class="btn-relleno">Agregar</button>
+                            <button id="agregarProd" class="btn-relleno">Agregar</button>
                         </article>
                         <!-- detalle -->
                         <article class="detalle-info">
@@ -106,7 +108,7 @@
                                 <p>
                                     <%= productSelected.temperatures.value + 'ºC' %>
                                 </p>
-                                <a href="<%= productSelected.datasheet %>" download class="btn-border-max">ficha técnica</a>
+                                <a href="<%= productSelected.datasheet %>" download><button class="btn-border-max">FICHA TÉCNICA</button></a>
                             </div>
                             <div class="info-adic">
                                 <ul>

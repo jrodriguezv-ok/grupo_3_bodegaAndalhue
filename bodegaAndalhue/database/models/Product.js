@@ -62,13 +62,10 @@ module.exports = function(sequelize, dataTypes) {
             foreignKey: "state_id"
         });
 
-        Product.belongsToMany(models.Cart, {
-            as: "carts",
-            through: "cart_product",
-            foreignKey: "product_id",
-            otherKey: "cart_id",
-            timestamps: false
-        });
+        /*   Product.hasMany(models.Cart_product, {
+              as: "carts_products",
+              foreignKey: "product_id",
+          }); */
 
     }
     return Product;

@@ -1,6 +1,10 @@
 window.addEventListener("load", function(req, res) {
-    let menuPopUp = document.getElementById("#menu-popup");
-    menuPopUp.addEventListener("mousehover", function() {
-        menuPopUp.style.color = "red";
-    })
+    let menuIcon = document.querySelector(".btn-nav");
+    let menuPopUp = document.querySelector(".menu-popup");
+    menuIcon.addEventListener("mouseover", function() {
+        menuPopUp.style.display = "flex";
+    });
+    menuIcon.addEventListener("mouseout", function() {
+        menuPopUp.style.display = "none";
+    });
 })

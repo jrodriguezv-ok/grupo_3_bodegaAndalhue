@@ -15,6 +15,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const productsController = require('../controllers/productsController');
+const cartController = require('../controllers/cartController');
 
 // LISTADO DE PRODUCTOS
 router.get('/list', productsController.list);
@@ -35,6 +36,6 @@ router.post('/edit/:id', upload.any(), productsController.update);
 router.get('/destroy/:id', productsController.destroy);
 
 // CARRITO DE COMPRAS
-/* router.get('/cart', cartController.cart); */
-/* router.post('/cart', cartController.storeCart); */
+router.get('/cart', cartController.showCart);
+router.post('/cart', cartController.addProductToCart);
 module.exports = router;

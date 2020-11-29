@@ -1,5 +1,3 @@
-const config = require("../config/config")
-
 module.exports = function(sequelize, dataTypes) {
     let alias = "Cart";
 
@@ -31,20 +29,17 @@ module.exports = function(sequelize, dataTypes) {
 
     let Cart = sequelize.define(alias, cols, config);
 
-    Cart.associate = function(models) {
+    /* Cart.associate = function(models) {
         Cart.belongsTo(models.User, {
             as: "users",
             foreignKey: "user_id"
         });
 
-        Cart.belongsToMany(models.Product, {
-            as: "products",
-            through: "cart_product",
+        Cart.hasMany(models.Product, {
+            as: "carts",
             foreignKey: "cart_id",
-            otherKey: "product_id",
-            timestamps: false
         });
 
-    }
+    } */
     return Cart;
 }
