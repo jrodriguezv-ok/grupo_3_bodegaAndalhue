@@ -1,8 +1,8 @@
 window.addEventListener("load", function() {
     let sesionUsuario = document.getElementById("#loginAccess")
-    if (typeof usuario !== undefined) {
-        sesionUsuario.innerHTML = "Hola " + usuario.first_name;
-        console.log(req.session.usuario)
+    if (typeof usuarioLogueado !== undefined) {
+        sesionUsuario.innerHTML = "Hola " + usuarioLogueado.first_name;
+        console.log(req.session.usuarioLogueado)
         console.log(sesionUsuario)
     }
 })

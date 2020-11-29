@@ -70,6 +70,10 @@ const usersController = {
         res.render('users/profile', {
             usuario: req.session.usuarioLogueado
         });
+    },
+    logOut: function(req, res) {
+        req.session.destroy();
+        res.redirect("/")
     }
 }
 
