@@ -33,18 +33,27 @@ const mainController = {
             })
             .catch(e => console.log(e));
     },
-    async search(req, res) {
+    search: async function(req, res, next) {
+        let search = req.query.search;
+        console.log(search);
+        let varietals = db.Varietal.findAll({
 
-        let products = await db.Product.findAll({
             where: {
                 name: {
                     [Op.substring]: req.query.search
+
                 }
             },
             limit: 12
+        }).then(function(varietals) {
+            console.log(varietals);
+            res.render('results', { varietals: varietals, search: req.query.search })
+
         });
-        return res.render('results', { products: products.sort(() => Math.random() - 0.5), search: req.query.search })
+
+
     }
+
 
 }
 

@@ -67,9 +67,16 @@ const usersController = {
     },
 
     profile: (req, res, next) => {
-        res.render('users/profile', {
-            usuario: req.session.usuarioLogueado
-        });
+        db.User.findOne({
+                where: {
+                    email: req.session.usuarioLogueado.email
+                }
+            })
+            .then(function(user) {
+                res.render('users/profile', {
+                    usuario: user
+                });
+            })
     },
     logOut: function(req, res) {
         req.session.destroy();

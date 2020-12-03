@@ -3,6 +3,7 @@
     <script src="/javascript/user_front.js"></script>
     <script src="/javascript/quantity_front.js"></script>
     <script src="/javascript/modal_front.js"></script>
+    <script src="/javascript/search_front.js"></script>
 
 
     <body>
@@ -13,9 +14,24 @@
                     <h1 class="titulo-seccion">TIENDA ONLINE</h1>
                     <section class="buscador-filtro-login">
                         <div class="buscador-filtro">
-                            <form action="">
-                                <input type="search"><i class="fas fa-search"></i>
+                            <!-- <div class="form">
+                                <h4>Buscador</h4>
+                                <form action="/search">
+                                    <input type="text" id="formulario">
+                                    <button type="submit" class="btn-relleno" id="boton">Buscar</button>
+                                </form>
+                            </div> -->
+                            <form action="/search/:id" method="GET">
+                                <% if (typeof search != 'undefined') { %>
+                                    <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search" value="<%= search %>">
+                                    <% } else { %>
+                                        <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search">
+                                        <% } %>
+                                            <button type="submit">Buscar</button><i class="fas fa-search"></i></button>
                             </form>
+                            <!--  <form action="">
+                                <input type="search" placeholder="Busqueda"><i class="fas fa-search"></i>
+                            </form> -->
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
                         <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
