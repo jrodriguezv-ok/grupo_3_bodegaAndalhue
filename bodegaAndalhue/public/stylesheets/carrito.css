@@ -1,4 +1,15 @@
- /* CARRITO DE COMPRAS // PRODUCT CART */
+ /* PRODUCT CART */
+ 
+ .contenedor {
+     width: 90%;
+     margin: 0 auto;
+ }
+ 
+ .usuario-menu {
+     text-align: right;
+     margin-top: 20px;
+     margin-bottom: 5px;
+ }
  
  .containerProduct {
      width: 100%;
@@ -47,7 +58,9 @@
      flex-direction: row;
      justify-content: flex-start;
      border: none;
-     margin-left: 15px;
+     margin-left: 10px;
+     line-height: 3.5em;
+     font-size: 0.9em;
  }
  
  .btn-eliminar button {
@@ -73,12 +86,6 @@
      width: 25px;
      border: none;
      text-align: center;
- }
- /* container es la clase del MAIN */
- 
- .contenedor {
-     width: 90%;
-     margin: 0 auto;
  }
  /* SUBTOTAL */
  

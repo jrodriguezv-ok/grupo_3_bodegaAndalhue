@@ -1,10 +1,8 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
-    <script src="/javascript/user_front.js"></script>
-    <script src="/javascript/quantity_front.js"></script>
     <script src="/javascript/modal_front.js"></script>
     <script src="/javascript/search_front.js"></script>
-
+    <script src="/javascript/quantity_front.js"></script>
 
     <body>
         <%- include('partials/header')%>
@@ -54,7 +52,7 @@
                                     </ul>
                                 </span>
                                 <a href="/products/cart">
-                                    <i class="fas fa-shopping-cart"></i>
+                                    <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
                                 </a>
                                 <% } %>
                                     <% if(typeof usuario == "undefined"){ %>

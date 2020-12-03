@@ -1,80 +1,83 @@
 <%- include('../partials/head', {title: 'Carrito de compra'})%>
     <link rel="stylesheet" href="/stylesheets/carrito.css">
+    <script src="/javascript/totalCartProduct_front.js"></script>
+    <script src="/javascript/subtotal_front.js"></script>
 
     <body>
         <%- include('../partials/header')%>
             <main class="contenedor">
                 <h1 class="titulo-seccion">Carrito de Compras</h1>
-                <!-- NUEVO CARRITO DE COMPRAS // PRODUCT CART -->
+                <section class="usuario-menu">
+                    <div>
+                        <% if(typeof usuario != "undefined"){ %>
+                            <span class="menu">
+                                <a href="" id="loginAccess">
+                                    <i class="fas fa-user"></i>
+                                    <%= usuario.first_name%>
+                                </a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="/users/profile">
+                                            <hr>mi perfil</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <hr>cerrar sesión</a>
+                                    </li>
+                                </ul>
+                            </span>
+                    </div>
+                    <%}%>
+                </section>
                 <section>
-
-                    <article class="containerProduct">
-                        <div class="imgProduct">
-                            <img src="/img/img-tinto.png" alt="producto">
-                        </div>
-                        <p class="productDetail">LÍNEA B. Chardonnay. 2019 Caja - 6 unidades</p>
-                        <div class="productControls">
-                            <i class="fas fa-minus-circle"></i>
-                            <input type="number" class="quantity" placeholder="1" />
-                            <i class="fas fa-plus-circle"></i>
-                        </div>
-                        <button type="reset" class="btn-eliminar">Eliminar</button>
-                        <p class="precioProducto">$1860</p>
-                    </article>
-
-                    <article class="containerProduct fondoGris">
-                        <div class="imgProduct">
-                            <img src="/img/img-tinto.png" alt="producto">
-                        </div>
-                        <p class="productDetail">LÍNEA B. Cabernet Sauvignon. 2016 Caja - 6 unidades</p>
-                        <div class="productControls">
-                            <i class="fas fa-minus-circle"></i>
-                            <input type="number" class="quantity" placeholder="1" />
-                            <i class="fas fa-plus-circle"></i>
-                            </i>
-                        </div>
-                        <button type="reset" class="btn-eliminar">Eliminar</button>
-                        <p class="precioProducto">$2420</p>
-                    </article>
-
-                    <article class="containerProduct">
-                        <div class="imgProduct">
-                            <img src="/img/img-tinto.png" alt="producto">
-                        </div>
-                        <p class="productDetail">LÍNEA A. Malbec Reserva. 2017. Caja - 6 unidades.</p>
-
-                        <div class="productControls">
-                            <i class="fas fa-minus-circle"></i>
-                            <input type="number" class="quantity" placeholder="1" />
-                            <i class="fas fa-plus-circle"></i>
-                        </div>
-                        <button type="reset" class="btn-eliminar">Eliminar</button>
-                        <p class="precioProducto">$3560</p>
-                    </article>
+                    <% if (typeof message != "undefined"){%>
+                        <%= message %>
+                            <%}%>
+                                <% for (let i = 0; i < productCart.length; i++){%>
+                                    <article class="containerProduct">
+                                        <div class="imgProduct">
+                                            <img src="/img/products/<%= productCart[i].products.image %>" alt="producto">
+                                        </div>
+                                        <p class="productDetail">
+                                            <%= productCart[i].products.brands.name + ' ' + productCart[i].products.varietals.name + ' ' + productCart[i].products.qualities.name + ' ' + productCart[i].products.displays.name  %>
+                                        </p>
+                                        <div class="productControls">
+                                            <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                            <p class="cantidad" id="quantity" value="">1</p>
+                                            <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                                        </div>
+                                        <a href="/products/cart/<%= productCart[i].id %>" class="btn-eliminar">Eliminar</a>
+                                        <p class="precioProducto" id="priceProduct" value="<%= '$'+productCart[i].products.price  %>">
+                                            <%= '$'%>
+                                        </p>
+                                    </article>
+                                    <% }%>
 
                 </section>
                 <!-- Subtotal -->
-                <section class="contenedorSubtotal">
-                    <article class="subtotal">
-                        <div class="left">
-                            <h2>SUBTOTAL</h2>
-                            <h3>Envío</h3>
-                            <h3>Cupón</h3>
-                            <h2>TOTAL</h2>
-                        </div>
-                        <div class="right">
-                            <h2>$5520</h2>
-                            <h3>Calcular el Envío</h3>
-                            <h3>Enviar Cupón</h3>
-                            <h2>$5220</h2>
-                        </div>
-                    </article>
-                </section>
-                <section class="clasebotonfi">
-                    <a class="btn-border-max" href="/">
-                        << seguir comprando</a>
-                            <a class="btn-border-max" href="">finalizar compra >></a>
-                </section>
+                <% if (typeof productCart != "undefined"){%>
+                    <section class="contenedorSubtotal">
+                        <article class="subtotal">
+                            <div class="left">
+                                <h2>SUBTOTAL</h2>
+                                <h3>Envío</h3>
+                                <h3>Cupón</h3>
+                                <h2>TOTAL</h2>
+                            </div>
+                            <div class="right">
+                                <h2 id="subtotal">$5520</h2>
+                                <h3 id="shipping">Calcular el Envío</h3>
+                                <h3 id="coupon">Enviar Cupón</h3>
+                                <h2 id="total">$5220</h2>
+                            </div>
+                        </article>
+                    </section>
+                    <section class="clasebotonfi">
+                        <a class="btn-border-max" href="/">
+                            << seguir comprando</a>
+                                <a class="btn-border-max" href="">finalizar compra >></a>
+                    </section>
+                    <%}%>
             </main>
             <%- include('../partials/footer')%>
     </body>

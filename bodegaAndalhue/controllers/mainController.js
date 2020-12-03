@@ -18,11 +18,39 @@ const mainController = {
     index: function(req, res, next) {
         pedProducts.then(function(products) {
                 if (req.session.usuarioLogueado != undefined) {
-                    res.render('index', {
-                        usuario: req.session.usuarioLogueado,
-                        products: products,
-                        toThousand
-                    });
+                    db.Cart.findOne({
+                            include: ['carts'],
+                            where: {
+                                user_id: req.session.usuarioLogueado.id,
+                                state: 1
+                            }
+                        })
+                        .then(function(cart) {
+                            if (cart == undefined) {
+                                let addedToCart = 0;
+                                res.render('index', {
+                                    usuario: req.session.usuarioLogueado,
+                                    products: products,
+                                    addedToCart: addedToCart,
+                                    toThousand
+                                })
+                            } else {
+                                db.Cart_product.findAll({
+                                        where: {
+                                            cart_id: cart.id
+                                        }
+                                    })
+                                    .then(function(cartProduct) {
+                                        var addedToCart = cartProduct.length;
+                                        res.render('index', {
+                                            usuario: req.session.usuarioLogueado,
+                                            products: products,
+                                            addedToCart: addedToCart,
+                                            toThousand
+                                        })
+                                    })
+                            }
+                        });
 
                 } else {
                     res.render('index', {

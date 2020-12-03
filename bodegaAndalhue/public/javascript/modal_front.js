@@ -6,10 +6,6 @@ window.addEventListener("load", function() {
         function modalOff() {
             modal.style.display = "none";
         }
-
         setTimeout(modalOff, delay);
-
     }
-    console.log(modal)
-
 })

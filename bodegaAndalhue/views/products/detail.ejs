@@ -81,7 +81,17 @@
                                     <%= '$'+ toThousand(productSelected.price - (productSelected.price * (productSelected.discount / 100)))+ '-' %>
                                 </h5>
                             </div>
-                            <button id="agregarProd" class="btn-relleno">Agregar</button>
+                            <form action="/products/cart" method="POST">
+                                <input type="number" class="non-display" name="id" value="<%= productSelected.id %>">
+                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="">
+                                <% if (typeof usuario == 'undefined'){ %>
+                                    <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                    <%}else{%>
+                                        <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                        <!-- traer cantidad -->
+                                        <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
+                                        <%}%>
+                            </form>
                         </article>
                         <!-- detalle -->
                         <article class="detalle-info">

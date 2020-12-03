@@ -62,10 +62,10 @@ module.exports = function(sequelize, dataTypes) {
             foreignKey: "state_id"
         });
 
-        /*   Product.hasMany(models.Cart_product, {
-              as: "carts_products",
-              foreignKey: "product_id",
-          }); */
+        Product.hasMany(models.Cart_product, {
+            as: "products",
+            foreignKey: "product_id",
+        });
 
     }
     return Product;
