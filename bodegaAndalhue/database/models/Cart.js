@@ -29,17 +29,17 @@ module.exports = function(sequelize, dataTypes) {
 
     let Cart = sequelize.define(alias, cols, config);
 
-    /* Cart.associate = function(models) {
+    Cart.associate = function(models) {
         Cart.belongsTo(models.User, {
             as: "users",
             foreignKey: "user_id"
         });
 
-        Cart.hasMany(models.Product, {
+        Cart.hasMany(models.Cart_product, {
             as: "carts",
-            foreignKey: "cart_id",
+            foreignKey: "cart_id"
         });
 
-    } */
+    }
     return Cart;
 }

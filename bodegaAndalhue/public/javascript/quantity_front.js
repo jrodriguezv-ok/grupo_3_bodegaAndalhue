@@ -12,5 +12,5 @@ window.addEventListener("load", function() {
         }
         document.getElementById("quantity").textContent = value;
         document.getElementById("value_quantity").textContent = value;
-    }
+    };
 })

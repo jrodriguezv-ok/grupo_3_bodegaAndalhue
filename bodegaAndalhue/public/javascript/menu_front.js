@@ -4,7 +4,10 @@ window.addEventListener("load", function(req, res) {
     menuIcon.addEventListener("mouseover", function() {
         menuPopUp.style.display = "flex";
     });
-    menuIcon.addEventListener("mouseout", function() {
+    menuPopUp.addEventListener("click", function() {
+        menuPopUp.style.display = "none";
+    });
+    window.addEventListener("click", function() {
         menuPopUp.style.display = "none";
     });
 })

@@ -21,41 +21,41 @@ module.exports = function(sequelize, dataTypes) {
 
     let Cart_product = sequelize.define(alias, cols, config);
 
-    /*  Cart_product.associate = function(models) {
-         Cart_product.belongsTo(models.Product, {
-             as: "products",
-             foreignKey: "product_id",
-         });
-         Cart_product.belongsTo(models.Cart, {
-             as: "carts",
-             foreignKey: "cart_id",
-         });
-
-         Cart_product.hasMany(models.Category, {
-             as: "categories",
-             foreignKey: "product_id",
-             sourceKey: "product_id"
-         });
-         Cart_product.hasMany(models.Brand, {
-             as: "brands",
-             foreignKey: "product_id",
-             sourceKey: "product_id"
-         });
-         Cart_product.hasMany(models.Varietal, {
-             as: "varietals",
-             foreignKey: "product_id",
-             sourceKey: "product_id"
-         });
-         Cart_product.hasMany(models.Quality, {
-             as: "qualities",
-             foreignKey: "product_id",
-             sourceKey: "product_id"
-         });
-         Cart_product.hasMany(models.Display, {
-             as: "displays",
-             foreignKey: "product_id",
-             sourceKey: "product_id"
-         });
-     } */
+    Cart_product.associate = function(models) {
+        Cart_product.belongsTo(models.Product, {
+            as: "products",
+            foreignKey: "product_id",
+        });
+        Cart_product.belongsTo(models.Cart, {
+            as: "carts",
+            foreignKey: "cart_id",
+        });
+    }
     return Cart_product;
 }
+
+/* Cart_product.hasMany(models.Category, {
+    as: "categories",
+    foreignKey: "product_id",
+    sourceKey: "product_id"
+});
+Cart_product.hasMany(models.Brand, {
+    as: "brands",
+    foreignKey: "product_id",
+    sourceKey: "product_id"
+});
+Cart_product.hasMany(models.Varietal, {
+    as: "varietals",
+    foreignKey: "product_id",
+    sourceKey: "product_id"
+});
+Cart_product.hasMany(models.Quality, {
+    as: "qualities",
+    foreignKey: "product_id",
+    sourceKey: "product_id"
+});
+Cart_product.hasMany(models.Display, {
+    as: "displays",
+    foreignKey: "product_id",
+    sourceKey: "product_id"
+}); */
