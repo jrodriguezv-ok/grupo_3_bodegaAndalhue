@@ -83,7 +83,7 @@
                             </div>
                             <form action="/products/cart" method="POST">
                                 <input type="number" class="non-display" name="id" value="<%= productSelected.id %>">
-                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="">
+                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
                                 <% if (typeof usuario == 'undefined'){ %>
                                     <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
                                     <%}else{%>

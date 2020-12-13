@@ -102,6 +102,7 @@
         .lineas a:hover {
             background-color: #BFA02E;
             color: #3F4140;
+            transition: ease-in 0.35s;
         }
         /* PRODUCTOS DESTACADOS */
         

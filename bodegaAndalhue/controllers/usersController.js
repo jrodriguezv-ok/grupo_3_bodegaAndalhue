@@ -31,7 +31,7 @@ const usersController = {
                 if (req.body.recordame != undefined) {
                     res.cookie('recordame', user.email, { maxAge: 6000000 })
                 }
-                res.redirect('/');
+                res.redirect('/#register');
             })
     },
 
@@ -58,7 +58,7 @@ const usersController = {
                         if (req.body.recordame != undefined) {
                             res.cookie('recordame', user.email, { maxAge: 6000000 })
                         }
-                        res.redirect('/');
+                        res.redirect('/#session');
                     }
                 } else {
                     res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });

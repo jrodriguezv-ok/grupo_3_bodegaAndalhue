@@ -1,8 +1,8 @@
-window.addEventListener("load", function() {
-    var value = 1;
-
     function quantity(btn) {
-        var contador = document.getElementById("quantity").value;
+
+        var cantidad = btn.parentElement.querySelector("#quantity");
+        var value = cantidad.innerText;
+
         if (btn.value == 'increase') {
             value++
         } else {
@@ -10,8 +10,10 @@ window.addEventListener("load", function() {
                 value--
             }
         }
-        document.getElementById("quantity").textContent = value;
-        document.getElementById("value_quantity").textContent = value;
-    }
+        cantidad.innerText = value;
+        var cantidadPorForm = btn.parentElement.parentElement.querySelector("#value_quantity");
+        cantidadPorForm.value = value;
 
-})
+        console.log(cantidadPorForm.value)
+
+    }

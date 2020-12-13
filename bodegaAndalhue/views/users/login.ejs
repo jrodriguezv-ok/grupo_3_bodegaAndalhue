@@ -1,5 +1,5 @@
 <%- include('../partials/head', {title: 'Login'})%>
-    <link rel='stylesheet' href='/stylesheets/register.css'>
+    <link rel='stylesheet' href='/stylesheets/user.css'>
 
     <body>
         <%- include('../partials/header')%>
@@ -8,36 +8,34 @@
                     <h1 class="titulo-seccion">INICIO DE SESIÓN</h1>
                     <div class="poesia">¿Estás preparada/o para descubrir un mundo <br>de poesía embotellada?</div>
                 </section>
-                <div class="slider">
-                    <img src="/img/slider_register.jpg">
-                </div>
-                <section class="contenedor">
-                    <h3 class="enunciado-mayor">Iniciá tu sesión</h3>
-                    <% if(typeof errors != "undefined") { %>
-                        <ul>
-                            <% for(var i = 0; i < errors.length; i++) { %>
-                                <li>
-                                    <%= errors[i].msg %>
-                                </li>
-                                <% } %>
-                        </ul>
-                        <% } %>
-                            <form class="formLogin" method="POST">
-                                <div class="labelInput"> <label for="Correo electrónico *">Correo electrónico *</label>
-                                    <input type="email" name="email" id="email" required></div>
-                                <div class="labelInput">
-                                    <label for=" Contraseña *"> Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
-                                    <input type="password" name="password" id="password" required></div>
-                                <label for="">Recordame</label>
-                                <input type="checkbox" name="recordame">
-                                <button type="submit" id="login" class="btn-border-max" data-toggle="modal">accedé</button>
-                            </form>
-                            <% if(typeof errorAlLoguear != "undefined"){ %>
-                                <h4 class="errores">
-                                    <%= errorAlLoguear %>
-                                </h4>
-                                <% } %>
-                </section>
+                <%- include('../partials/slider')%>
+                    <section class="contenedor">
+                        <h3 class="enunciado-mayor">Iniciá tu sesión</h3>
+                        <% if(typeof errors != "undefined") { %>
+                            <ul>
+                                <% for(var i = 0; i < errors.length; i++) { %>
+                                    <li>
+                                        <%= errors[i].msg %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                            <% } %>
+                                <form class="formLogin" method="POST">
+                                    <div class="labelInput"> <label for="Correo electrónico *">Correo electrónico *</label>
+                                        <input type="email" name="email" id="email" required></div>
+                                    <div class="labelInput">
+                                        <label for=" Contraseña *"> Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
+                                        <input type="password" name="password" id="password" required></div>
+                                    <label for="">Recordame</label>
+                                    <input type="checkbox" name="recordame">
+                                    <button type="submit" id="login" class="btn-border-max" data-toggle="modal">accedé</button>
+                                </form>
+                                <% if(typeof errorAlLoguear != "undefined"){ %>
+                                    <h4 class="errores">
+                                        <%= errorAlLoguear %>
+                                    </h4>
+                                    <% } %>
+                    </section>
             </main>
             <%- include('../partials/footer')%>
     </body>

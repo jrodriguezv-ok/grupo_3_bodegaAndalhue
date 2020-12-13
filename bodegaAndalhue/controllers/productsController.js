@@ -187,7 +187,7 @@ const productsController = {
             }
         })
         res.redirect('/products/list');
-    },
+    }
 };
 
 module.exports = productsController;

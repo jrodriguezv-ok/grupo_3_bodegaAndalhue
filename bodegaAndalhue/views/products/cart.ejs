@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="/stylesheets/carrito.css">
     <script src="/javascript/totalCartProduct_front.js"></script>
     <script src="/javascript/subtotal_front.js"></script>
+    <script src="/javascript/quantity_front.js"></script>
 
     <body>
         <%- include('../partials/header')%>
@@ -43,12 +44,14 @@
                                         </p>
                                         <div class="productControls">
                                             <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
-                                            <p class="cantidad" id="quantity" value="">1</p>
+                                            <p class="cantidad" id="quantity" value="">
+                                                <%= productCart[i].quantity %>
+                                            </p>
                                             <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
                                         </div>
                                         <a href="/products/cart/<%= productCart[i].id %>" class="btn-eliminar">Eliminar</a>
-                                        <p class="precioProducto" id="priceProduct" value="<%= '$'+productCart[i].products.price  %>">
-                                            <%= '$'%>
+                                        <p class="precioProducto">
+                                            <%= '$' + productCart[i].frozen_price * productCart[i].quantity %>
                                         </p>
                                     </article>
                                     <% }%>
@@ -60,22 +63,22 @@
                         <article class="subtotal">
                             <div class="left">
                                 <h2>SUBTOTAL</h2>
-                                <h3>Envío</h3>
+                                <h3>Envío (fijo)</h3>
                                 <h3>Cupón</h3>
                                 <h2>TOTAL</h2>
                             </div>
                             <div class="right">
-                                <h2 id="subtotal">$5520</h2>
-                                <h3 id="shipping">Calcular el Envío</h3>
-                                <h3 id="coupon">Enviar Cupón</h3>
-                                <h2 id="total">$5220</h2>
+                                <h2 id="subtotal">0</h2>
+                                <h3 id="shipping">200</h3>
+                                <h3 id="coupon">0</h3>
+                                <h2 id="total">000</h2>
                             </div>
                         </article>
                     </section>
                     <section class="clasebotonfi">
                         <a class="btn-border-max" href="/">
                             << seguir comprando</a>
-                                <a class="btn-border-max" href="">finalizar compra >></a>
+                                <a class="btn-border-max" href="/products/checkout">finalizar compra >></a>
                     </section>
                     <%}%>
             </main>
