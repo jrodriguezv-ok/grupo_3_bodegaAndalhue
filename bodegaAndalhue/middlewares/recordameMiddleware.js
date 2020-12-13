@@ -1,8 +1,10 @@
 const db = require('../database/models');
 
 function recordameMiddleware(req, res, next) {
+    console.log(typeof req.cookies.recordame)
+    console.log(typeof req.session.usuarioLogueado);
 
-    if (req.cookies.recordame != undefined && req.session.usuarioLogueado == undefined) {
+    if (typeof req.cookies.recordame != 'undefined' && typeof req.session.usuarioLogueado == 'undefined') {
 
 
 
@@ -14,6 +16,7 @@ function recordameMiddleware(req, res, next) {
             .then(function(user) {
 
                 req.session.usuarioLogueado = user;
+                console.log(req.session.usuarioLogueado)
             })
 
 

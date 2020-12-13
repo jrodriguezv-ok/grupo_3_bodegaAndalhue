@@ -1,6 +1,7 @@
 <%- include('../partials/head', {title: 'Agregar producto'})%>
     <link rel='stylesheet' href='/stylesheets/register.css'>
     <link rel="stylesheet" href="/stylesheets/footer.css">
+    <script src="/javascript/validator_front.js"></script>
 
     <body class="fondoBeige">
 
@@ -10,6 +11,11 @@
                 <section class="contenedor">
                     <h1 class="titulo-seccion">AGREGAR PRODUCTO</h1>
                     <h3>Producto Id#</h3>
+                    <div class="errores">
+                        <ul>
+                            <!--  aca irán los errores -->
+                        </ul>
+                    </div>
                     <form class="formLogin" action="/products/add" method="POST" enctype="multipart/form-data">
                         <div class="labelInput">
                             <label for="state">Estado *</label>
@@ -68,7 +74,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="vintage">Añada *</label>
-                            <input type="text" name="vintage" id="vintage" required>
+                            <input type="text" name="vintage" id="vintage">
                         </div>
                         <div class="labelInput">
                             <label for="display">Presentación *</label>
@@ -83,7 +89,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="price">Precio *</label>
-                            <input type="text" name="price" id="price" required>
+                            <input type="text" name="price" id="price">
                         </div>
                         <div class="labelInput">
                             <label for="discount">Descuento *</label>
@@ -91,11 +97,11 @@
                         </div>
                         <div class="labelInput">
                             <label for="tasting">Notas de Cata *</label>
-                            <textarea name="tasting" id="tasting" required></textarea>
+                            <textarea name="tasting" id="tasting"></textarea>
                         </div>
                         <div class="labelInput">
                             <label for="pairing">Maridaje *</label>
-                            <textarea name="pairing" id="pairing" required></textarea>
+                            <textarea name="pairing" id="pairing"></textarea>
                         </div>
                         <div class="labelInput">
                             <label for="temperature">Temperatura *</label>
@@ -110,11 +116,11 @@
                         </div>
                         <div class="labelInput">
                             <label for="image">Imagen *</label>
-                            <input type="file" name="image" id="image" required>
+                            <input type="file" name="image" id="image">
                         </div>
                         <div class="labelInput">
                             <label for="datasheet">Ficha Técnica *</label>
-                            <input type="file" name="datasheet" id="datasheet" required>
+                            <input type="file" name="datasheet" id="datasheet">
                         </div>
                         <div class="labelInput">
                             <a href="/" class="btn-border">ir a tienda</a>

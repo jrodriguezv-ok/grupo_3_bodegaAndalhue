@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 const usersController = require('../controllers/usersController')
 const { check, validationResult, body } = require('express-validator');
+const guestMiddleware = require('../middlewares/guestMiddleware');
 
 
 // LOGIN-REGISTER
-router.get('/loginRegister', usersController.loginRegister);
+router.get('/loginRegister', guestMiddleware, usersController.loginRegister);
 
 // REGISTER
-router.get('/register', usersController.register);
+router.get('/register', guestMiddleware, usersController.register);
 router.post('/register', [
     check("first_name").isLength({ min: 2, max: 50 }).withMessage("Nombre inválido"),
     check("last_name").isLength({ min: 2, max: 50 }).withMessage("Apellido inválido"),
@@ -21,7 +22,7 @@ router.post('/register', [
 ], usersController.store);
 
 // LOGIN
-router.get('/login', usersController.login);
+router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', [
     check("email").isEmail().withMessage("Email inválido"),
     check("password").not().isEmpty().withMessage("Olvidaste la contraseña")

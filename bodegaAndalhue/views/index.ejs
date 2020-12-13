@@ -19,13 +19,13 @@
                                     <button type="submit" class="btn-relleno" id="boton">Buscar</button>
                                 </form>
                             </div> -->
-                            <form action="/search/:id" method="GET">
+                            <form action="/search" method="GET">
                                 <% if (typeof search != 'undefined') { %>
-                                    <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search" value="<%= search %>">
+                                    <input type="text" name="search" placeholder="Busqueda por categoria" value="<%= search %>">
                                     <% } else { %>
-                                        <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search">
-                                        <% } %>
-                                            <button type="submit">Buscar</button><i class="fas fa-search"></i></button>
+                                        <input type="text" name="search" placeholder="Busqueda por categoria"><br>
+                                        <% } %> <br>
+                                            <button type="submit" class="btn-relleno">Buscar</button>
                             </form>
                             <!--  <form action="">
                                 <input type="search" placeholder="Busqueda"><i class="fas fa-search"></i>
@@ -34,8 +34,9 @@
                         </div>
                         <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
                         <div>
-                            <% if(typeof usuario != "undefined"){ %>
-                                <span class="menu">
+                            <% console.log(usuario)%>
+                                <% if(typeof usuario != "undefined"){ %>
+                                    <span class="menu">
                                     <a href="" id="loginAccess">
                                         <i class="fas fa-user"></i>
                                         <%= usuario.first_name + "  |  " %>
@@ -51,13 +52,13 @@
                                         </li>
                                     </ul>
                                 </span>
-                                <a href="/products/cart">
-                                    <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
-                                </a>
-                                <% } %>
-                                    <% if(typeof usuario == "undefined"){ %>
-                                        <a href="/users/loginRegister" id="loginAccess">login</a>
-                                        <% } %>
+                                    <a href="/products/cart">
+                                        <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
+                                    </a>
+                                    <% } %>
+                                        <% if(typeof usuario == "undefined"){ %>
+                                            <a href="/users/loginRegister" id="loginAccess">login</a>
+                                            <% } %>
                         </div>
                     </section>
                 </div>

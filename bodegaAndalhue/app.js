@@ -9,7 +9,9 @@ const session = require('express-session');
 var mainRouter = require('./routes/main');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
-var recordameMiddleware = require('./middlewares/recordameMiddleware');
+var apiProductsRouter = require('./routes/api/products');
+var apiUsersRouter = require('./routes/api/users');
+
 
 var app = express();
 
@@ -24,10 +26,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "info" }));
 
+var recordameMiddleware = require('./middlewares/recordameMiddleware');
+
 app.use(recordameMiddleware);
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/api/products', apiProductsRouter);
+app.use('/api/users', apiUsersRouter);
 
 
 

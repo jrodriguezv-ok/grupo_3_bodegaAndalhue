@@ -17,6 +17,7 @@ var pedProducts = db.Product.findAll({
 const mainController = {
     index: function(req, res, next) {
         pedProducts.then(function(products) {
+                console.log(req.session.usuarioLogueado)
                 if (req.session.usuarioLogueado != undefined) {
                     db.Cart.findOne({
                             include: ['carts'],
@@ -54,6 +55,7 @@ const mainController = {
 
                 } else {
                     res.render('index', {
+                        usuario: req.session.usuarioLogueado,
                         products: products,
                         toThousand
                     });
@@ -61,7 +63,7 @@ const mainController = {
             })
             .catch(e => console.log(e));
     },
-    search: async function(req, res, next) {
+    search: function(req, res, next) {
         let search = req.query.search;
         console.log(search);
         let varietals = db.Varietal.findAll({
@@ -77,7 +79,9 @@ const mainController = {
             console.log(varietals);
             res.render('results', { varietals: varietals, search: req.query.search })
 
-        });
+        }).catch(function(req) {
+            console.log(req);
+        })
 
 
     }
