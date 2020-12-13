@@ -9,13 +9,61 @@
       margin: 0 auto;
       font-weight: bold;
   }
+  /* SLIDER */
   
-  .slider {
-      margin-bottom: 20px;
+  .contenedor-slider {
+      width: 100%;
+      overflow: hidden;
+      /*oculta el espacio sobrante dps de las imágenes*/
+      padding: 10px 0 50px;
+      position: relative;
   }
   
-  .slider img {
+  .contenedor-slider .slider {
+      width: 400%;
+      /*para que queden una al lado de la otra*/
+      display: flex;
+  }
+  
+  .contenedor-slider .slider .slide {
+      width: 15%;
+      max-width: 950px;
+      /*para cdo se vean en pantallas más grandes*/
+      margin-right: 0.7%;
+      box-shadow: 0px 20px 25px rgb(200, 200, 200);
+  }
+  
+  .contenedor-slider .slider .slide img {
       width: 100%;
+      vertical-align: top;
+      /*para eliminar el espacio que se crea por defecto debajo de las imágenes*/
+  }
+  
+  .contenedor-slider .btn-anterior,
+  .contenedor-slider .btn-siguiente {
+      display: inline-block;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  
+  .contenedor-slider .btn-anterior {
+      left: 2%;
+  }
+  
+  .contenedor-slider .btn-siguiente {
+      right: 2%;
+  }
+  
+  .contenedor-slider .btn-anterior i,
+  .contenedor-slider .btn-siguiente i {
+      color: #fff;
+  }
+  
+  .contenedor-slider .btn-anterior i:hover,
+  .contenedor-slider .btn-siguiente i:hover {
+      color: #C4AF64;
   }
   
   .log-reg {
@@ -104,15 +152,9 @@
       .formLogin {
           max-width: 1000px;
       }
-<<<<<<< HEAD
-      /*.formLogin label {
-          font-size: ;
-      }*/
-=======
       /*   .formLogin label {
           font-size: ;
       } */
->>>>>>> 8a46620396b9c94097c2204690e63e5355f413e8
       .poesia {
           font-size: 1.2em;
       }
