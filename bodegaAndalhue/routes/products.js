@@ -39,5 +39,6 @@ router.get('/destroy/:id', productsController.destroy);
 router.get('/cart/:id', cartController.destroyCartProduct);
 router.get('/cart', cartController.showCart);
 router.post('/cart', cartController.addProductToCart);
+router.get('/checkout', cartController.checkOut);
 
 module.exports = router;

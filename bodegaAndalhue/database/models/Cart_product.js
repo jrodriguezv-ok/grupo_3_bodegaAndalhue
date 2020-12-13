@@ -24,7 +24,7 @@ module.exports = function(sequelize, dataTypes) {
     Cart_product.associate = function(models) {
         Cart_product.belongsTo(models.Product, {
             as: "products",
-            foreignKey: "product_id",
+            foreignKey: "product_id"
         });
         Cart_product.belongsTo(models.Cart, {
             as: "carts",
@@ -33,29 +33,3 @@ module.exports = function(sequelize, dataTypes) {
     }
     return Cart_product;
 }
-
-/* Cart_product.hasMany(models.Category, {
-    as: "categories",
-    foreignKey: "product_id",
-    sourceKey: "product_id"
-});
-Cart_product.hasMany(models.Brand, {
-    as: "brands",
-    foreignKey: "product_id",
-    sourceKey: "product_id"
-});
-Cart_product.hasMany(models.Varietal, {
-    as: "varietals",
-    foreignKey: "product_id",
-    sourceKey: "product_id"
-});
-Cart_product.hasMany(models.Quality, {
-    as: "qualities",
-    foreignKey: "product_id",
-    sourceKey: "product_id"
-});
-Cart_product.hasMany(models.Display, {
-    as: "displays",
-    foreignKey: "product_id",
-    sourceKey: "product_id"
-}); */

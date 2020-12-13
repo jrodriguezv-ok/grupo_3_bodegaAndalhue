@@ -9,6 +9,10 @@
         color: #3F4140;
     }
     
+    main {
+        padding-bottom: 30px;
+    }
+    
     a {
         text-decoration: none;
         color: #3F4140;
@@ -27,6 +31,7 @@
         border: none;
         background: none;
         appearance: none;
+        outline: none;
     }
     
     .border-bottom {
@@ -75,7 +80,7 @@
     a .btn-border-max:hover {
         background-color: #BFA02E;
         color: white;
-        transition: ease-in 0.3s;
+        transition: ease-in 0.4s;
     }
     
     .btn-relleno,
@@ -166,10 +171,8 @@
         align-items: center;
         text-align: center;
         color: white;
-        top: 35%;
+        top: 33%;
         left: 5%;
-        /*  right: auto;
-    bottom: auto; */
         width: 90%;
         height: 30%;
         padding-top: 5%;
@@ -190,7 +193,7 @@
         .modal {
             width: 40%;
             height: 30%;
-            top: 30%;
+            top: 33%;
             left: 30%;
         }
     }
@@ -199,9 +202,9 @@
     
     @media (min-width:769px) {
         .modal {
-            width: 25%;
+            width: 30%;
             height: 40%;
-            top: 30%;
-            left: 37%;
+            top: 35%;
+            left: 35%;
         }
     }

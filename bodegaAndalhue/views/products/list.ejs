@@ -28,7 +28,6 @@
                             <li class="large">Ficha</li>
                             <li class="small">Estado</li>
                             <li class="xsmall"><i class="fas fa-edit"></i></li>
-                            <li class="xxsmall"><i class="fas fa-trash-alt"></i></li>
                         </ul>
 
                         <% if(products != undefined){
@@ -77,10 +76,13 @@
                                     <%= products[i].datasheet %>
                                 </li>
                                 <li class="small">
-                                    <%= products[i].states.name %>
+                                    <%if (products[i].states.name == "activo"){%>
+                                        <i class="fas fa-check-circle state_activo"></i>
+                                        <%}else{%>
+                                            <i class="fas fa-times-circle"></i>
+                                            <% } %>
                                 </li>
                                 <a href="/products/edit/<%= products[i].id %>" class="xsmall"><i class="fas fa-edit"></i></a>
-                                <a href="/products/destroy/<%= products[i].id %>" class="xxsmall"><i class="fas fa-trash-alt"></i></a>
                             </ul>
                             <% }} %>
                     </article>
@@ -89,14 +91,6 @@
                         <a href="/" class="btn-border-max">ir a Tienda</a>
                     </article>
                 </section>
-                <h4>
-                    <% if(typeof usuario != "undefined"){ %>
-
-                        <%= '¡Hola ' + usuario.first_name + '!'%>
-
-                            <% } %>
-
-                </h4>
             </main>
             <footer>
             </footer>

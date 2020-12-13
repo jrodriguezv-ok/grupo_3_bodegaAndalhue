@@ -3,20 +3,22 @@ const { Sequelize } = require('../database/models')
 const Op = Sequelize.Op;
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-var pedProducts = db.Product.findAll({
-    include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }]
-}, {
-    where: {
-        discount: {
-            [Op.gt]: 0
-        }
-    },
-    limit: 6
-});
+
 
 const mainController = {
+
     index: function(req, res, next) {
-        pedProducts.then(function(products) {
+        db.Product.findAll({
+                include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
+                where: {
+                    state_id: 1,
+                    discount: {
+                        [Op.gt]: 0
+                    }
+                },
+                limit: 6
+            })
+            .then(function(products) {
                 if (req.session.usuarioLogueado != undefined) {
                     db.Cart.findOne({
                             include: ['carts'],

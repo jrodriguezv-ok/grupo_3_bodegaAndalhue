@@ -8,6 +8,7 @@ const cartController = {
         if (req.session.usuarioLogueado) {
             var userId = req.session.usuarioLogueado.id;
         }
+        console.log(req.body)
         var quantity = req.body.quantity;
         console.log(quantity);
         db.Product.findByPk(req.body.id)
@@ -35,8 +36,7 @@ const cartController = {
                                             frozen_price: addedProduct.price
                                         })
                                         .then(function(cartProduct) {
-                                            /*  let addedToCart = cartProduct.length; */
-                                            res.redirect('/')
+                                            res.redirect('/#added')
                                         })
                                 });
                         } else {
@@ -44,11 +44,10 @@ const cartController = {
                                     cart_id: cart.id,
                                     product_id: addedProduct.id,
                                     quantity: quantity,
-                                    frozen_price: addedProduct.price
+                                    frozen_price: addedProduct.price - (addedProduct.price * (addedProduct.discount / 100))
                                 })
                                 .then(function(cartProduct) {
-                                    /* let addedToCart = cartProduct.length; */
-                                    res.redirect('/')
+                                    res.redirect('/#added')
                                 })
                         }
                     })
@@ -67,7 +66,6 @@ const cartController = {
                 }
             })
             .then(function(cart) {
-                /*  console.log(cart); */
                 let message = 'El carrito está vacio';
                 if (cart == undefined) {
                     res.render('/products/cart', { message: message })
@@ -111,26 +109,35 @@ const cartController = {
                 }
             })
             .then(function(cart) {
-
-
-
-                var quantityProd = cartProduct.length;
-                for (let i = 0; i < cart.length; i++) {
-                    var prices = car
-                };
-                db.Cart.update({
-                        quantity: quantityProd,
-                        date_of_purchase: new Date(),
-                        state: 0,
-                        total: 1
-
-                    }, {
+                db.Cart_product.findAll({
+                        include: [{ all: true, nested: true }],
                         where: {
-                            id: cart.id
+                            cart_id: cart.id
                         }
                     })
-                    .then(function(checkOut) {
-                        console.log(checkOut)
+                    .then(function(cartProduct) {
+                        var quantityProd = cartProduct.length;
+                        for (let i = 0; i < cartProduct.length; i++) {
+                            var price = cartProduct[i].price;
+                            var total = +price;
+                            console.log(total)
+                        };
+                        db.Cart.update({
+                                quantity: quantityProd,
+                                date_of_purchase: new Date(),
+                                state: 0,
+                                total: total
+                            }, {
+                                where: {
+                                    id: cart.id
+                                }
+                            })
+                            .then(function(checkOut) {
+                                console.log(checkOut)
+                                res.render('/products/checkout', {
+                                    usuario: req.session.usuarioLogueado
+                                })
+                            })
                     })
             })
     }
@@ -138,5 +145,3 @@ const cartController = {
 };
 
 module.exports = cartController;
-
-/*  include: [{ all: true, nested: true }] */

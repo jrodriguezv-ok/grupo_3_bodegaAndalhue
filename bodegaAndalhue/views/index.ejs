@@ -1,7 +1,7 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
     <script src="/javascript/modal_front.js"></script>
-    <script src="/javascript/search_front.js"></script>
+    <!--  <script src="/javascript/search_front.js"></script> -->
     <script src="/javascript/quantity_front.js"></script>
 
     <body>
@@ -19,20 +19,20 @@
                                     <button type="submit" class="btn-relleno" id="boton">Buscar</button>
                                 </form>
                             </div> -->
-                            <form action="/search/:id" method="GET">
+                            <!-- <form action="/search/:id" method="GET">
                                 <% if (typeof search != 'undefined') { %>
                                     <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search" value="<%= search %>">
                                     <% } else { %>
                                         <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search">
                                         <% } %>
                                             <button type="submit">Buscar</button><i class="fas fa-search"></i></button>
-                            </form>
-                            <!--  <form action="">
-                                <input type="search" placeholder="Busqueda"><i class="fas fa-search"></i>
                             </form> -->
+                            <form action="">
+                                <input type="search" placeholder="Busqueda"><i class="fas fa-search"></i>
+                            </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
-                        <!--SI ENCUENTRA UNA SESION ABIERTA, MUESTRA MI CUENTA, SINO LOGIN-->
+
                         <div>
                             <% if(typeof usuario != "undefined"){ %>
                                 <span class="menu">
@@ -113,50 +113,44 @@
                                     <p class="descripcion">
                                         <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
                                     </p>
+                                </div>
                             </a>
-                            <div class="menosMas">
-                                <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
-                                <p class="cantidad" id="quantity" value="">1</p>
-                                <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                            <div class="prod-items">
+                                <div class="menosMas">
+                                    <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                    <p class="cantidad" id="quantity" value="">1</p>
+                                    <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                                </div>
+                                <div class="precio">
+                                    <h5 class="antes">
+                                        <% if(product.discount != 0){ %>
+                                            <%= "$"+ product.price %>
+                                                <% } %>
+                                    </h5>
+                                    <h5 class="ahora">
+                                        <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
+                                    </h5>
+                                </div>
+                                <form action="/products/cart" method="POST">
+                                    <input type="number" class="non-display" name="id" value="<%= product.id %>">
+                                    <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
+                                    <% if (typeof usuario == 'undefined'){ %>
+                                        <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                        <%}else{%>
+                                            <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                            <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
+                                            <%}%>
+                                </form>
                             </div>
-                            <div class="precio">
-                                <h5 class="antes">
-                                    <% if(product.discount != 0){ %>
-                                        <%= "$"+ product.price %>
-                                            <% } %>
-                                </h5>
-                                <h5 class="ahora">
-                                    <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
-                                </h5>
-                            </div>
-                            <form action="/products/cart" method="POST">
-                                <input type="number" class="non-display" name="id" value="<%= product.id %>">
-                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="">
-                                <% if (typeof usuario == 'undefined'){ %>
-                                    <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
-                                    <%}else{%>
-                                        <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
-                                        <!-- traer cantidad -->
-                                        <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
-                                        <%}%>
-                            </form>
-                            </div>
-
                         </article>
                         <% }} %>
                 </section>
-                <% if(typeof usuario != "undefined"){ %>
-                    <div class="modal">
-                        <h2>
-                            <%= '¡Hola ' + usuario.first_name + '!'%>
-                        </h2>
-                        <h4>
-                            Te logueaste con éxito. <br> ¡Ya podés empezar a comprar!
-                        </h4>
-                    </div>
-                    <% } %>
+
+                <!-- MODAL -->
+                <div class="modal non-display"></div>
             </main>
 
+            <!-- FOOTER -->
             <%- include('partials/footer')%>
     </body>
 

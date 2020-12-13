@@ -48,3 +48,12 @@ main {
     justify-content: center;
     padding-top: 25px;
 }
+
+.state_activo {
+    color: #BFA02E
+}
+
+li>i {
+    font-size: 1.5em;
+    text-align: center;
+}
