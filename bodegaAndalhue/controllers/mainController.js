@@ -16,7 +16,10 @@ const mainController = {
                         [Op.gt]: 0
                     }
                 },
-                limit: 6
+                limit: 6,
+                order: [
+                    ['id', 'DESC']
+                ]
             })
             .then(function(products) {
                 if (req.session.usuarioLogueado != undefined) {
