@@ -24,7 +24,6 @@ router.get('/list', productsController.list);
 router.get('/add', productsController.add);
 router.post('/add', upload.any(), productsController.store);
 
-
 // DETALLE PRODUCTO
 router.get('/detail/:id', productsController.detail);
 
@@ -33,7 +32,7 @@ router.get('/edit/:id', productsController.edit);
 router.post('/edit/:id', upload.any(), productsController.update);
 
 // ELIMINAR PRODUCTO
-router.get('/destroy/:id', productsController.destroy);
+/* router.get('/destroy/:id', productsController.destroy); */
 
 // CARRITO DE COMPRAS
 router.get('/cart/:id', cartController.destroyCartProduct);

@@ -93,7 +93,7 @@
      display: flex;
      flex-direction: row;
      justify-content: flex-end;
-     margin-top: 10px;
+     margin-top: 20px;
      margin-bottom: 20px;
  }
  
@@ -132,6 +132,15 @@
      display: flex;
      flex-direction: column;
      align-items: center;
+ }
+ 
+ .mensaje {
+     margin-top: 80px;
+     text-align: center;
+ }
+ 
+ .centrado {
+     margin: 10px 41%;
  }
  /* ----------------------------------- */
  /* MEDIAS QUERY */

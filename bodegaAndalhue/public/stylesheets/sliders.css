@@ -1,0 +1,80 @@
+/* SLIDER TIENDA */
+
+
+/* SLIDER LOGIN - REGISTER */
+
+.imgLogin_slide1,
+.imgLogin_slide2,
+.imgLogin_slide3,
+.imgLogin_slide4 {
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    width: 100%;
+}
+
+.imgLogin_slide1 {
+    background-image: url("/img/slide1_mobile.jpg");
+}
+
+.imgLogin_slide2 {
+    background-image: url("/img/slide2_mobile.jpg");
+}
+
+.imgLogin_slide3 {
+    background-image: url("/img/slide3_mobile.jpg");
+}
+
+.imgLogin_slide4 {
+    background-image: url("/img/slide4_mobile.jpg");
+}
+
+
+/* ---------------------------------------- */
+
+
+/* MEDIA QUERY TABLET */
+
+@media (min-width:426px) {
+    .imgLogin_slide1,
+    .imgLogin_slide2,
+    .imgLogin_slide3,
+    .imgLogin_slide4 {
+        background-repeat: no-repeat;
+        height: 290px;
+        width: auto;
+    }
+    .imgLogin_slide1 {
+        background-image: url("/img/slide1.jpg");
+        background-position: center;
+    }
+    .imgLogin_slide2 {
+        background-image: url("/img/slide2.jpg");
+        background-position: center;
+    }
+    .imgLogin_slide3 {
+        background-image: url("/img/slide3.jpg");
+        background-position: right;
+    }
+    .imgLogin_slide4 {
+        background-image: url("/img/slide4.jpg");
+        background-position: center;
+    }
+}
+
+
+/* ---------------------------------------- */
+
+
+/* MEDIA QUERY PC */
+
+@media (min-width:769px) {
+    .imgLogin_slide1,
+    .imgLogin_slide2,
+    .imgLogin_slide3,
+    .imgLogin_slide4 {
+        background-repeat: no-repeat;
+        height: 380px;
+        width: auto;
+    }
+}

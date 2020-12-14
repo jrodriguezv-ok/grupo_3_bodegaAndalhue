@@ -11,6 +11,7 @@
     
     main {
         padding-bottom: 30px;
+        min-height: 68vh;
     }
     
     a {

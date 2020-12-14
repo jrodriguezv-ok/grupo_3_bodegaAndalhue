@@ -11,8 +11,8 @@ window.addEventListener("load", function() {
             modal.style.display = "flex";
             break;
         case "#register":
-            modal.innerHTML = '<h2>¡Bienvenido' + usuario.first_name '</h2><h4>Te registraste exitosamente! Ya podés empezar a comprar<h4>'
-            modal.style.display = "flex";
+            modal.innerHTML = /* '<h2>¡Bienvenido' + usuario.first_name'</h2><h4>Te registraste exitosamente! Ya podés empezar a comprar<h4>' */
+                modal.style.display = "flex";
             break;
     };
 

@@ -1,7 +1,5 @@
-<%- include('../partials/head', {title: 'Carrito de compra'})%>
+<%- include('../partials/head', {title: 'Compra exitosa'})%>
     <link rel="stylesheet" href="/stylesheets/carrito.css">
-    <script src="/javascript/totalCartProduct_front.js"></script>
-    <script src="/javascript/subtotal_front.js"></script>
 
     <body>
         <%- include('../partials/header')%>
@@ -29,17 +27,10 @@
                     </div>
                     <%}%>
                 </section>
-                <section>
-                    <% if (typeof message != "undefined"){%>
-                        <%= message %>
-                            <%}%>
+                <h2>
+                    <%= usuario.first_name %>, muchas gracias por tu compra!</h2>
 
-                                <section class="clasebotonfi">
-                                    <a class="btn-border-max" href="/">
-                                        << seguir comprando</a>
-                                            <a class="btn-border-max" href="/checkout">finalizar compra >></a>
-                                </section>
-                                <%}%>
+
             </main>
             <%- include('../partials/footer')%>
     </body>

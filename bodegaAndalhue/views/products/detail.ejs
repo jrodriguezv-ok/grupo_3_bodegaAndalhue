@@ -25,22 +25,22 @@
                             <ul>
                                 <a href="" id="linea">
                                     <li>>
-                                        <%= productSelected.brands.name %>
+                                        <%= selectedProduct.brands.name %>
                                     </li>
                                 </a>
                                 <a href="" id="varietal">
                                     <li>>
-                                        <%= productSelected.varietals.name %>
+                                        <%= selectedProduct.varietals.name %>
                                     </li>
                                 </a>
                                 <a href="" id="categoria">
                                     <li>>
-                                        <%= productSelected.qualities.name %>
+                                        <%= selectedProduct.qualities.name %>
                                     </li>
                                 </a>
                                 <a href="" id="anio">
                                     <li>>
-                                        <%= productSelected.vintage %>
+                                        <%= selectedProduct.vintage %>
                                     </li>
                                 </a>
                             </ul>
@@ -50,21 +50,20 @@
                     <!-- PRODUCTO -->
 
                     <section class="detalle-prod">
-                        <!-- producto -->
                         <article class="img-desc">
-                            <img src="/img/products/<%= productSelected.image %>" alt="vino">
+                            <img src="/img/products/<%= selectedProduct.image %>" alt="vino">
                             <p class="descuento">
-                                <% if(productSelected.discount != 0){ %>
-                                    <%= productSelected.discount + "%" %>
+                                <% if(selectedProduct.discount != 0){ %>
+                                    <%= selectedProduct.discount + "%" %>
                                         <% } %>
                             </p>
                         </article>
                         <article class="prod-items">
                             <h6 class="categoria">
-                                <%= productSelected.categories.name %>
+                                <%= selectedProduct.categories.name %>
                             </h6>
                             <p class="descripcion">
-                                <%= productSelected.brands.name + ' ' + productSelected.varietals.name + ' ' + productSelected.qualities.name + ' ' + productSelected.vintage + ' ' + productSelected.displays.name  %>
+                                <%= selectedProduct.brands.name + ' ' + selectedProduct.varietals.name + ' ' + selectedProduct.qualities.name + ' ' + selectedProduct.vintage + ' ' + selectedProduct.displays.name  %>
                             </p>
                             <div class="menosMas">
                                 <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
@@ -73,25 +72,26 @@
                             </div>
                             <div class="precio">
                                 <h5 class="antes">
-                                    <% if(productSelected.discount != 0){ %>
-                                        <%= "$"+ productSelected.price %>
+                                    <% if(selectedProduct.discount != 0){ %>
+                                        <%= "$"+ selectedProduct.price %>
                                             <% } %>
                                 </h5>
                                 <h5 class="ahora">
-                                    <%= '$'+ toThousand(productSelected.price - (productSelected.price * (productSelected.discount / 100)))+ '-' %>
+                                    <%= '$'+ toThousand(selectedProduct.price - (selectedProduct.price * (selectedProduct.discount / 100)))+ '-' %>
                                 </h5>
                             </div>
-                            <form action="/products/cart" method="POST">
-                                <input type="number" class="non-display" name="id" value="<%= productSelected.id %>">
-                                <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
-                                <% if (typeof usuario == 'undefined'){ %>
-                                    <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
-                                    <%}else{%>
+                            <% if (typeof usuario == 'undefined'){ %>
+                                <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                <%}else{%>
+                                    <form action="/products/cart" method="POST">
+                                        <input type="number" class="non-display" name="id" value="<%= selectedProduct.id %>">
+                                        <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
+
                                         <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
                                         <!-- traer cantidad -->
                                         <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
                                         <%}%>
-                            </form>
+                                    </form>
                         </article>
                         <!-- detalle -->
                         <article class="detalle-info">
@@ -108,17 +108,17 @@
                             <div class="detalle">
                                 <h5>NOTAS DE CATA</h5>
                                 <p>
-                                    <%= productSelected.tasting %>
+                                    <%= selectedProduct.tasting %>
                                 </p>
                                 <h5>MARIDAJE</h5>
                                 <p>
-                                    <%= productSelected.pairing %>
+                                    <%= selectedProduct.pairing %>
                                 </p>
                                 <h5>TEMPERATURA</h5>
                                 <p>
-                                    <%= productSelected.temperatures.value + 'ºC' %>
+                                    <%= selectedProduct.temperatures.value + 'ºC' %>
                                 </p>
-                                <a href="<%= productSelected.datasheet %>" download><button class="btn-border-max">FICHA TÉCNICA</button></a>
+                                <a href="<%= selectedProduct.datasheet %>" download><button class="btn-border-max">FICHA TÉCNICA</button></a>
                             </div>
                             <div class="info-adic">
                                 <ul>
@@ -149,78 +149,64 @@
                     <div class="contenedor">
                         <h3 class="subtitulo-seccion">PRODUCTOS SIMILARES</h3>
                         <div class="slider-similares">
-                            <article class="producto ">
-                                <a href="/productDetail">
-                                    <div class="img-desc">
-                                        <img src="/img/img-tinto.png" alt="vino">
-                                        <!-- <p class="descuento">-20%</p> -->
-                                    </div>
+                            <% if (upSelling != undefined){
+                                for (var i= 0; i< upSelling.length; i++) { 
+                                    var product = upSelling[i];
+                            %>
+                                <article class="producto">
+                                    <a href="/products/detail/<%= product.id %>">
+                                        <div class="img-desc">
+                                            <img src="/img/products/<%= product.image %>" alt="vino">
+                                            <p class="descuento">
+                                                <% if(product.discount != 0){ %>
+                                                    <%= product.discount + "%" %>
+                                                        <% } %>
+                                            </p>
+                                        </div>
+                                        <div class="prod-items">
+                                            <h6 class="categoria">
+                                                <%= product.categories.name %>
+                                            </h6>
+                                            <p class="descripcion">
+                                                <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
+                                            </p>
+                                        </div>
+                                    </a>
                                     <div class="prod-items">
-                                        <h6 class="categoria">TINTO</h6>
-                                        <p class="descripcion">LÍNEA A Malbec Reserva 2017. Caja x 6unid.</p>
                                         <div class="menosMas">
-                                            <i class="fas fa-minus-circle"></i>
-                                            <p class="cantidad">1</p>
-                                            <i class="fas fa-plus-circle"></i>
+                                            <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                            <p class="cantidad" id="quantity" value="">1</p>
+                                            <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
                                         </div>
                                         <div class="precio">
-                                            <!-- <h5 class="antes">$3.600</h5> -->
-                                            <h5 class="ahora">$3.600-</h5>
+                                            <h5 class="antes">
+                                                <% if(product.discount != 0){ %>
+                                                    <%= "$"+ product.price %>
+                                                        <% } %>
+                                            </h5>
+                                            <h5 class="ahora">
+                                                <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
+                                            </h5>
                                         </div>
-                                        <button class="btn-relleno">Agregar</button>
+                                        <% if (typeof usuario == 'undefined'){ %>
+                                            <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                            <%}else{%>
+                                                <form action="/products/cart" method="POST">
+                                                    <input type="number" class="non-display" name="id" value="<%= product.id %>">
+                                                    <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
+                                                    <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                                    <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
+                                                    <%}%>
+                                                </form>
                                     </div>
-                                </a>
-                            </article>
-                            <article class="producto prod-2">
-                                <a href="/productDetail">
-                                    <div class="img-desc">
-                                        <img src="/img/img-tinto.png" alt="vino">
-                                        <!-- <p class="descuento">-20%</p> -->
-                                    </div>
-                                    <div class="prod-items">
-                                        <h6 class="categoria">TINTO</h6>
-                                        <p class="descripcion">LÍNEA A Bonarda Reserva 2018. Caja x 6unid.</p>
-                                        <div class="menosMas">
-                                            <i class="fas fa-minus-circle"></i>
-                                            <p class="cantidad">1</p>
-                                            <i class="fas fa-plus-circle"></i>
+                                </article>
+                                <% }} %>
+                                    <div class="cont-flechas">
+                                        <div class="flechas">
+                                            <i class="fas fa-angle-left"></i>
+                                            <i class="fas fa-angle-right"></i>
                                         </div>
-                                        <div class="precio">
-                                            <!-- <h5 class="antes">$3.600</h5> -->
-                                            <h5 class="ahora">$3.350-</h5>
-                                        </div>
-                                        <button class="btn-relleno">Agregar</button>
                                     </div>
-                                </a>
-                            </article>
-                            <article class="producto prod-3">
-                                <a href="/productDetail">
-                                    <div class="img-desc">
-                                        <img src="/img/img-tinto.png" alt="vino">
-                                        <p class="descuento">-20%</p>
-                                    </div>
-                                    <div class="prod-items">
-                                        <h6 class="categoria">TINTO</h6>
-                                        <p class="descripcion">LÍNEA A Blend Reserva 2016. Caja x 6unid.</p>
-                                        <div class="menosMas">
-                                            <i class="fas fa-minus-circle"></i>
-                                            <p class="cantidad">1</p>
-                                            <i class="fas fa-plus-circle"></i>
-                                        </div>
-                                        <div class="precio">
-                                            <h5 class="antes">$3.600</h5>
-                                            <h5 class="ahora">$2.880-</h5>
-                                        </div>
-                                        <button class="btn-relleno">Agregar</button>
-                                    </div>
-                                </a>
-                            </article>
-                            <div class="cont-flechas">
-                                <div class="flechas">
-                                    <i class="fas fa-angle-left"></i>
-                                    <i class="fas fa-angle-right"></i>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>

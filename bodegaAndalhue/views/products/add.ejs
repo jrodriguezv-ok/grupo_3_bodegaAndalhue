@@ -1,5 +1,5 @@
 <%- include('../partials/head', {title: 'Agregar producto'})%>
-    <link rel='stylesheet' href='/stylesheets/register.css'>
+    <link rel='stylesheet' href='/stylesheets/user.css'>
     <link rel="stylesheet" href="/stylesheets/footer.css">
     <script src="/javascript/validator_front.js"></script>
 
@@ -19,7 +19,7 @@
                     <form class="formLogin" action="/products/add" method="POST" enctype="multipart/form-data">
                         <div class="labelInput">
                             <label for="state">Estado *</label>
-                            <select name="state" id="state" required>
+                            <select name="state" id="state">
                                 <option value="" disabled selected> Selecciona su estado</option>
                                 <% for(let i = 0; i< states.length; i++){%>
                                 <option value="<%= states[i].id %>">
@@ -30,7 +30,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="category">Categoría *</label>
-                            <select name="category" id="category" required>
+                            <select name="category" id="category">
                                 <option value="" disabled selected> Selecciona categoría</option>
                                 <% for(let i = 0; i< categories.length; i++){ %>
                                 <option value="<%= categories[i].id%>">
@@ -41,7 +41,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="brand">Línea *</label>
-                            <select name="brand" id="brand" required>
+                            <select name="brand" id="brand">
                                 <option value="" disabled selected> Selecciona línea</option>
                                 <% for(let i = 0; i< brands.length; i++){%>
                                 <option value="<%= brands[i].id%>">
@@ -52,7 +52,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="varietal">Varietal *</label>
-                            <select name="varietal" id="varietal" required>
+                            <select name="varietal" id="varietal">
                                 <option value="" disabled selected> Selecciona varietal</option>
                                 <% for(let i = 0; i< varietals.length; i++){ %>
                                 <option value="<%= varietals[i].id%>">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="quality">Calidad *</label>
-                            <select name="quality" id="quality" required>
+                            <select name="quality" id="quality">
                                 <option value="" disabled selected> Selecciona calidad</option>
                                 <% for(let i = 0; i< qualities.length; i++){%>
                                 <option value="<%= qualities[i].id%>">
@@ -78,7 +78,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="display">Presentación *</label>
-                            <select name="display" id="display" required>
+                            <select name="display" id="display">
                                 <option value="" disabled selected> Selecciona la presentación</option>
                                  <% for(let i = 0; i< displays.length; i++){%>
                                 <option value="<%= displays[i].id%>">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="discount">Descuento *</label>
-                            <input type="text" name="discount" id="discount" required>
+                            <input type="text" name="discount" id="discount">
                         </div>
                         <div class="labelInput">
                             <label for="tasting">Notas de Cata *</label>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="labelInput">
                             <label for="temperature">Temperatura *</label>
-                            <select name="temperature" id="temperature" required>
+                            <select name="temperature" id="temperature">
                                 <option value="" disabled selected> Selecciona la temperatura ideal</option>
                                 <% for(let i = 0; i< temperatures.length; i++){%>
                                 <option value="<%= temperatures[i].id%>">

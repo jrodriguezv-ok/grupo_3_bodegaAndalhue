@@ -39,7 +39,6 @@ const productsController = {
                     });
                 }
             })
-
     },
 
 
@@ -104,14 +103,28 @@ const productsController = {
 
     //DETALLE DE PRODUCTO
     detail: (req, res, next) => {
-        var productSelected = req.params.id;
-        db.Product.findByPk(productSelected, {
+        var selectedProduct = req.params.id;
+        db.Product.findByPk(selectedProduct, {
                 include: [{ association: "categories" }, { association: "varietals" },
                     { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }
                 ]
             })
-            .then(function(productSelected) {
-                res.render('products/detail', { toThousand, productSelected });
+            .then(function(selectedProduct) {
+                db.Product.findAll({
+                        include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
+                        where: {
+                            state_id: 1,
+                            brand_id: selectedProduct.brand_id
+                        },
+                        limit: 3,
+                        order: [
+                            ['discount', 'DESC']
+                        ]
+                    })
+                    .then(function(upSelling) {
+                        console.log(upSelling)
+                        res.render('products/detail', { toThousand, selectedProduct, upSelling });
+                    })
             })
             .catch(e => console.log(e));
     },
@@ -179,15 +192,15 @@ const productsController = {
         }
     },
 
-    //ELIMINAR PRODUCTO
-    destroy: (req, res, next) => {
-        db.Product.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        res.redirect('/products/list');
-    }
+    //ELIMINAR PRODUCTO ----> No eliminar productos
+    /*  destroy: (req, res, next) => {
+         db.Product.destroy({
+             where: {
+                 id: req.params.id
+             }
+         })
+         res.redirect('/products/list');
+     } */
 };
 
 module.exports = productsController;

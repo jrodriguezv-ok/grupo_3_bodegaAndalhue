@@ -1,8 +1,9 @@
 <%- include('../partials/head', {title: 'Carrito de compra'})%>
     <link rel="stylesheet" href="/stylesheets/carrito.css">
-    <script src="/javascript/totalCartProduct_front.js"></script>
+    <script src="/javascript/articleCart_front.js"></script>
     <script src="/javascript/subtotal_front.js"></script>
     <script src="/javascript/quantity_front.js"></script>
+    <script src="/javascript/total_front.js"></script>
 
     <body>
         <%- include('../partials/header')%>
@@ -32,29 +33,32 @@
                 </section>
                 <section>
                     <% if (typeof message != "undefined"){%>
-                        <%= message %>
-                            <%}%>
-                                <% for (let i = 0; i < productCart.length; i++){%>
-                                    <article class="containerProduct">
-                                        <div class="imgProduct">
-                                            <img src="/img/products/<%= productCart[i].products.image %>" alt="producto">
-                                        </div>
-                                        <p class="productDetail">
-                                            <%= productCart[i].products.brands.name + ' ' + productCart[i].products.varietals.name + ' ' + productCart[i].products.qualities.name + ' ' + productCart[i].products.displays.name  %>
+                        <h2 class="mensaje">
+                            <%= message %>
+                        </h2>
+                        <a href="/" class="centrado"><button class="btn-border-max" > << volver a la Tienda</button></a>
+                        <%}else{%>
+                            <% for (let i = 0; i < productCart.length; i++){%>
+                                <article class="containerProduct">
+                                    <div class="imgProduct">
+                                        <img src="/img/products/<%= productCart[i].products.image %>" alt="producto">
+                                    </div>
+                                    <p class="productDetail">
+                                        <%= productCart[i].products.brands.name + ' ' + productCart[i].products.varietals.name + ' ' + productCart[i].products.qualities.name + ' ' + productCart[i].products.displays.name  %>
+                                    </p>
+                                    <div class="productControls">
+                                        <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                        <p class="cantidad" id="quantity" value="">
+                                            <%= productCart[i].quantity %>
                                         </p>
-                                        <div class="productControls">
-                                            <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
-                                            <p class="cantidad" id="quantity" value="">
-                                                <%= productCart[i].quantity %>
-                                            </p>
-                                            <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
-                                        </div>
-                                        <a href="/products/cart/<%= productCart[i].id %>" class="btn-eliminar">Eliminar</a>
-                                        <p class="precioProducto">
-                                            <%= '$' + productCart[i].frozen_price * productCart[i].quantity %>
-                                        </p>
-                                    </article>
-                                    <% }%>
+                                        <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                                    </div>
+                                    <a href="/products/cart/<%= productCart[i].id %>" class="btn-eliminar">Eliminar</a>
+                                    <p class="precioProducto">
+                                        <%= '$' + productCart[i].frozen_price * productCart[i].quantity %>
+                                    </p>
+                                </article>
+                                <% }%>
 
                 </section>
                 <!-- Subtotal -->
@@ -69,8 +73,8 @@
                             </div>
                             <div class="right">
                                 <h2 id="subtotal">0</h2>
-                                <h3 id="shipping">200</h3>
-                                <h3 id="coupon">0</h3>
+                                <h3 id="shipping">$200</h3>
+                                <h3 id="coupon">$0</h3>
                                 <h2 id="total">000</h2>
                             </div>
                         </article>
@@ -80,7 +84,7 @@
                             << seguir comprando</a>
                                 <a class="btn-border-max" href="/products/checkout">finalizar compra >></a>
                     </section>
-                    <%}%>
+                    <%}}%>
             </main>
             <%- include('../partials/footer')%>
     </body>

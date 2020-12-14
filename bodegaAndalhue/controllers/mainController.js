@@ -3,8 +3,6 @@ const { Sequelize } = require('../database/models')
 const Op = Sequelize.Op;
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-
-
 const mainController = {
 
     index: function(req, res, next) {
@@ -71,11 +69,9 @@ const mainController = {
         let search = req.query.search;
         console.log(search);
         let varietals = db.Varietal.findAll({
-
             where: {
                 name: {
                     [Op.substring]: req.query.search
-
                 }
             },
             limit: 12
@@ -86,11 +82,7 @@ const mainController = {
         }).catch(function(req) {
             console.log(req);
         })
-
-
     }
-
-
 }
 
 module.exports = mainController;

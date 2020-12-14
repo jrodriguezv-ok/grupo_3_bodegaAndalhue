@@ -66,9 +66,9 @@ const cartController = {
                 }
             })
             .then(function(cart) {
-                let message = 'El carrito está vacio';
+                let message = 'Tu carrito está vacio';
                 if (cart == undefined) {
-                    res.render('/products/cart', { message: message })
+                    res.render('products/cart', { message: message })
                     console.log(message);
                 } else {
                     db.Cart_product.findAll({
@@ -134,7 +134,7 @@ const cartController = {
                             })
                             .then(function(checkOut) {
                                 console.log(checkOut)
-                                res.render('/products/checkout', {
+                                res.render('products/checkout', {
                                     usuario: req.session.usuarioLogueado
                                 })
                             })

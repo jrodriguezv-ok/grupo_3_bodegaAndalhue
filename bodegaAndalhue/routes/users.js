@@ -29,7 +29,6 @@ router.post('/login', [
 ], usersController.enter);
 
 //PROFILE
-
 router.get('/profile', usersController.profile);
 
 //LOGOUT
