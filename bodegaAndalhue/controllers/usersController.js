@@ -48,11 +48,9 @@ const usersController = {
                 where: {
                     email: req.body.email
                 }
-            }, {
-                include: [{ association: "carts" }]
             })
             .then(function(user) {
-                if (req.body.email == user.email) {
+                if (user !== null) {
                     if (bcrypt.compareSync(req.body.password, user.password)) {
                         req.session.usuarioLogueado = user;
                         if (req.body.recordame != undefined) {

@@ -12,62 +12,68 @@
                     <section class="contenedor">
                         <h3 class="enunciado-mayor">Completá tu registro</h3>
                         <% if(typeof errors != "undefined") { %>
-                            <ul>
-                                <% for(var i = 0; i < errors.length; i++) { %>
-                                    <li>
-                                        <%= errors[i].msg %>
-                                    </li>
-                                    <% } %>
-                            </ul>
+                            <div class="errores">
+                                <ul>
+                                    <% for(var i = 0; i < errors.length; i++) { %>
+                                        <li>
+                                            <%= errors[i].msg %>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                            </div>
                             <% } %>
                                 <form class="formLogin" action="/users/register" method="POST">
                                     <div class="labelInput">
                                         <label for="first_name">Nombre *</label>
-                                        <input type="text" name="first_name" id="first_name" required>
+                                        <input type="text" name="first_name" id="first_name">
                                     </div>
                                     <div class="labelInput">
                                         <label for="last_name">Apellido *</label>
-                                        <input type="text" name="last_name" id="last_name" required>
+                                        <input type="text" name="last_name" id="last_name">
                                     </div>
                                     <div class="labelInput">
                                         <label for="birthdate">Fecha de Nacimiento *</label>
-                                        <input type="date" name="birthdate" id="birthdate" required>
+                                        <input type="date" name="birthdate" id="birthdate">
                                     </div>
                                     <div class="labelInput">
                                         <label for="address">Dirección *</label>
-                                        <input type="text" name="address" id="address" required>
+                                        <input type="text" name="address" id="address">
                                     </div>
                                     <div class="labelInput">
                                         <label for="town">Localidad *</label>
-                                        <input type="text" name="town" id="town" required>
+                                        <input type="text" name="town" id="town">
                                     </div>
                                     <div class="labelInput">
                                         <label for="country">País *</label>
-                                        <select id="country" required name="country">
-                                    " <!-- <option value="" disabled selected>Selecciona tu país</option> -->
-                    <option value="argentina">Argentina</option>
-                    <option value="brasil">Brasil</option>
-                    <option value="bolivia">Bolivia</option>
-                    <option value="chile">Chile</option>
-                    <option value="colombia">Colombia</option>
-                    <option value="ecuador">Ecuador</option>
-                    <option value="paraguay">Paraguay</option>
-                    <option value="perú">Perú</option>
-                    <option value="uruguay">Uruguay</option>
-                    </select>
+                                        <select id="country" name="country">
+                                            <option value="" disabled selected>Selecciona tu país</option>
+                                            <option value="argentina">Argentina</option>
+                                            <option value="brasil">Brasil</option>
+                                            <option value="bolivia">Bolivia</option>
+                                            <option value="chile">Chile</option>
+                                            <option value="colombia">Colombia</option>
+                                            <option value="ecuador">Ecuador</option>
+                                            <option value="paraguay">Paraguay</option>
+                                            <option value="perú">Perú</option>
+                                            <option value="uruguay">Uruguay</option>
+                                        </select>
                                     </div>
 
                                     <div class="labelInput">
                                         <label for="email">Correo electrónico *</label>
-                                        <input type="email" name="email" id="email" required>
+                                        <input type="email" name="email" id="email">
                                     </div>
                                     <div class="labelInput">
                                         <label for="password">Contraseña * <a href="">¿Olvidaste tu contraseña?</a></label>
-                                        <input type="password" name="password" id="password" required>
+                                        <input type="password" name="password" id="password">
                                     </div>
-                                    <label for="">Recordame</label>
-                                    <input type="checkbox" name="recordame">
-                                    <button type="submit" id="registro" class="btn-border-max">registrate</button>
+                                    <div class="check-button">
+                                        <div class="recordarme">
+                                            <label for="">Recordame</label>
+                                            <input type="checkbox" name="recordame">
+                                        </div>
+                                        <button type="submit" id="registro" class="btn-border-max">registrate</button>
+                                    </div>
                                 </form>
                     </section>
             </main>

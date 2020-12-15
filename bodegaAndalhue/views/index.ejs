@@ -152,20 +152,17 @@
                     <% if (typeof usuario !== 'undefined'){ %>
                         <div id="sessionLog" class="non-display">
                             <h2>
-                                <%="¡Hola" + usuario.first_name +"!"%>
+                                <%="¡Hola " + usuario.first_name +"!"%>
                             </h2>
                             <h4>Te logueaste exitosamente. Ya podés comprar</h4>
                         </div>
+                        <div id="sessionReg" class="non-display">
+                            <h2>
+                                <%='¡Bienvenido ' +  usuario.first_name +'!'%>
+                            </h2>
+                            <h4>Te registraste exitosamente. Ya podés comprar</h4>
+                        </div>
                         <%}%>
-                            <% if (typeof usuario !== 'undefined'){ %>
-                                <div id="sessionReg" class="non-display">
-                                    <h2>
-                                        <%='¡Bienvenido' +  usuario.first_name +'!'%>
-                                    </h2>
-                                    <h4>Te registraste exitosamente. Ya podés comprar</h4>
-                                </div>
-                                <%}%>
-
                 </div>
             </main>
 
