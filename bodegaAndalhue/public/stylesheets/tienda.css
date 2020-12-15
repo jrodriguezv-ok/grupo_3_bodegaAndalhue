@@ -329,6 +329,14 @@
             color: #3F4140;
             width: 90%;
         }
+        
+        #sessionLog,
+        #sessionReg {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
         /* ---------------------------------------- */
         /* MEDIA QUERY TABLET */
         

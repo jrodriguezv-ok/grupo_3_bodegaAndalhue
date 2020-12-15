@@ -10,7 +10,6 @@ const cartController = {
         }
         console.log(req.body)
         var quantity = req.body.quantity;
-        console.log(quantity);
         db.Product.findByPk(req.body.id)
             .then(function(addedProduct) {
                 db.Cart.findOne({
@@ -136,7 +135,7 @@ const cartController = {
                                 }
                             })
                             .then(function(checkOut) {
-                                console.log(checkOut)
+                                /*  console.log(checkOut) */
                                 res.render('products/checkout', {
                                     usuario: req.session.usuarioLogueado
                                 })

@@ -3,8 +3,9 @@ window.addEventListener("load", function() {
     var modal = document.querySelector(".modal");
     var session = document.getElementById("sessionLog");
     var register = document.getElementById("sessionReg");
-    console.log(session)
-    console.log(register)
+    /*  console.log(session);
+     console.log(register) */
+
     switch (window.location.hash) {
         case "#added":
             modal.innerHTML = "<h2>El producto se agregó<br>al carrito</h2><h4>¡Excelente!</4>"
