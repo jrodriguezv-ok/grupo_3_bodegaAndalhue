@@ -26,8 +26,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "info" }));
 
+const corsMiddleware = require('./middlewares/corsMiddleware');
 var recordameMiddleware = require('./middlewares/recordameMiddleware');
 
+app.use(corsMiddleware);
 app.use(recordameMiddleware);
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
