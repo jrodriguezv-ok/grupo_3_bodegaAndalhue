@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const createError = require('http-errors');
 
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
 
@@ -103,6 +104,7 @@ const productsController = {
 
     //DETALLE DE PRODUCTO
     detail: (req, res, next) => {
+        let usuario = req.session.usuarioLogueado;
         var selectedProduct = req.params.id;
         db.Product.findByPk(selectedProduct, {
                 include: [{ association: "categories" }, { association: "varietals" },
@@ -114,6 +116,9 @@ const productsController = {
                         include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
                         where: {
                             state_id: 1,
+                            id: {
+                                [Op.not]: selectedProduct.id
+                            },
                             brand_id: selectedProduct.brand_id
                         },
                         limit: 3,
@@ -123,7 +128,7 @@ const productsController = {
                     })
                     .then(function(upSelling) {
                         console.log(upSelling)
-                        res.render('products/detail', { toThousand, selectedProduct, upSelling });
+                        res.render('products/detail', { toThousand, selectedProduct, upSelling, usuario });
                     })
             })
             .catch(e => console.log(e));

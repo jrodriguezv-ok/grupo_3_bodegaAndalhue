@@ -34,9 +34,9 @@
                         </div>
 
                         <div>
-                            <% console.log(usuario)%>
-                                <% if(typeof usuario != "undefined"){ %>
-                                    <span class="menu">
+                            <!-- <% console.log(usuario)%> -->
+                            <% if(typeof usuario != "undefined"){ %>
+                                <span class="menu">
                                     <a href="" id="loginAccess">
                                         <i class="fas fa-user"></i>
                                         <%= usuario.first_name + "  |  " %>
@@ -52,13 +52,13 @@
                                         </li>
                                     </ul>
                                 </span>
-                                    <a href="/products/cart">
-                                        <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
-                                    </a>
-                                    <% } %>
-                                        <% if(typeof usuario == "undefined"){ %>
-                                            <a href="/users/loginRegister" id="loginAccess">login</a>
-                                            <% } %>
+                                <a href="/products/cart">
+                                    <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
+                                </a>
+                                <% } %>
+                                    <% if(typeof usuario == "undefined"){ %>
+                                        <a href="/users/loginRegister" id="loginAccess">login</a>
+                                        <% } %>
                         </div>
                     </section>
                 </div>
@@ -148,7 +148,25 @@
                 </section>
 
                 <!-- MODAL -->
-                <div class="modal non-display"></div>
+                <div class="modal non-display ">
+                    <% if (typeof usuario !== 'undefined'){ %>
+                        <div id="sessionLog" class="non-display">
+                            <h2>
+                                <%="¡Hola" + usuario.first_name +"!"%>
+                            </h2>
+                            <h4>Te logueaste exitosamente. Ya podés comprar</h4>
+                        </div>
+                        <%}%>
+                            <% if (typeof usuario !== 'undefined'){ %>
+                                <div id="sessionReg" class="non-display">
+                                    <h2>
+                                        <%='¡Bienvenido' +  usuario.first_name +'!'%>
+                                    </h2>
+                                    <h4>Te registraste exitosamente. Ya podés comprar</h4>
+                                </div>
+                                <%}%>
+
+                </div>
             </main>
 
             <!-- FOOTER -->

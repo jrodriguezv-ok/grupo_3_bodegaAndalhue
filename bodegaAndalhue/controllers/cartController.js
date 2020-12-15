@@ -69,7 +69,6 @@ const cartController = {
                 let message = 'Tu carrito está vacio';
                 if (cart == undefined) {
                     res.render('products/cart', { message: message })
-                    console.log(message);
                 } else {
                     db.Cart_product.findAll({
                             include: [{ all: true, nested: true }],
@@ -78,10 +77,14 @@ const cartController = {
                             }
                         })
                         .then(function(productCart) {
-                            res.render('products/cart', {
-                                productCart: productCart,
-                                usuario: req.session.usuarioLogueado
-                            })
+                            if (productCart.length == 0) {
+                                res.render('products/cart', { message: message })
+                            } else {
+                                res.render('products/cart', {
+                                    productCart: productCart,
+                                    usuario: req.session.usuarioLogueado
+                                })
+                            }
                         })
                 }
             })

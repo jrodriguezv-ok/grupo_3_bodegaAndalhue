@@ -1,18 +1,22 @@
 window.addEventListener("load", function() {
-    /*  var usuario = req.session.usuarioLogueado; */
+
     var modal = document.querySelector(".modal");
+    var session = document.getElementById("sessionLog");
+    var register = document.getElementById("sessionReg");
+    console.log(session)
+    console.log(register)
     switch (window.location.hash) {
         case "#added":
             modal.innerHTML = "<h2>El producto se agregó<br>al carrito</h2><h4>¡Excelente!</4>"
             modal.style.display = "flex";
             break;
         case "#session":
-            modal.innerHTML = "<h2>¡Hola usuario.first_name </h2><h4>Te logueaste exitosamente! Ya podés comprar<h4>"
             modal.style.display = "flex";
+            session.style.display = "flex";
             break;
         case "#register":
-            modal.innerHTML = /* '<h2>¡Bienvenido' + usuario.first_name'</h2><h4>Te registraste exitosamente! Ya podés empezar a comprar<h4>' */
-                modal.style.display = "flex";
+            modal.style.display = "flex";
+            register.style.display = "flex";
             break;
     };
 
