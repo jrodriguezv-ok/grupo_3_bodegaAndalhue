@@ -15,14 +15,14 @@
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
-                        <div>
+                        <ul class="menuUser">
                             <% if(typeof usuario != "undefined"){ %>
-                                <span class="menu">
+                                <li>
                                     <a href="" id="loginAccess">
                                         <i class="fas fa-user"></i>
-                                        <%= usuario.first_name + "  |  " %>
+                                        <%= usuario.first_name %>
                                     </a>
-                                    <ul class="">
+                                    <ul class="submenuUser">
                                         <li>
                                             <a href="/users/profile/<%= usuario.id %>">
                                                 <hr>mi perfil</a>
@@ -32,15 +32,18 @@
                                                 <hr>cerrar sesión</a>
                                         </li>
                                     </ul>
-                                </span>
-                                <a href="/products/cart">
-                                    <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
-                                </a>
+                                </li>
+                                <li> | </li>
+                                <li>
+                                    <a href="/products/cart">
+                                        <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
+                                    </a>
+                                </li>
                                 <% } %>
                                     <% if(typeof usuario == "undefined"){ %>
                                         <a href="/users/loginRegister" id="loginAccess">login</a>
                                         <% } %>
-                        </div>
+                        </ul>
                     </section>
                     <div class="volver-ruta">
                         <a href="/" class="volver">

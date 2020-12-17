@@ -6,7 +6,9 @@
  }
  
  .usuario-menu {
-     text-align: right;
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
      margin-top: 20px;
      margin-bottom: 5px;
  }

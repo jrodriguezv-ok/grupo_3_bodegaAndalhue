@@ -65,12 +65,6 @@ header {
     z-index: 10;
 }
 
-
-/* 
-.btn-nav a:hover>.menu-popup {
-    display: flex;
-} */
-
 .menu-popup .menu {
     margin: 10px 0;
 }
@@ -95,8 +89,7 @@ header {
     color: #BFA02E;
 }
 
-.menu-popup .menu .submenu,
-.menu .submenu {
+.menu-popup .menu .submenu {
     display: none;
     font-size: 0.8em;
     padding-bottom: 5px;
@@ -120,8 +113,41 @@ header {
     padding: 6px 0;
 }
 
-.menu-popup .menu li:hover>.submenu,
-.menu li:hover>.submenu {
+.menu-popup .menu li:hover>.submenu {
+    display: block;
+}
+
+
+/*menu usuario*/
+
+.menuUser {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menuUser li {
+    margin-left: 7.2px;
+}
+
+.menuUser a:hover {
+    color: #C4AF64;
+}
+
+.menuUser .submenuUser {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    font-size: 0.9em;
+    top: 20px;
+    left: -5px;
+    z-index: 1000;
+    padding: 5px 5px 10px;
+}
+
+.menuUser li:hover>.submenuUser {
     display: block;
 }
 
