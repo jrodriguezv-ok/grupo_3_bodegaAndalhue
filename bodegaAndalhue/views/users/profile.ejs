@@ -5,35 +5,36 @@
         <%- include('../partials/header')%>
             <main>
                 <section class="contenedor">
-                    <h2 class="titulo-seccion">
-                        <% if(typeof usuario != "undefined"){ %>
-                            <%= '¡Hola ' + usuario.first_name + '!'%>
-                                <% } %>
-                    </h2>
-                    <ul class="listado">
-                        <div class="items">
-                            <label for="first_name">Nombre: <%=usuario.first_name%></label>
-                        </div>
-                        <div class="items">
-                            <label for="last_name">Apellido: <%=usuario.last_name%></label>
-                        </div>
-                        <div class="items">
-                            <label for="birthdate">Fecha de Nacimiento: <%=usuario.birthdate%></label>
-                        </div>
-                        <div class="items">
-                            <label for="address">Dirección: <%=usuario.address%></label>
-                        </div>
-                        <div class="items">
-                            <label for="town">Localidad: <%=usuario.town%></label>
-                        </div>
-                        <div class="items">
-                            <label for="country">País: <%=usuario.country%></label>
-                        </div>
-                        <div class="items">
-                            <label for="email">Correo electrónico: <%=usuario.email%></label>
-                        </div>
-                        <a href="/"><button class="btn-border-max">Ir a la tienda</button></a>
-                    </ul>
+                    <h2 class="titulo-seccion">perfil de usuario</h2>
+                    <section class="profile-content">
+                        <i class="fas fa-user icon-user"></i>
+                        <h3 class="user border-bottom">
+                            <%=usuario.first_name + ' ' + usuario.last_name%>
+                        </h3>
+                        <article class="data-user">
+                            <ul>
+                                <div class="items">
+                                    <label for="birthdate"><span>Fecha de Nacimiento: </span><%=usuario.birthdate%></label>
+                                </div>
+                                <div class="items">
+                                    <label for="address"><span>Dirección: </span> <%=usuario.address%></label>
+                                </div>
+                                <div class="items">
+                                    <label for="town"><span>Localidad: </span><%=usuario.town%></label>
+                                </div>
+                                <div class="items">
+                                    <label for="country"><span>País: </span><%=usuario.country%></label>
+                                </div>
+                                <div class="items">
+                                    <label for="email"><span>Email: </span> <%=usuario.email%></label>
+                                </div>
+                            </ul>
+                        </article>
+                        <article class="profile-btn">
+                            <a href="/"><button class="btn-border-max"><< ir a la tienda</button></a>
+                            <a href="/users/profile/edit/<%= usuario.id%>"><button class="btn-border-max">editar perfil</button></a>
+                        </article>
+                    </section>
                 </section>
             </main>
             <%- include('../partials/footer')%>

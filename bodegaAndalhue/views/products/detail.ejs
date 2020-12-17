@@ -15,7 +15,32 @@
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
-                        <a href="/loginRegister">login</a>
+                        <div>
+                            <% if(typeof usuario != "undefined"){ %>
+                                <span class="menu">
+                                    <a href="" id="loginAccess">
+                                        <i class="fas fa-user"></i>
+                                        <%= usuario.first_name + "  |  " %>
+                                    </a>
+                                    <ul class="">
+                                        <li>
+                                            <a href="/users/profile/<%= usuario.id %>">
+                                                <hr>mi perfil</a>
+                                        </li>
+                                        <li>
+                                            <a href="/users/logout">
+                                                <hr>cerrar sesión</a>
+                                        </li>
+                                    </ul>
+                                </span>
+                                <a href="/products/cart">
+                                    <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
+                                </a>
+                                <% } %>
+                                    <% if(typeof usuario == "undefined"){ %>
+                                        <a href="/users/loginRegister" id="loginAccess">login</a>
+                                        <% } %>
+                        </div>
                     </section>
                     <div class="volver-ruta">
                         <a href="/" class="volver">
