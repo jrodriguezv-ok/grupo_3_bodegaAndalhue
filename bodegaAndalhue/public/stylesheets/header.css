@@ -137,8 +137,10 @@ header {
 
 .menuUser .submenuUser {
     display: none;
+    width: 100px;
     position: absolute;
     background-color: white;
+    box-shadow: 5px 5px rgba(63, 65, 64, 0.9);
     border-radius: 0 0 5px 5px;
     font-size: 0.9em;
     top: 20px;
