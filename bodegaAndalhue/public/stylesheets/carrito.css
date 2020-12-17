@@ -140,10 +140,16 @@
  }
  
  .centrado {
-     margin: 10px 41%;
+     margin: 10px 20%;
  }
  /* ----------------------------------- */
  /* MEDIAS QUERY */
+ 
+ @media (min-width:350px) {
+     .centrado {
+         margin: 10px 24.5%;
+     }
+ }
  
  @media (min-width: 426px) {
      .containerProduct {
@@ -186,6 +192,9 @@
          flex-direction: column;
          align-items: flex-end;
      }
+     .centrado {
+         margin: 10px 36.5%;
+     }
  }
  
  @media (min-width: 769px) {
@@ -193,5 +202,8 @@
          max-width: 1000px;
          margin-left: auto;
          margin-right: auto;
+     }
+     .centrado {
+         margin: 10px 40.5%;
      }
  }

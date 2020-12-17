@@ -34,20 +34,19 @@
                         </div>
 
                         <div>
-                            <!-- <% console.log(usuario)%> -->
                             <% if(typeof usuario != "undefined"){ %>
                                 <span class="menu">
                                     <a href="" id="loginAccess">
                                         <i class="fas fa-user"></i>
                                         <%= usuario.first_name + "  |  " %>
                                     </a>
-                                    <ul class="submenu">
+                                    <ul class="">
                                         <li>
-                                            <a href="/users/profile">
+                                            <a href="/users/profile/<%= usuario.id %>">
                                                 <hr>mi perfil</a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="/users/logout">
                                                 <hr>cerrar sesión</a>
                                         </li>
                                     </ul>
@@ -148,17 +147,17 @@
                 </section>
 
                 <!-- MODAL -->
-                <div class="modal non-display ">
+                <div class="modal non-display">
                     <% if (typeof usuario !== 'undefined'){ %>
-                        <div id="sessionLog" class="non-display">
+                        <div id="sessionLog">
                             <h2>
                                 <%="¡Hola " + usuario.first_name +"!"%>
                             </h2>
                             <h4>Te logueaste exitosamente. Ya podés comprar</h4>
                         </div>
-                        <div id="sessionReg" class="non-display">
+                        <div id="sessionReg">
                             <h2>
-                                <%='¡Bienvenido ' +  usuario.first_name +'!'%>
+                                <%='¡Bienvenid@ ' +  usuario.first_name +'!'%>
                             </h2>
                             <h4>Te registraste exitosamente. Ya podés comprar</h4>
                         </div>

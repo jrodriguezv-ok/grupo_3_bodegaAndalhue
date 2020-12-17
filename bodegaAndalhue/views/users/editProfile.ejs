@@ -1,0 +1,61 @@
+<%- include('../partials/head', {title: 'Iniciar sesión'})%>
+    <link rel='stylesheet' href="/stylesheets/profile.css">
+
+    <body>
+        <%- include('../partials/header')%>
+            <main>
+                <section class="contenedor">
+                    <h2 class="titulo-seccion">editando perfil de usuario</h2>
+                    <form action="/users/profile/<%= usuario.id%>" method="POST">
+                        <section class="profile-content">
+                            <i class="fas fa-user icon-user"></i>
+                            <h3 class="user border-bottom">
+                                <%=usuario.first_name + ' ' + usuario.last_name%>
+                            </h3>
+                            <article class="data-user">
+                                <ul>
+
+                                    <div class="items">
+                                        <label for="address"><span>Dirección: </span> </label>
+                                        <input type="text" name="address" value="<%=usuario.address%>">
+                                    </div>
+                                    <div class="items">
+                                        <label for="town"><span>Localidad: </span></label>
+                                        <input type="text" name="town" value="<%=usuario.town%>">
+                                    </div>
+                                    <div class="items">
+                                        <label for="country"><span>País: </span></label>
+                                        <select id="country" name="country">
+                                            <option value="<%=usuario.country%>"selected><%=usuario.country%></option>
+                                            <option value="brasil">Brasil</option>
+                                            <option value="bolivia">Bolivia</option>
+                                            <option value="chile">Chile</option>
+                                            <option value="colombia">Colombia</option>
+                                            <option value="ecuador">Ecuador</option>
+                                            <option value="paraguay">Paraguay</option>
+                                            <option value="perú">Perú</option>
+                                            <option value="uruguay">Uruguay</option>
+                                        </select>
+                                    </div>
+                                    <div class="items">
+                                        <label for="email"><span>Email: </span></label>
+                                        <input type="text" name="town" value=" <%=usuario.email%>">
+                                    </div>
+                                    <div class="items">
+                                        <label for="password"><span>Nueva contraseña: </span></label>
+                                        <input type="password" name="password" value="">
+                                    </div>
+                                </ul>
+                            </article>
+                            <article class="profile-btn">
+                                <a href="/users/profile/<%= usuario.id%>"><button class="btn-border-max"><< volver al perfil</button></a>
+                                <a href="/users/profile/edit/<%= usuario.id%>"><button type="submit" class="btn-border-max">guardar cambios</button></a>
+                            </article>
+                        </section>
+                    </form>
+                </section>
+            </main>
+            <%- include('../partials/footer')%>
+    </body>
+
+    </html>

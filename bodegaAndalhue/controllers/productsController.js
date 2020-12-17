@@ -105,7 +105,9 @@ const productsController = {
     //DETALLE DE PRODUCTO
     detail: (req, res, next) => {
         let usuario = req.session.usuarioLogueado;
+        let addedToCart = 0;
         var selectedProduct = req.params.id;
+
         db.Product.findByPk(selectedProduct, {
                 include: [{ association: "categories" }, { association: "varietals" },
                     { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }
@@ -127,8 +129,45 @@ const productsController = {
                         ]
                     })
                     .then(function(upSelling) {
-                        console.log(upSelling)
-                        res.render('products/detail', { toThousand, selectedProduct, upSelling, usuario });
+                        if (usuario != undefined) {
+                            db.Cart.findOne({
+                                    include: ['carts'],
+                                    where: {
+                                        user_id: usuario.id,
+                                        state: 1
+                                    }
+                                })
+                                .then(function(cart) {
+                                    if (cart == undefined) {
+                                        res.render('products/detail', {
+                                            selectedProduct,
+                                            upSelling,
+                                            usuario: usuario,
+                                            addedToCart: addedToCart,
+                                            toThousand
+                                        })
+                                    } else {
+                                        db.Cart_product.findAll({
+                                                where: {
+                                                    cart_id: cart.id
+                                                }
+                                            })
+                                            .then(function(cartProduct) {
+                                                addedToCart = cartProduct.length;
+                                                res.render('products/detail', {
+                                                    selectedProduct,
+                                                    upSelling,
+                                                    usuario: usuario,
+                                                    addedToCart: addedToCart,
+                                                    toThousand
+                                                })
+                                            })
+                                    }
+                                });
+
+                        } else {
+                            res.render('products/detail', { toThousand, selectedProduct, upSelling });
+                        }
                     })
             })
             .catch(e => console.log(e));
@@ -136,12 +175,12 @@ const productsController = {
 
     //FORMULARIO EDITAR PRODUCTO
     edit: (req, res, next) => {
-        var productToEdit = db.Product.findByPk(req.params.id, {
-            include: [{ association: "categories" }, { association: "varietals" },
-                { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }
-            ]
-        });
-        productToEdit.then(function(productToEdit) {
+        db.Product.findByPk(req.params.id, {
+                include: [{ association: "categories" }, { association: "varietals" },
+                    { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }
+                ]
+            })
+            .then(function(productToEdit) {
                 if (productToEdit != undefined) {
                     promiseAll.then(function([categories, brands, varietals, qualities, displays, temperatures, states]) {
                         res.render('products/edit', {

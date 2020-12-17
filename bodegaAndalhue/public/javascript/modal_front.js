@@ -1,10 +1,8 @@
 window.addEventListener("load", function() {
 
     var modal = document.querySelector(".modal");
-    var session = document.getElementById("sessionLog");
-    var register = document.getElementById("sessionReg");
-    /*  console.log(session);
-     console.log(register) */
+    var session = modal.children[0];
+    var register = modal.children[1];
 
     switch (window.location.hash) {
         case "#added":

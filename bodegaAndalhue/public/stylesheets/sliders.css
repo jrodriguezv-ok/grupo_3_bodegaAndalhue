@@ -23,6 +23,7 @@
 
 .imgLogin_slide3 {
     background-image: url("/img/slide3_mobile.jpg");
+    background-position: right;
 }
 
 .imgLogin_slide4 {

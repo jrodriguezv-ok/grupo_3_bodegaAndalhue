@@ -26,8 +26,8 @@ window.addEventListener("load", function() {
         if (price.value == "") {
             errores.push("El campo precio está vacío")
         };
-        let añada = document.getElementById("vintage");
-        if (añada.value == "") {
+        let vintage = document.getElementById("vintage");
+        if (vintage.value == "") {
             errores.push("El campo añada está vacío")
         };
         let display = document.getElementById("display");
@@ -54,7 +54,7 @@ window.addEventListener("load", function() {
         if (image.value == "") {
             errores.push("El campo imagen está vacío")
         };
-        let datasheet= document.getElementById("datasheet");
+        let datasheet = document.getElementById("datasheet");
         if (datasheet.value == "") {
             errores.push("El campo ficha técnica está vacío")
         };
@@ -65,6 +65,5 @@ window.addEventListener("load", function() {
         for (let i = 0; i < errores.length; i++) {
             ulErrores.innerHTML += "<li>" + errores[i] + "</li>";
         }
-        /* probar con el style.color poner en rojo los errores */
     })
 });
