@@ -5,14 +5,13 @@ window.addEventListener("load", function() {
 
     console.log(lupa)
     console.log(input)
-    
-    
+
+
     lupa.addEventListener("click", function() {
         input.style.display = "block";
-        /* input.style.borderColor= "#C4AF64"; */
         input.focus();
-      });
-      input.addEventListener("mouseover", function() {
+    });
+    input.addEventListener("mouseout", function() {
         input.style.display = "none";
     });
 

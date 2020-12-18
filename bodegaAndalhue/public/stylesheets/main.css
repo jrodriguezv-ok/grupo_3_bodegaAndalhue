@@ -43,8 +43,7 @@
         border-right: solid 1px #C4AF64;
     }
     
-    .btn-border,
-    a>.btn-border {
+    .btn-border {
         width: 122px;
         height: 24px;
         border: solid 1px #BFA02E;
@@ -59,8 +58,7 @@
         cursor: pointer;
     }
     
-    .btn-border-max,
-    a>.btn-border-max {
+    .btn-border-max {
         width: 178px;
         height: 24px;
         border: solid 1px #BFA02E;
@@ -187,6 +185,20 @@
         line-height: 1.5em;
         color: #C4AF64;
     }
+    
+    .mensaje {
+        margin-top: 80px;
+        text-align: center;
+    }
+    
+    .centrado {
+        margin: 10px auto;
+        text-align: center;
+    }
+    
+    .non-display {
+        display: none;
+    }
     /* ---------------------------------------- */
     /* MEDIA QUERY TABLET */
     
@@ -208,8 +220,4 @@
             top: 35%;
             left: 35%;
         }
-    }
-    
-    .non-display {
-        display: none;
     }
