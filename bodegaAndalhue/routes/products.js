@@ -19,7 +19,7 @@ const productsController = require('../controllers/productsController');
 const cartController = require('../controllers/cartController');
 
 // LISTADO DE PRODUCTOS
-router.get('/list', productsController.list);
+router.get('/list', adminMiddleware, productsController.list);
 
 // AGREGAR PRODUCTO
 router.get('/add', adminMiddleware, productsController.add);
