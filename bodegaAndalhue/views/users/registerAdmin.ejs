@@ -6,11 +6,10 @@
         <%- include('../partials/header')%>
             <main>
                 <section class="contenedor">
-                    <h1 class="titulo-seccion">INICIO DE SESIÓN</h1>
-                    <div class="poesia">¿Estás preparada/o para descubrir un mundo <br>de poesía embotellada?</div>
-                </section>
-                <%- include('../partials/slider')%>
+                    </section>
+               
                     <section class="contenedor">
+                        <br>
                         <h3 class="enunciado-mayor">Completá tu registro</h3>
                         <% if(typeof errors != "undefined") { %>
                             <div class="errores">
@@ -23,7 +22,7 @@
                                 </ul>
                             </div>
                             <% } %>
-                                <form class="formLogin" action="/users/register" method="POST">
+                                <form class="formLogin" action="/users/registerAdmin" method="POST">
                                     <div class="labelInput">
                                         <label for="first_name">Nombre *</label>
                                         <input type="text" name="first_name" id="first_name">
@@ -51,7 +50,7 @@
                                         </select>
                                     </div>
                                     <div class="non-display">
-                                        <input type="text" name="rol" id="rol" value="particular">
+                                        <input type="text" name="rol" id="rol" value="administrador">
                                     </div>
 
                                     <div class="labelInput">

@@ -7,7 +7,7 @@ const usersController = {
     //LISTADO DE PRODUCTOS
     quantityOfUsers: (req, res, next) => {
         db.User.findAll({
-                include: [{ association: "cart_user" }]
+                 include: [{ association: "carts" }]
             })
             .then(function(users) {
                 

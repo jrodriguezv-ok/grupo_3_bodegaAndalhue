@@ -14,6 +14,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
+const adminMiddleware = require('../middlewares/adminMiddleware');
 const productsController = require('../controllers/productsController');
 const cartController = require('../controllers/cartController');
 
@@ -21,15 +22,15 @@ const cartController = require('../controllers/cartController');
 router.get('/list', productsController.list);
 
 // AGREGAR PRODUCTO
-router.get('/add', productsController.add);
-router.post('/add', upload.any(), productsController.store);
+router.get('/add', adminMiddleware, productsController.add);
+router.post('/add',adminMiddleware, upload.any(), productsController.store);
 
 // DETALLE PRODUCTO
 router.get('/detail/:id', productsController.detail);
 
 // EDITAR PRODUCTO
-router.get('/edit/:id', productsController.edit);
-router.post('/edit/:id', upload.any(), productsController.update);
+router.get('/edit/:id', adminMiddleware, productsController.edit);
+router.post('/edit/:id', adminMiddleware, upload.any(), productsController.update);
 
 // ELIMINAR PRODUCTO
 /* router.get('/destroy/:id', productsController.destroy); */
