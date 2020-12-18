@@ -4,7 +4,7 @@ class Bodycontentright extends Component {
     constructor(props){
 		super(props);
 		this.state = {
-			categories: ""
+			categories: []
 		}
 	}
       apiCall(url, consecuencia){
@@ -19,13 +19,10 @@ class Bodycontentright extends Component {
 	 }
 
 	showCategories = (data) =>{
-		
-		for(let i = 0; i<data.data.length; i++){
-			
-		}
+	console.log(data)
 		this.setState(
 			{
-				categories: data.data.name
+				categories: data.data
 			}
 		)
 	}
@@ -43,7 +40,13 @@ class Bodycontentright extends Component {
 						<div className="row">
 							<div className="col-lg-6 mb-4">
 										<div className="card bg-info text-white shadow">
-											<div className="card-body">
+										  {this.state.categories.map((item,index) => {
+											  
+									return 	(<div className="card-body" key={index}> {item.name}</div>)})
+										
+											}  
+										   
+											<div  className="card-body"> 
 												
 													Category 01
 											</div>
