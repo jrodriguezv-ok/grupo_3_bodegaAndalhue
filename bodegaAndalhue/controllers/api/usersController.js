@@ -7,7 +7,11 @@ const usersController = {
     //LISTADO DE PRODUCTOS
     quantityOfUsers: (req, res, next) => {
         db.User.findAll({
+<<<<<<< HEAD
                 include: [{ association: "carts" }]
+=======
+                 include: [{ association: "carts" }]
+>>>>>>> c9dd7d16a57c1d0315f20d0682893be2f0534903
             })
             .then(function(users) {
                 

@@ -27,6 +27,7 @@ const usersController = {
                 town: req.body.town,
                 country: req.body.country,
                 email: req.body.email,
+                rol: req.body.rol,
                 password: bcrypt.hashSync(req.body.password, 10)
             })
             .then(user => {
@@ -131,7 +132,38 @@ const usersController = {
                     toThousand
                 })
             })
-    }
+    },
+
+    registerAdmin: (req, res, next) => {
+        res.render('users/registerAdmin');
+    },
+
+    storeAdmin: (req, res, next) => {
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render("users/registerAdmin", { errors: errors.errors })
+        }
+        db.User.create({
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                birthdate: req.body.birthdate,
+                address: req.body.address,
+                town: req.body.town,
+                country: req.body.country,
+                email: req.body.email,
+                rol: req.body.rol,
+                password: bcrypt.hashSync(req.body.password, 10)
+            })
+            .then(user => {
+                req.session.usuarioLogueado = user;
+                if (req.body.recordame != undefined) {
+                    res.cookie('recordame', user.email, { maxAge: 6000000 })
+                }
+                res.redirect('/#register');
+            })
+    },
+
+    
 }
 
 module.exports = usersController;

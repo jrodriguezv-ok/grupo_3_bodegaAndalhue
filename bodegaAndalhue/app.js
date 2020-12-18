@@ -29,6 +29,7 @@ app.use(session({ secret: "info" }));
 const corsMiddleware = require('./middlewares/corsMiddleware');
 var recordameMiddleware = require('./middlewares/recordameMiddleware');
 
+
 app.use(corsMiddleware);
 app.use(recordameMiddleware);
 app.use('/', mainRouter);

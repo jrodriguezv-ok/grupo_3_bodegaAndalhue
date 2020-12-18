@@ -21,6 +21,18 @@ router.post('/register', [
     check("password").not().isEmpty().withMessage("Olvidaste la contraseña")
 ], usersController.store);
 
+router.get('/registerAdmin', guestMiddleware, usersController.registerAdmin);
+router.post('/registerAdmin', [
+    check("first_name").isLength({ min: 2, max: 50 }).withMessage("Nombre inválido"),
+    check("last_name").isLength({ min: 2, max: 50 }).withMessage("Apellido inválido"),
+    check("birthdate").isDate().withMessage("Fecha inválida"),
+    check("address").not().isEmpty().withMessage("Olvidaste tu dirección"),
+    check("town").not().isEmpty().withMessage("Olvidaste tu localidad"),
+    check("country").not().isEmpty().withMessage("Olvidaste tu país"),
+    check("email").isEmail().withMessage("Email inválido"),
+    check("password").not().isEmpty().withMessage("Olvidaste la contraseña")
+], usersController.storeAdmin);
+
 // LOGIN
 router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', [

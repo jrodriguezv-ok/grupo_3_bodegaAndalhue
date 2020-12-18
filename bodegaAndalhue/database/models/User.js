@@ -16,7 +16,8 @@ module.exports = function(sequelize, dataTypes) {
         town: dataTypes.STRING,
         country: dataTypes.STRING,
         email: dataTypes.STRING,
-        password: dataTypes.STRING
+        password: dataTypes.STRING,
+        rol: dataTypes.STRING
     };
 
     let config = {
