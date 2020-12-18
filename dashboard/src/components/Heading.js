@@ -6,6 +6,7 @@ class Heading extends Component {
 		super(props);
 		this.state = {
 			quantityProducts : "",
+			totalAmountOfSales : "",
 			quantityUsers : ""
 		}
 	}
@@ -14,10 +15,10 @@ class Heading extends Component {
 				.then(response => response.json())
 				.then(data => consecuencia(data))
 				.catch( error => console.log(error))
- }
+ 	}
      componentDidMount(){
-		 console.log("funcionando el montaje!!!");
 		 this.apiCall("http://localhost:3000/api/products", this.showQuantityProducts);
+		 this.apiCall("http://localhost:3000/api/products/totalSales", this.showTotalAmountOfSales);
 		 this.apiCall("http://localhost:3000/api/users", this.showQuantityUsers);
 			 }
 	 showQuantityProducts = (data) =>{
@@ -27,6 +28,14 @@ class Heading extends Component {
 			 }
 		 )
 	 }
+	 showTotalAmountOfSales = (data) =>{
+		this.setState(
+			{
+				totalAmountOfSales : "$" + data.data
+			}
+		)
+	}
+
 	 showQuantityUsers = (data) =>{
 		this.setState(
 			{
@@ -48,7 +57,7 @@ return (
 								<div className="card-body">
 									<div className="row no-gutters align-items-center">
 										<div className="col mr-2">
-											<div className="text-xs font-weight-bold text-primary text-uppercase mb-1"> Products in Data Base</div>
+											<div className="text-xs font-weight-bold text-primary text-uppercase mb-1"> Productos en la Base de Datos</div>
 											<div className="h5 mb-0 font-weight-bold text-gray-800">{this.state.quantityProducts}</div>
 										</div>
 										<div className="col-auto">
@@ -64,8 +73,8 @@ return (
 								<div className="card-body">
 									<div className="row no-gutters align-items-center">
 										<div className="col mr-2">
-											<div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Amount in products</div>
-											<div className="h5 mb-0 font-weight-bold text-gray-800">$546.456</div>
+											<div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Total en ventas</div>
+											<div className="h5 mb-0 font-weight-bold text-gray-800">{this.state.totalAmountOfSales}</div>
 										</div>
 										<div className="col-auto">
 											<i className="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -80,7 +89,7 @@ return (
 								<div className="card-body">
 									<div className="row no-gutters align-items-center">
 										<div className="col mr-2">
-											<div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Users quantity
+											<div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Cantidad de usuarios
 											</div>
 											<div className="h5 mb-0 font-weight-bold text-gray-800">{this.state.quantityUsers}</div>
 										</div>
@@ -92,9 +101,7 @@ return (
 							</div>
 						</div>
 					</div>
-
-
-                    </div>
+                </div>
 
 </div>
 );
