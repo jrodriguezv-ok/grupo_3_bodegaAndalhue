@@ -1,16 +1,19 @@
 window.addEventListener("load", function() {
 
-    const formulario = document.querySelector('#formulario');
-    const boton = document.querySelector('#boton');
+    const lupa = document.querySelector('#lupa');
+    const input = document.querySelector('.buscador-filtro input');
 
-    const filtrar = function() {
-        console.log(formulario.value);
-        /* const texto = formulario.value.toLowerCase(); */
-    }
-
-    boton.addEventListener('click', filtrar)
-
-
-
+    console.log(lupa)
+    console.log(input)
+    
+    
+    lupa.addEventListener("click", function() {
+        input.style.display = "block";
+        /* input.style.borderColor= "#C4AF64"; */
+        input.focus();
+      });
+      input.addEventListener("mouseover", function() {
+        input.style.display = "none";
+    });
 
 });

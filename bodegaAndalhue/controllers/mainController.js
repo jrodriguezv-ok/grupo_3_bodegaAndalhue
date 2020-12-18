@@ -67,20 +67,29 @@ const mainController = {
     },
     search: function(req, res, next) {
         let search = req.query.search;
-        console.log(search);
-        let varietals = db.Varietal.findAll({
+         db.Varietal.findAll({
             where: {
                 name: {
-                    [Op.substring]: req.query.search
+                    [Op.substring]: search
                 }
             },
             limit: 12
         }).then(function(varietals) {
-            console.log(varietals);
-            res.render('results', { varietals: varietals, search: req.query.search })
+              for(i=0; i < varietals.length; i++){
+                db.Product.findAll({
+                    include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
+                     where: {
+                        varietal_id: varietals[i].id
+                    } 
+                    }).then(function(idCoincidentes){
+                    var idCoincidentes = idCoincidentes;
+                    res.render('results', { coincidentes: idCoincidentes, search, toThousand })
+                    })
+               }
+         
 
         }).catch(function(req) {
-            console.log(req);
+            
         })
     }
 }

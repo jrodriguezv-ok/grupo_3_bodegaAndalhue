@@ -2,27 +2,68 @@
 <html lang="es">
 
 <%- include('partials/head', {title: 'Resultados de tu búsqueda', search: search}) %>
+<link rel="stylesheet" href="/stylesheets/tienda.css">
 
-    <body class="fondoBeige">
+    <body>
 
         <%- include('partials/header')%>
-
-
-            <h2>Resultados de la búsqueda:
-                <%= search %>
-            </h2>
-
-            <% if(varietals != undefined){
-                for(var i = 0; i < varietals.length; i++){ %>
-                <ul>
-                    <li>
-                        <%= varietals[i].id %>
-                    </li>
-                    <li>
-                        <%= varietals[i].name %>
-                    </li>
-                </ul>
-                <%  } } %>
+                <h2 class="subtitulo-seccion">Resultados de la búsqueda:
+                    '<%= search %>'</h2>
+                <section class="contenedor prod-destacados">
+                    <% if (coincidentes != undefined){
+                            for (var i= 0; i< coincidentes.length; i++) { 
+                                var product = coincidentes[i];
+                        %>
+                        <article class="producto border-bottom">
+                            <a href="/products/detail/<%= product.id %>">
+                                <div class="img-desc">
+                                    <img src="/img/products/<%= product.image %>" alt="vino">
+                                    <p class="descuento">
+                                        <% if(product.discount != 0){ %>
+                                            <%= product.discount + "%" %>
+                                                <% } %>
+                                    </p>
+                                </div>
+                                <div class="prod-items">
+                                    <h6 class="categoria">
+                                        <%= product.categories.name %>
+                                    </h6>
+                                    <p class="descripcion">
+                                        <%= product.brands.name + ' ' + product.varietals.name + ' ' + product.qualities.name + ' ' + product.vintage + ' ' + product.displays.name %>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="prod-items">
+                                <div class="menosMas">
+                                    <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
+                                    <p class="cantidad" id="quantity" value="">1</p>
+                                    <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
+                                </div>
+                                <div class="precio">
+                                    <h5 class="antes">
+                                        <% if(product.discount != 0){ %>
+                                            <%= "$"+ product.price %>
+                                                <% } %>
+                                    </h5>
+                                    <h5 class="ahora">
+                                        <%= '$'+ toThousand(product.price - (product.price * (product.discount / 100))) %>
+                                    </h5>
+                                </div>
+                                <% if (typeof usuario == 'undefined'){ %>
+                                    <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
+                                    <%}else{%>
+                                        <form action="/products/cart" method="POST">
+                                            <input type="number" class="non-display" name="id" value="<%= product.id %>">
+                                            <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
+                                            <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                            <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
+                                            <%}%>
+                                        </form>
+                            </div>
+                        </article>
+                        <% }} %>
+                </section>
+            
                     <%- include('partials/footer')%>
     </body>
 
