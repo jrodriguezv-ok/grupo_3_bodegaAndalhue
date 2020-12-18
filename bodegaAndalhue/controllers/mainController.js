@@ -67,7 +67,7 @@ const mainController = {
     },
     search: function(req, res, next) {
         let search = req.query.search;
-         db.Varietal.findAll({
+        db.Varietal.findAll({
             where: {
                 name: {
                     [Op.substring]: search
@@ -75,21 +75,27 @@ const mainController = {
             },
             limit: 12
         }).then(function(varietals) {
-              for(i=0; i < varietals.length; i++){
+            for (i = 0; i < varietals.length; i++) {
                 db.Product.findAll({
                     include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
-                     where: {
+                    where: {
                         varietal_id: varietals[i].id
-                    } 
-                    }).then(function(idCoincidentes){
+                    }
+                }).then(function(idCoincidentes) {
                     var idCoincidentes = idCoincidentes;
-                    res.render('results', { coincidentes: idCoincidentes, search, toThousand })
-                    })
-               }
-         
+                    console.log(idCoincidentes);
+                    let message = "No se encontró ningún producto con esta búsqueda"
+                    if (idCoincidentes.length !== 0) {
+                        res.render('results', { coincidentes: idCoincidentes, search, toThousand })
+                    } else {
+                        res.render('results', { message: message, search, toThousand })
+                    }
+                })
+            }
+
 
         }).catch(function(req) {
-            
+
         })
     }
 }

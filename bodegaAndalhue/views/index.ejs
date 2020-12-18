@@ -12,26 +12,9 @@
                     <h1 class="titulo-seccion">TIENDA ONLINE</h1>
                     <section class="buscador-filtro-login">
                         <div class="buscador-filtro">
-                          <!--   <div class="form">
-                               
-                                <form action="/search">
-                                    <input type="text" name="search" id="formulario">
-                                    <button type="submit" class="btn-relleno" id="boton">Buscar</button>
-                                </form>
-                            </div> -->
-                            <!-- <form action="/search/:id" method="GET">
-                                <% if (typeof search != 'undefined') { %>
-                                    <input type="text" name="search" placeholder="Busqueda por categoria" value="<%= search %>">
-                                    <% } else { %>
-                                        <input type="text" name="search" placeholder="Busqueda por categoria" class="fas fa-search">
-                                        <% } %>
-                                            <button type="submit">Buscar</button><i class="fas fa-search"></i></button>
-                            </form> -->
-                            <form action="/search">
-                                
-                                <i class="fas fa-search" id = "lupa"></i>
-                                <div><input type="search" name="search" class="search" placeholder= "Elija su varietal preferido" ></div>
-                          
+                            <form action="/search" id="formSearch">
+                                <i class="fas fa-search" id="lupa"></i>
+                                <input type="search" name="search" class="search" placeholder="Elija su varietal preferido">
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>

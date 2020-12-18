@@ -34,10 +34,12 @@
                 </section>
                 <section>
                     <% if (typeof message != "undefined"){%>
-                        <h2 class="mensaje">
-                            <%= message %>
-                        </h2>
-                        <a href="/" class="centrado"><button class="btn-border-max" > << volver a la Tienda</button></a>
+                        <div class="mensaje">
+                            <h2>
+                                <%= message %>
+                            </h2>
+                            <a href="/" class="centrado"><button class="btn-border-max" > << volver a la Tienda</button></a>
+                        </div>
                         <%}else{%>
                             <% for (let i = 0; i < productCart.length; i++){%>
                                 <article class="containerProduct">
