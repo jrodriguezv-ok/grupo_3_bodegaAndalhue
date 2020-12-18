@@ -3,6 +3,7 @@
     <script src="/javascript/articleCart_front.js"></script>
     <script src="/javascript/subtotal_front.js"></script>
     <script src="/javascript/quantity_front.js"></script>
+    <script src="/javascript/updateQuantity_front.js"></script>
     <script src="/javascript/total_front.js"></script>
 
     <body>
@@ -46,6 +47,9 @@
                                     <p class="productDetail">
                                         <%= productCart[i].products.brands.name + ' ' + productCart[i].products.varietals.name + ' ' + productCart[i].products.qualities.name + ' ' + productCart[i].products.displays.name  %>
                                     </p>
+                                    <p class="precioProducto">
+                                        <%= '$' + productCart[i].frozen_price * productCart[i].quantity %>
+                                    </p>
                                     <div class="productControls">
                                         <button id='decrease' onclick="quantity(this)" value="decrease"><i class="fas fa-minus-circle"></i></button>
                                         <p class="cantidad" id="quantity" value="">
@@ -54,16 +58,22 @@
                                         <button id='increase' onclick="quantity(this)" value="increase"><i class="fas fa-plus-circle"></i></button>
                                     </div>
                                     <a href="/products/cart/<%= productCart[i].id %>" class="btn-eliminar">Eliminar</a>
-                                    <p class="precioProducto">
-                                        <%= '$' + productCart[i].frozen_price * productCart[i].quantity %>
-                                    </p>
+                                    <form id="formUpdate" action="/products/cart/update" method="POST">
+                                        <input type="number" class="non-display" name="id" value="<%= productCart[i].id %>">
+                                        <input type="number" class="non-display" name="quantity" id="value_quantity" value="<%= productCart[i].quantity %>">
+                                        <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
+                                        <button type="submit" id="btn-agregarProd"><i class="fas fa-redo-alt"></i></button>
+                                    </form>
+
                                 </article>
+
                                 <% }%>
 
                 </section>
                 <!-- Subtotal -->
                 <% if (typeof productCart != "undefined"){%>
                     <section class="contenedorSubtotal">
+                        <h3></h3>
                         <article class="subtotal">
                             <div class="left">
                                 <h2>SUBTOTAL</h2>
@@ -82,7 +92,10 @@
                     <section class="clasebotonfi">
                         <a class="btn-border-max" href="/">
                             << seguir comprando</a>
-                                <a class="btn-border-max" href="/products/checkout">finalizar compra >></a>
+                                <form action="/products/checkout" method="POST">
+                                    <input type="number" class="non-display" name="totalCart" id="totalCart" value="">
+                                    <button class="btn-border-max">finalizar compra >></button>
+                                </form>
                     </section>
                     <%}}%>
             </main>

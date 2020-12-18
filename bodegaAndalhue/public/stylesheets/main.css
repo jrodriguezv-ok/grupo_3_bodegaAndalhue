@@ -209,3 +209,7 @@
             left: 35%;
         }
     }
+    
+    .non-display {
+        display: none;
+    }

@@ -57,7 +57,7 @@ const mainController = {
 
                 } else {
                     res.render('index', {
-                        usuario: req.session.usuarioLogueado,
+                        /* usuario: undefined, */
                         products: products,
                         toThousand
                     });

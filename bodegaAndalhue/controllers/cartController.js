@@ -99,6 +99,28 @@ const cartController = {
         })
     },
 
+    updateCartProduct: (req, res) => {
+        db.Cart_product.findOne({
+                include: [{ all: true, nested: true }],
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function(cartProductToUpdate) {
+                db.Cart_product.update({
+                        quantity: req.body.quantity
+                    }, {
+                        where: {
+                            id: req.body.id
+                        },
+                        returning: true
+                    })
+                    .then(function(updatedCartProduct) {
+                        res.redirect('/products/cart')
+                    })
+            })
+    },
+
     checkOut: (req, res) => {
         if (req.session.usuarioLogueado) {
             var userId = req.session.usuarioLogueado.id;
@@ -119,11 +141,7 @@ const cartController = {
                     })
                     .then(function(cartProduct) {
                         var quantityProd = cartProduct.length;
-                        for (let i = 0; i < cartProduct.length; i++) {
-                            var price = cartProduct[i].price;
-                            var total = +price;
-                            console.log(total)
-                        };
+                        let total = req.body.totalCart;
                         db.Cart.update({
                                 quantity: quantityProd,
                                 date_of_purchase: new Date(),
@@ -135,7 +153,6 @@ const cartController = {
                                 }
                             })
                             .then(function(checkOut) {
-                                /*  console.log(checkOut) */
                                 res.render('products/checkout', {
                                     usuario: req.session.usuarioLogueado
                                 })

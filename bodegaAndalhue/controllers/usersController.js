@@ -90,25 +90,21 @@ const usersController = {
     },
 
     updateProfile: (req, res, next) => {
+        console.log(req.params.id);
         console.log(req.body);
-        db.User.findByPk(req.params.id, {
-                include: [{ association: "carts" }]
+        db.User.update({
+                address: req.body.address,
+                town: req.body.town,
+                country: req.body.country,
+                email: req.body.email,
+                /* password: bcrypt.hashSync(req.body.password, 10) */
+            }, {
+                where: {
+                    id: req.params.id
+                }
             })
-            .then(function(profile) {
-                profile.address = req.body.address;
-                profile.town = req.body.town;
-                profile.country = req.body.country;
-                profile.email = req.body.email;
-                profile.password = bcrypt.hashSync(req.body.password, 10)
-                db.User.update(profile, {
-                        where: {
-                            id: req.params.id
-                        }
-                    })
-                    .then(function(updatedProfile) {
-                        /*  console.log(updatedProfile.id); */
-                        res.redirect('users/profile/${updatedProfile.id}')
-                    })
+            .then(function(updatedProfile) {
+                res.redirect('users/profile/' + req.params.id)
             })
     },
 

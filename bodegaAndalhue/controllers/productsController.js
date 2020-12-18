@@ -208,7 +208,6 @@ const productsController = {
             db.Product.findByPk(req.params.id)
                 .then(product => {
                     const updatedProd = req.body;
-                    console.log(req.files[1]);
                     updatedProd.cat_id = Number(req.body.category);
                     updatedProd.brand_id = Number(req.body.brand);
                     updatedProd.varietal_id = Number(req.body.varietal);
@@ -220,7 +219,6 @@ const productsController = {
                     updatedProd.image = req.files[0] != undefined ? req.files[0].filename : product.image;
                     updatedProd.datasheet = req.files[1] != undefined ? req.files[1].filename : product.datasheet;
                     updatedProd.state_id = Number(req.body.state);
-                    console.log(updatedProd);
                     return db.Product.update(updatedProd, {
                         where: {
                             id: req.params.id
