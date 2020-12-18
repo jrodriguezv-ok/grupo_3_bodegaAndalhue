@@ -105,7 +105,7 @@ const usersController = {
                 }
             })
             .then(function(updatedProfile) {
-                res.redirect('users/profile/' + req.params.id)
+                res.redirect('/users/profile/' + req.params.id)
             })
     },
 

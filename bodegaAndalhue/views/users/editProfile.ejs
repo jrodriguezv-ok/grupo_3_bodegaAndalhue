@@ -7,7 +7,7 @@
             <main>
                 <section class="contenedor">
                     <h2 class="titulo-seccion">editando perfil de usuario</h2>
-                    <form action="/users/profile/<%= usuario.id %>" method="POST">
+                    <form action="/users/profile/edit/<%= usuario.id %>" method="POST">
                         <section class="profile-content">
                             <i class="fas fa-user icon-user"></i>
                             <h3 class="user border-bottom">
@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="items">
                                         <label for="email"><span>Email: </span></label>
-                                        <input type="text" name="email" value=" <%=usuario.email%>">
+                                        <input type="text" name="email" value="<%=usuario.email%>">
                                     </div>
                                     <!-- <div class="items">
                                         <label for="password"><span>Nueva contraseña: </span></label>
