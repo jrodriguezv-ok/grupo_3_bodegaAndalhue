@@ -1,7 +1,7 @@
 <%- include('partials/head', {title: 'Tienda'})%>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
     <script src="/javascript/modal_front.js"></script>
-    <!--  <script src="/javascript/search_front.js"></script> -->
+    <script src="/javascript/search_front.js"></script>
     <script src="/javascript/quantity_front.js"></script>
 
     <body>
@@ -12,10 +12,10 @@
                     <h1 class="titulo-seccion">TIENDA ONLINE</h1>
                     <section class="buscador-filtro-login">
                         <div class="buscador-filtro">
-                            <!-- <div class="form">
-                                <h4>Buscador</h4>
+                          <!--   <div class="form">
+                               
                                 <form action="/search">
-                                    <input type="text" id="formulario">
+                                    <input type="text" name="search" id="formulario">
                                     <button type="submit" class="btn-relleno" id="boton">Buscar</button>
                                 </form>
                             </div> -->
@@ -27,8 +27,11 @@
                                         <% } %>
                                             <button type="submit">Buscar</button><i class="fas fa-search"></i></button>
                             </form> -->
-                            <form action="">
-                                <input type="search" placeholder="Busqueda"><i class="fas fa-search"></i>
+                            <form action="/search">
+                                
+                                <i class="fas fa-search" id = "lupa"></i>
+                                <div><input type="search" name="search" class="search" placeholder= "Elija su varietal preferido" ></div>
+                          
                             </form>
                             <img src="/img/icon-filter.svg" alt="icono-filtrar">
                         </div>
