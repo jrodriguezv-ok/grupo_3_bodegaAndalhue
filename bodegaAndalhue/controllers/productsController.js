@@ -94,8 +94,8 @@ const productsController = {
                         displays: displays,
                         temperatures: temperatures,
                         states: states,
-                        errors: errors.mapped(),
-                        old: req.body
+                        errors: errors.mapped()/* ,
+                        old: req.body */
                     });
                 })
                 .catch(e => console.log(e));
@@ -214,6 +214,7 @@ const productsController = {
                     updatedProd.quality_id = Number(req.body.quality);
                     updatedProd.vintage = Number(req.body.vintage);
                     updatedProd.display_id = Number(req.body.display);
+                    updatedProd.temperature_id = Number(req.body.temperature);
                     updatedProd.price = Number(req.body.price);
                     updatedProd.discount = Number(req.body.discount);
                     updatedProd.image = req.files[0] != undefined ? req.files[0].filename : product.image;

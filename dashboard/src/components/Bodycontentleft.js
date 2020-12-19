@@ -26,9 +26,6 @@ class Bodycontentleft extends Component {
 
     render() {
         return (
-
-            <div id = "content">
-                <div className = "row">
                     <div className = "card shadow mb-4">
                         <div className = "card-header py-3">
                             <h6 className = "m-0 font-weight-bold text-primary" > { this.state.lastProduct.price }</h6>
@@ -41,8 +38,7 @@ class Bodycontentleft extends Component {
                             <a target = "_blank" rel = "nofollow" href = "/" > View product detail </a>
                         </div>
                     </div>
-                </div>
-            </div>
+        
         );
     }
 }

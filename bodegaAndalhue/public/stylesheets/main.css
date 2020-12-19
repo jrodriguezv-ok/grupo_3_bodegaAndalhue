@@ -34,7 +34,14 @@
         appearance: none;
         outline: none;
     }
-    
+    input:focus,
+    select:focus,
+    textarea:focus{
+        outline-color: rgba(63, 65, 64, 0.35);
+    }
+    input:-internal-autofill-selected {
+        background-color: rgba(63, 65, 64, 1);
+    }
     .border-bottom {
         border-bottom: solid 1px #C4AF64;
     }

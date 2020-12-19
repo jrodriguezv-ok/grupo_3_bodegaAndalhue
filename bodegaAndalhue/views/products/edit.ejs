@@ -43,11 +43,11 @@
                                     <select name="category" id="category">
                                         <% for(let i = 0; i< categories.length; i++){ %>
                                             <% if(categories[i].id == productToEdit.cat_id ) { %>
-                                            <option value="<%= categories[i].id%>" selected>
+                                            <option value="<%=categories[i].id%>" selected>
                                                 <%= categories[i].name %>
                                             </option> 
                                             <%} else {%>
-                                                <option value="<% categories[i].id%>">
+                                                <option value="<%= categories[i].id%>">
                                                     <%= categories[i].name %>
                                                 </option> 
                                             <% }}%>                       
