@@ -2,3 +2,38 @@
     background-color:#C4AF64 ;
     background-image: none;
 }
+.text-primary {
+    color: #3F4140!important;
+}
+
+.border-left-primary {
+    border-left: .25rem solid #3F4140!important;
+}
+
+.text-success {
+    color: #BFA02E!important;
+}
+
+.border-left-success {
+    border-left: .25rem solid #BFA02E!important;
+}
+
+.text-warning {
+    color: #C4AF64!important;
+}
+
+.border-left-warning {
+    border-left: .25rem solid #C4AF64!important;
+}
+
+.bg-info{
+    background-color: #C4AF64!important;
+}
+
+.shadow {
+    box-shadow: 0 .02rem 1rem 0 rgba(58,59,69,.15)!important;
+}
+
+.text-white{
+font-weight: 700;
+}

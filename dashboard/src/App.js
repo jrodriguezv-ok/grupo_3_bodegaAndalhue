@@ -17,22 +17,20 @@ function App() {
             <div id="content">
                    <Topbar/>
                     <div class="container-fluid">
-                    <div class="row">
-                            <Heading/>
-                           </div>
-                             <div class="row">
-                             <div class="col-lg-6 mb-4">
+                      <div class="row">
+                          <Heading/>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-6 mb-4">
 		                        	<Bodycontentleft/>
-                             </div>
-                                 <div class="col-lg-6 mb-4">						
-		                            	<div class="row">
-                                     <Bodycontentright/>
-                                 </div>
-                                </div>
-                             </div>
-                            </div>
-                         </div>
-                       <Footer/>
+                          </div>
+                          <div class="col-lg-6 mb-4">						
+		                          <Bodycontentright/>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+          <Footer/>
     
              </div>
         </div>

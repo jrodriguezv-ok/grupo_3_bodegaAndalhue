@@ -20,12 +20,16 @@
                         <div class="labelInput">
                             <label for="state">Estado *</label>
                             <select name="state" id="state">
-                                <option value="" disabled selected> Selecciona su estado</option>
-                                <% for(let i = 0; i< states.length; i++){%>
-                                <option value="<%= states[i].id %>">
-                                    <%= states[i].name %>
-                                </option>
-                                <% }%>
+                                <% for(let i = 0; i< states.length; i++){ %>
+                                    <% if(states[i].id == 0 ) { %>
+                                    <option value="<%= states[i].id%>" selected>
+                                        <%= states[i].name %>
+                                    </option> 
+                                <%} else {%>
+                                    <option value="<%= states[i].id%>">
+                                        <%= states[i].name %>
+                                    </option> 
+                                <% }}%>
                             </select>
                         </div>
                         <div class="labelInput">
