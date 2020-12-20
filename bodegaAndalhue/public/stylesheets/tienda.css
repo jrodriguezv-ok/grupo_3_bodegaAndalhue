@@ -308,7 +308,9 @@
             font-size: 0.9em;
             margin: 8px auto;
         }
-        
+        .detalle button {
+            margin: 15px auto;
+        }
         .prod-similares {
             background-color: #C4AF64;
             padding-bottom: 20px;
