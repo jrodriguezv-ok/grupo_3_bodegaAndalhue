@@ -32,10 +32,10 @@ class Bodycontentleft extends Component {
                         </div>
                         <div className = "card-body">
                             <div className = "text-center" >
-                            <img className = "img-fluid px-3 px-sm-4 mt-3 mb-4"  style = {{ "height": "100%", "width": "50%" }} src = "http://localhost:3000/api/products/lastProduct/image-1608317477911.png" alt = "img"/>
+                            <img className = "img-fluid px-3 px-sm-4 mt-3 mb-4"  style = {{ "height": "100%", "width": "50%" }} src = "http://localhost:3000/img/products/image-1608411308833.png" alt = "img"/>
                             </div>
-                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa exercitationem ratione ? </p>
-                            <a target = "_blank" rel = "nofollow" href = "/" > View product detail </a>
+                            <p> { this.state.lastProduct.tasting } </p>
+                            <a target = "_blank" rel = "nofollow" href = "/" > Ver detalles </a>
                         </div>
                     </div>
         

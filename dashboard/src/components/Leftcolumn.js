@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 function Leftcolumn() {
     return ( 
         <div id="wrapper">
@@ -39,7 +37,6 @@ function Leftcolumn() {
             <hr className="sidebar-divider d-none d-md-block"></hr>
             </ul>
         </div>    
-      
     );
 }
 export default Leftcolumn;

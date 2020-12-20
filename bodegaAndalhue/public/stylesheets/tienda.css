@@ -262,21 +262,23 @@
             font-size: 0.85em;
             height: 20px;
         }
+
+        #detalle, #infoAdicional{
+            cursor: pointer;
+        }
         
         .visible {
             border: solid 1px #BFA02E;
             border-radius: 5px 5px 0 0;
+            color: #C4AF64;
         }
         
         .detalle,
         .info-adic {
             margin: 15px auto;
+            min-height: 200px;
         }
-        
-        .info-adic {
-            display: none;
-        }
-        
+               
         .info-adic li {
             display: flex;
             flex-direction: row;

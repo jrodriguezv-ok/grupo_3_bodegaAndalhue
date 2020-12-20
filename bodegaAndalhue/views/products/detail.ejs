@@ -2,6 +2,8 @@
     <link rel="stylesheet" href="/stylesheets/tienda.css">
     <script src="/javascript/user_front.js"></script>
     <script src="/javascript/quantity_front.js"></script>
+    <script src="/javascript/discount_front.js"></script>
+    <script src="/javascript/desc-info_front.js"></script>
 
     <body>
         <%- include('../partials/header')%>
@@ -83,7 +85,7 @@
                             <p class="descuento">
                                 <% if(selectedProduct.discount != 0){ %>
                                     <%= selectedProduct.discount + "%" %>
-                                        <% } %>
+                                <% } %>
                             </p>
                         </article>
                         <article class="prod-items">
@@ -114,9 +116,7 @@
                                     <form action="/products/cart" method="POST">
                                         <input type="number" class="non-display" name="id" value="<%= selectedProduct.id %>">
                                         <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
-
                                         <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
-                                        <!-- traer cantidad -->
                                         <button type="submit" id="btn-agregarProd" class="btn-relleno">Agregar</button>
                                         <%}%>
                                     </form>
@@ -125,12 +125,16 @@
                         <article class="detalle-info">
                             <div class="etiq-detalle_info border-bottom">
                                 <ul>
-                                    <a href="" class="visible">
-                                        <li>Descripción</li>
-                                    </a>
-                                    <a href="">
-                                        <li>Información adicional</li>
-                                    </a>
+                                    <li>
+                                        <button id="detalle" class="visible">
+                                        Descripción
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button id="infoAdicional">
+                                        Información adicional
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="detalle">
@@ -148,7 +152,7 @@
                                 </p>
                                 <a href="<%= selectedProduct.datasheet %>" download><button class="btn-border-max">FICHA TÉCNICA</button></a>
                             </div>
-                            <div class="info-adic">
+                            <div class="info-adic non-display">
                                 <ul>
                                     <li>
                                         <h5>PESO</h5>

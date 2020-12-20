@@ -3,6 +3,7 @@
     <script src="/javascript/modal_front.js"></script>
     <script src="/javascript/search_front.js"></script>
     <script src="/javascript/quantity_front.js"></script>
+    <script src="/javascript/discount_front.js"></script>
 
     <body>
         <%- include('partials/header')%>
@@ -20,7 +21,7 @@
                         </div>
 
                         <ul class="menuUser">
-                            <% if(typeof usuario != "undefined"){ %>
+                            <% if(typeof usuario != "undefined"){ %>        
                                 <li>
                                     <a href="" id="loginAccess">
                                         <i class="fas fa-user"></i>
@@ -43,6 +44,13 @@
                                         <i class="fas fa-shopping-cart"><%= ' ('+ addedToCart + ')' %></i>
                                     </a>
                                 </li>
+                                <% if(usuario.rol == "administrador"){ %>
+                                    <li> | </li>
+                                    <li>
+                                        <a href="/products/list"><i class="fas fa-cogs"></i> Panel</a>
+                                    </li>
+                                    
+                                <%}%> 
                                 <% } %>
                                     <% if(typeof usuario == "undefined"){ %>
                                         <a href="/users/loginRegister" id="loginAccess">login</a>
@@ -79,11 +87,14 @@
                 </nav>
 
                 <!-- PRODUCTOS -->
-                <h3 class="subtitulo-seccion">PRODUCTOS DESTACADOS</h3>
-                <section class="contenedor prod-destacados">
+                <!-- destacados -->
+                <div id="destacados">
+                    <h3 class="subtitulo-seccion">PRODUCTOS DESTACADOS</h3>
+                    <section class="contenedor prod-destacados">
+
                     <% if (products != undefined){
                             for (var i= 0; i< products.length; i++) { 
-                                var product = products[i];
+                                  var product = products[i];
                         %>
                         <article class="producto border-bottom">
                             <a href="/products/detail/<%= product.id %>">
@@ -92,7 +103,7 @@
                                     <p class="descuento">
                                         <% if(product.discount != 0){ %>
                                             <%= product.discount + "%" %>
-                                                <% } %>
+                                       <% } %>
                                     </p>
                                 </div>
                                 <div class="prod-items">
@@ -133,7 +144,8 @@
                             </div>
                         </article>
                         <% }} %>
-                </section>
+                    </section>
+                </div>
 
                 <!-- MODAL -->
                 <div class="modal non-display">
