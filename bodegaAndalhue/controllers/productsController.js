@@ -94,8 +94,7 @@ const productsController = {
                         displays: displays,
                         temperatures: temperatures,
                         states: states,
-                        errors: errors.mapped()/* ,
-                        old: req.body */
+                        errors: errors.mapped()
                     });
                 })
                 .catch(e => console.log(e));

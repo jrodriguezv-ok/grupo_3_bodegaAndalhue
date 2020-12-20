@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/tienda.css">
     <link rel="stylesheet" href="/stylesheets/carrito.css">
     <script src="/javascript/quantity_front.js"></script>
+    <script src="/javascript/discount_front.js"></script>
 
     <body>
 
@@ -20,6 +21,11 @@
                         <a href="/"><button class="btn-border-max" > << volver a la Tienda</button></a>
                     </div>
                     <%}else{%>
+                        <div class="volver-ruta">
+                            <a href="/" class="volver">
+                                <i class="fas fa-angle-left"></i> volver
+                            </a>
+                        </div>
                         <section class="contenedor prod-destacados">
                             <% if (coincidentes != undefined){
                             for (var i= 0; i< coincidentes.length; i++) { 

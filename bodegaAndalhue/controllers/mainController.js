@@ -16,7 +16,8 @@ const mainController = {
                 },
                 limit: 6,
                 order: [
-                    ['id', 'DESC']
+                    ['discount', 'DESC'],
+                    ['id', 'DESC']                    
                 ]
             })
             .then(function(products) {
@@ -79,7 +80,8 @@ const mainController = {
                 db.Product.findAll({
                     include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
                     where: {
-                        varietal_id: varietals[i].id
+                        varietal_id: varietals[i].id,
+                        state_id: 1
                     }
                 }).then(function(idCoincidentes) {
                     var idCoincidentes = idCoincidentes;
@@ -92,7 +94,6 @@ const mainController = {
                     }
                 })
             }
-
 
         }).catch(function(req) {
 
