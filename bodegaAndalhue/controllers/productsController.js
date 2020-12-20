@@ -94,7 +94,8 @@ const productsController = {
                         displays: displays,
                         temperatures: temperatures,
                         states: states,
-                        errors: errors.mapped()
+                        errors: errors.errors
+
                     });
                 })
                 .catch(e => console.log(e));
@@ -230,19 +231,47 @@ const productsController = {
                 })
                 .catch(e => console.log(e));
         } else {
-            add.catch(e => console.log(e));
-        }
-    },
+            db.Product.findByPk(req.params.id, {
+                    include: [{ association: "categories" }, { association: "varietals" },
+                        { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }
+                    ]
+                })
+                .then(function(productToEdit) {
+                    promiseAll.then(function([categories, brands, varietals, qualities, displays, temperatures, states]) {
+                            res.render('products/edit', {
+                                productToEdit: productToEdit,
+                                categories: categories,
+                                brands: brands,
+                                varietals: varietals,
+                                qualities: qualities,
+                                displays: displays,
+                                temperatures: temperatures,
+                                states: states,
+                                errors: errors.errors
 
-    //ELIMINAR PRODUCTO ----> No eliminar productos
-    /*  destroy: (req, res, next) => {
-         db.Product.destroy({
-             where: {
-                 id: req.params.id
-             }
-         })
-         res.redirect('/products/list');
-     } */
-};
+                            });
+                        })
+                        .catch(e => console.log(e));
+                })
+        }
+    }
+}
 
 module.exports = productsController;
+
+
+
+/*        else {
+           add.catch(e => console.log(e));
+       }
+   },
+*/
+//ELIMINAR PRODUCTO ----> No eliminar productos
+/*  destroy: (req, res, next) => {
+     db.Product.destroy({
+         where: {
+             id: req.params.id
+         }
+     })
+     res.redirect('/products/list');
+ } */

@@ -69,7 +69,11 @@
                                         <% if (typeof usuario == 'undefined'){ %>
                                             <a href="/users/loginRegister"><button class="btn-relleno">Agregar</button></a>
                                             <%}else{%>
+<<<<<<< HEAD
+                                                <form action="./products/cart" method="POST">
+=======
                                                 <form action="products/cart" method="POST">
+>>>>>>> e522a9cfc0700a080728bccf75368eccc25aac62
                                                     <input type="number" class="non-display" name="id" value="<%= product.id %>">
                                                     <input type="number" class="non-display" name="quantity" id="value_quantity" value="1">
                                                     <input type="number" class="non-display" name="user_id" value="<%= usuario.id %>">
