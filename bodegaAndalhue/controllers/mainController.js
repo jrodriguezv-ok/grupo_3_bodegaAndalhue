@@ -86,9 +86,9 @@ const mainController = {
                     console.log(idCoincidentes);
                     let message = "No se encontró ningún producto con esta búsqueda"
                     if (idCoincidentes.length !== 0) {
-                        res.render('results', { coincidentes: idCoincidentes, search, toThousand })
+                        res.render('results', { coincidentes: idCoincidentes, search, usuario: req.session.usuarioLogueado, toThousand })
                     } else {
-                        res.render('results', { message: message, search, toThousand })
+                        res.render('results', { message: message, search, usuario: req.session.usuarioLogueado, toThousand })
                     }
                 })
             }
