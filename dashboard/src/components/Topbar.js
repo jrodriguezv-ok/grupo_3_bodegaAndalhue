@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Topbar () {
     return (
     <div id="content-wrapper" className="d-flex flex-column">
@@ -27,19 +26,12 @@ function Topbar () {
 							<a className="nav-link dropdown-toggle" href="/" id="userDropdown">
 								<span className="mr-2 d-none d-lg-inline text-gray-600 small">Bodega Andalhue</span>
 								<img className="img-profile rounded-circle" src="assets/images/dummy-avatar.jpg" width="60" alt="img"/>
-								
 							</a>
 						</li>
-
 					</ul>
-
 				</nav>
-                        
-
-         
-	
          </div>
-		 </div>
+	</div>
 
     );
 }

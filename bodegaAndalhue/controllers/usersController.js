@@ -18,7 +18,7 @@ const usersController = {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.render("users/register", { errors: errors.errors })
-        }
+        }else{
         db.User.create({
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
@@ -37,6 +37,7 @@ const usersController = {
                 }
                 res.redirect('/#register');
             })
+        }
     },
 
     login: (req, res, next) => {
@@ -47,7 +48,7 @@ const usersController = {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.render("users/login", { errors: errors.errors })
-        };
+        }else{
         db.User.findOne({
                 where: {
                     email: req.body.email
@@ -66,6 +67,7 @@ const usersController = {
                     res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });
                 }
             })
+        }
     },
 
     profile: (req, res, next) => {
@@ -140,27 +142,29 @@ const usersController = {
 
     storeAdmin: (req, res, next) => {
         let errors = validationResult(req);
+        console.log(errors)
         if (!errors.isEmpty()) {
             res.render("users/registerAdmin", { errors: errors.errors })
+        }else{
+            db.User.create({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    birthdate: req.body.birthdate,
+                    address: req.body.address,
+                    town: req.body.town,
+                    country: req.body.country,
+                    email: req.body.email,
+                    rol: req.body.rol,
+                    password: bcrypt.hashSync(req.body.password, 10)
+                })
+                .then(user => {
+                    req.session.usuarioLogueado = user;
+                    if (req.body.recordame != undefined) {
+                        res.cookie('recordame', user.email, { maxAge: 6000000 })
+                    }
+                    res.redirect('/#register');
+            })
         }
-        db.User.create({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                birthdate: req.body.birthdate,
-                address: req.body.address,
-                town: req.body.town,
-                country: req.body.country,
-                email: req.body.email,
-                rol: req.body.rol,
-                password: bcrypt.hashSync(req.body.password, 10)
-            })
-            .then(user => {
-                req.session.usuarioLogueado = user;
-                if (req.body.recordame != undefined) {
-                    res.cookie('recordame', user.email, { maxAge: 6000000 })
-                }
-                res.redirect('/#register');
-            })
     },
 
     
