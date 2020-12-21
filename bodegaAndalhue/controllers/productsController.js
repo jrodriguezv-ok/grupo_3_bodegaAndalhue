@@ -44,7 +44,6 @@ const productsController = {
 
 
     // FILTRAR POR LÍNEA
-
     line: function(req, res, next) {
         let line = req.params.id;
         db.Product.findAll({
