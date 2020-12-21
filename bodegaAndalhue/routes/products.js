@@ -22,6 +22,9 @@ const cartController = require('../controllers/cartController');
 // LISTADO DE PRODUCTOS
 router.get('/list', adminMiddleware, productsController.list);
 
+// FILTRO POR LÍNEA
+router.get('/line/:id', productsController.line);
+
 // AGREGAR PRODUCTO
 router.get('/add', adminMiddleware, productsController.add);
 router.post('/add', adminMiddleware, upload.any(), [

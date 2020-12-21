@@ -21,48 +21,55 @@ const mainController = {
                 ]
             })
             .then(function(products) {
-                if (req.session.usuarioLogueado != undefined) {
-                    db.Cart.findOne({
-                            include: ['carts'],
-                            where: {
-                                user_id: req.session.usuarioLogueado.id,
-                                state: 1
-                            }
-                        })
-                        .then(function(cart) {
-                            if (cart == undefined) {
-                                let addedToCart = 0;
-                                res.render('index', {
-                                    usuario: req.session.usuarioLogueado,
-                                    products: products,
-                                    addedToCart: addedToCart,
-                                    toThousand
-                                })
-                            } else {
-                                db.Cart_product.findAll({
-                                        where: {
-                                            cart_id: cart.id
-                                        }
+                db.Brand.findAll({
+                    include: [{association: "brands"}]
+                })
+                .then(function(brands){ 
+                    if (req.session.usuarioLogueado != undefined) {
+                        db.Cart.findOne({
+                                include: ['carts'],
+                                where: {
+                                    user_id: req.session.usuarioLogueado.id,
+                                    state: 1
+                                }
+                            })
+                            .then(function(cart) {
+                                if (cart == undefined) {
+                                    let addedToCart = 0;
+                                    res.render('index', {
+                                        usuario: req.session.usuarioLogueado,
+                                        products: products,
+                                        brands:brands,
+                                        addedToCart: addedToCart,
+                                        toThousand
                                     })
-                                    .then(function(cartProduct) {
-                                        var addedToCart = cartProduct.length;
-                                        res.render('index', {
-                                            usuario: req.session.usuarioLogueado,
-                                            products: products,
-                                            addedToCart: addedToCart,
-                                            toThousand
+                                } else {
+                                    db.Cart_product.findAll({
+                                            where: {
+                                                cart_id: cart.id
+                                            }
                                         })
-                                    })
-                            }
-                        });
+                                        .then(function(cartProduct) {
+                                            var addedToCart = cartProduct.length;
+                                            res.render('index', {
+                                                usuario: req.session.usuarioLogueado,
+                                                products: products,
+                                                brands:brands,
+                                                addedToCart: addedToCart,
+                                                toThousand
+                                            })
+                                        })
+                                }
+                            });
 
-                } else {
-                    res.render('index', {
-                        /* usuario: undefined, */
-                        products: products,
-                        toThousand
-                    });
-                }
+                    } else {
+                        res.render('index', {
+                            products: products,
+                            brands:brands,
+                            toThousand
+                        });
+                    }
+                })
             })
             .catch(e => console.log(e));
     },
@@ -85,7 +92,6 @@ const mainController = {
                     }
                 }).then(function(idCoincidentes) {
                     var idCoincidentes = idCoincidentes;
-                    console.log(idCoincidentes);
                     let message = "No se encontró ningún producto con esta búsqueda"
                     if (idCoincidentes.length !== 0) {
                         res.render('results', { coincidentes: idCoincidentes, search, usuario: req.session.usuarioLogueado, toThousand })

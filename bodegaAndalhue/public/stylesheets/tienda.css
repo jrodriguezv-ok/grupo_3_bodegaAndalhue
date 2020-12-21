@@ -60,7 +60,9 @@
             width: 100%;
         }
         
-        .banner .img-flechas img {
+        .banner .img-flechas .img-promos {
+            background-image: url("/img/img-promos_mobile.jpg");
+            background-position: left;
             width: auto;
             height: 65vh;
             max-height: 315px;
@@ -114,6 +116,7 @@
             color: #C4AF64;
             font-style: italic;
             font-weight: 500;
+            text-transform: uppercase;
         }
         
         .lineas a:hover {
@@ -425,7 +428,9 @@
         
         @media (min-width:769px) {
             /* TIENDA */
-            .banner .img-flechas img {
+            .banner .img-flechas .img-promos {
+                background-image: url("/img/img-promos_pc.jpg");
+                background-position: left;
                 max-height: none;
             }
             .banner .cont-flechas {
