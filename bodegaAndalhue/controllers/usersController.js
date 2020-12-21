@@ -135,9 +135,16 @@ const usersController = {
                 ]
             })
             .then(function(products) {
-                res.render('index', {
-                    products: products,
-                    toThousand
+                db.Brand.findAll({
+                    include: [{association: "brands"}]
+                })
+                .then(function(brands){
+                    res.render('index', {
+                        products: products,
+                        brands: brands,
+                        toThousand
+                })
+               
                 })
             })
     },
