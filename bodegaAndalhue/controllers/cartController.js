@@ -8,7 +8,6 @@ const cartController = {
         if (req.session.usuarioLogueado) {
             var userId = req.session.usuarioLogueado.id;
         }
-        console.log(req.body)
         var quantity = req.body.quantity;
         db.Product.findByPk(req.body.id)
             .then(function(addedProduct) {
@@ -16,7 +15,7 @@ const cartController = {
                         include: ['carts'],
                         where: {
                             user_id: userId,
-                            state: 1
+                            state: 1 //carrito abierto
                         }
                     })
                     .then(function(cart) {
@@ -27,7 +26,6 @@ const cartController = {
                                     state: 1
                                 })
                                 .then(function(cart) {
-                                    console.log(cart)
                                     db.Cart_product.create({
                                             cart_id: cart.id,
                                             product_id: addedProduct.id,
@@ -67,7 +65,7 @@ const cartController = {
             .then(function(cart) {
                 let message = 'Tu carrito está vacio';
                 if (cart == undefined) {
-                    res.render('products/cart', { message: message })
+                    res.render('products/cart', { message: message }) //envía mensaje
                 } else {
                     db.Cart_product.findAll({
                             include: [{ all: true, nested: true }],
@@ -99,11 +97,12 @@ const cartController = {
         })
     },
 
+    // ACTUALIZA CANTIDAD 
     updateCartProduct: (req, res) => {
         db.Cart_product.findOne({
                 include: [{ all: true, nested: true }],
                 where: {
-                    id: req.body.id
+                    id: req.body.id 
                 }
             })
             .then(function(cartProductToUpdate) {
@@ -121,6 +120,7 @@ const cartController = {
             })
     },
 
+    // FINALIZA COMPRA
     checkOut: (req, res) => {
         if (req.session.usuarioLogueado) {
             var userId = req.session.usuarioLogueado.id;
@@ -145,7 +145,7 @@ const cartController = {
                         db.Cart.update({
                                 quantity: quantityProd,
                                 date_of_purchase: new Date(),
-                                state: 0,
+                                state: 0, // carrito cerrado
                                 total: total
                             }, {
                                 where: {
