@@ -18,25 +18,25 @@ const usersController = {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.render("users/register", { errors: errors.errors })
-        }else{
-        db.User.create({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                birthdate: req.body.birthdate,
-                address: req.body.address,
-                town: req.body.town,
-                country: req.body.country,
-                email: req.body.email,
-                rol: req.body.rol,
-                password: bcrypt.hashSync(req.body.password, 10)
-            })
-            .then(user => {
-                req.session.usuarioLogueado = user;
-                if (req.body.recordame != undefined) {
-                    res.cookie('recordame', user.email, { maxAge: 6000000 })
-                }
-                res.redirect('/#register');
-            })
+        } else {
+            db.User.create({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    birthdate: req.body.birthdate,
+                    address: req.body.address,
+                    town: req.body.town,
+                    country: req.body.country,
+                    email: req.body.email,
+                    rol: req.body.rol,
+                    password: bcrypt.hashSync(req.body.password, 10)
+                })
+                .then(user => {
+                    req.session.usuarioLogueado = user;
+                    if (req.body.recordame != undefined) {
+                        res.cookie('recordame', user.email, { maxAge: 6000000 })
+                    }
+                    res.redirect('/#register');
+                })
         }
     },
 
@@ -48,25 +48,25 @@ const usersController = {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.render("users/login", { errors: errors.errors })
-        }else{
-        db.User.findOne({
-                where: {
-                    email: req.body.email
-                }
-            })
-            .then(function(user) {
-                if (user !== null) {
-                    if (bcrypt.compareSync(req.body.password, user.password)) {
-                        req.session.usuarioLogueado = user;
-                        if (req.body.recordame != undefined) {
-                            res.cookie('recordame', user.email, { maxAge: 6000000 })
-                        }
-                        res.redirect('/#session');
+        } else {
+            db.User.findOne({
+                    where: {
+                        email: req.body.email
                     }
-                } else {
-                    res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });
-                }
-            })
+                })
+                .then(function(user) {
+                    if (user !== null) {
+                        if (bcrypt.compareSync(req.body.password, user.password)) {
+                            req.session.usuarioLogueado = user;
+                            if (req.body.recordame != undefined) {
+                                res.cookie('recordame', user.email, { maxAge: 6000000 })
+                            }
+                            res.redirect('/#session');
+                        }
+                    } else {
+                        res.render('users/login', { errorAlLoguear: "Usuario o contraseña inválidos!" });
+                    }
+                })
         }
     },
 
@@ -145,7 +145,7 @@ const usersController = {
         console.log(errors)
         if (!errors.isEmpty()) {
             res.render("users/registerAdmin", { errors: errors.errors })
-        }else{
+        } else {
             db.User.create({
                     first_name: req.body.first_name,
                     last_name: req.body.last_name,
@@ -163,11 +163,11 @@ const usersController = {
                         res.cookie('recordame', user.email, { maxAge: 6000000 })
                     }
                     res.redirect('/#register');
-            })
+                })
         }
     },
 
-    
+
 }
 
 module.exports = usersController;
