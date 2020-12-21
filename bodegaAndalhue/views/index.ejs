@@ -81,9 +81,12 @@
 
                 <!--  MENÚ LÍNEAS -->
                 <nav class="lineas">
-                    <a href="" class="border-bottom border-right">LÍNEA A</a>
-                    <a href="" class="border-bottom border-right">LÍNEA B</a>
-                    <a href="">LÍNEA C</a>
+                    <% if (brands != undefined){
+                        for (var i= 0; i< brands.length; i++) { 
+                              var brand = brands[i];
+                    %>
+                    <a href="/products/line/<%=brand.id%>" class="border-bottom border-right"><%=brand.name%></a>
+                    <%}}%>
                 </nav>
 
                 <!-- PRODUCTOS -->

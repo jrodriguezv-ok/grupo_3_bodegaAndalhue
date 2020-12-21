@@ -43,6 +43,38 @@ const productsController = {
     },
 
 
+    // FILTRAR POR LÍNEA
+
+    line: function(req, res, next) {
+        let line = req.params.id;
+        db.Product.findAll({
+            include: [{ association: "categories" }, { association: "varietals" }, { association: "brands" }, { association: "qualities" }, { association: "displays" }, { association: "temperatures" }, { association: "states" }],
+            where: {
+                state_id: 1,
+                brand_id: line
+                 }
+            })
+            .then(function(products){
+               var brand = products[0].brands.name;
+                console.log(brand)
+               
+                if(products != undefined){
+                    res.render('products/line', {
+                        productsLine:products,
+                        brand: brand,
+                        usuario:req.session.usuarioLogueado, 
+                        toThousand })
+                }else{
+                    let message = 'No se encontró ningún producto con esta búsqueda'
+                    res.render('products/line', {
+                        message: message,
+                        usuario:req.session.usuarioLogueado, 
+                        toThousand })
+                }
+            })
+    },
+
+
     //FORMULARIO AGREGAR PRODUCTO 
     add: (req, res, next) => {
         promiseAll.then(function([categories, brands, varietals, qualities, displays, temperatures, states]) {

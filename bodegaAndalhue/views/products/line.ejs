@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<%- include('partials/head', {title: 'Resultados de tu búsqueda'}) %>
+<%- include('../partials/head', {title: 'Linea'}) %>
     <link rel="stylesheet" href="/stylesheets/tienda.css">
     <link rel="stylesheet" href="/stylesheets/carrito.css">
     <script src="/javascript/quantity_front.js"></script>
@@ -9,10 +9,9 @@
 
     <body>
 
-        <%- include('partials/header')%>
+        <%- include('../partials/header')%>
             <main class="contenedor">
-                <h2 class="subtitulo-seccion">Resultados de la búsqueda: '
-                    <%= search %>'</h2>
+                <h1 class="titulo-seccion"><%=brand%></h1>
                 <% if (typeof message != "undefined"){%>
                     <div class="mensaje">
                         <h2>
@@ -27,9 +26,9 @@
                             </a>
                         </div>
                         <section class="contenedor prod-destacados">
-                            <% if (coincidentes != undefined){
-                            for (var i= 0; i< coincidentes.length; i++) { 
-                                var product = coincidentes[i];
+                            <% if (productsLine != undefined){
+                            for (var i= 0; i< productsLine.length; i++) { 
+                                var product = productsLine[i];
                         %>
                                 <article class="producto border-bottom">
                                     <a href="/products/detail/<%= product.id %>">
@@ -81,7 +80,7 @@
                                 <% }}} %>
                         </section>
             </main>
-            <%- include('partials/footer')%>
+            <%- include('../partials/footer')%>
     </body>
 
 </html>

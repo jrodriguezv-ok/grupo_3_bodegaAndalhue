@@ -32,7 +32,7 @@ class Bodycontentleft extends Component {
                         </div>
                         <div className = "card-body">
                             <div className = "text-center" >
-                            <img className = "img-fluid px-3 px-sm-4 mt-3 mb-4"  style = {{ "height": "100%", "width": "50%" }} src = "http://localhost:3000/img/products/image-1608411308833.png" alt = "img"/>
+                            <img className = "img-fluid px-3 px-sm-4 mt-3 mb-4"  style = {{ "height": "100%", "width": "50%" }} src = {"http://localhost:3000/img/products/"+ this.state.lastProduct.image} alt = "img"/>
                             </div>
                             <p> { this.state.lastProduct.tasting } </p>
                             <a target = "_blank" rel = "nofollow" href = "/" > Ver detalles </a>

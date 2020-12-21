@@ -93,8 +93,6 @@ const usersController = {
     },
 
     updateProfile: (req, res, next) => {
-        console.log(req.params.id);
-        console.log(req.body);
         db.User.update({
                 address: req.body.address,
                 town: req.body.town,
@@ -142,7 +140,6 @@ const usersController = {
 
     storeAdmin: (req, res, next) => {
         let errors = validationResult(req);
-        console.log(errors)
         if (!errors.isEmpty()) {
             res.render("users/registerAdmin", { errors: errors.errors })
         }else{
