@@ -43,7 +43,12 @@ router.post('/login', [
 //PROFILE
 router.get('/profile/:id', usersController.profile);
 router.get('/profile/edit/:id', usersController.editProfile);
-router.post('/profile/edit/:id', usersController.updateProfile);
+router.post('/profile/edit/:id', [
+    check("address").not().isEmpty().withMessage("Olvidaste tu dirección"),
+    check("town").not().isEmpty().withMessage("Olvidaste tu localidad"),
+    check("country").not().isEmpty().withMessage("Olvidaste tu país"),
+    check("email").isEmail().withMessage("Email inválido")
+], usersController.updateProfile);
 
 //LOGOUT
 router.get('/logout', usersController.logOut);

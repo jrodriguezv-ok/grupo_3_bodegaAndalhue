@@ -1,5 +1,6 @@
 <%- include('../partials/head', {title: 'Editando perfil de usuario'})%>
     <link rel='stylesheet' href="/stylesheets/profile.css">
+    <link rel='stylesheet' href='/stylesheets/user.css'>
     <script src="/javascript/apiCountries.js"></script>
 
     <body>
@@ -7,48 +8,60 @@
             <main>
                 <section class="contenedor">
                     <h2 class="titulo-seccion">editando perfil de usuario</h2>
-                    <form action="/users/profile/edit/<%= usuario.id %>" method="POST">
-                        <section class="profile-content">
-                            <i class="fas fa-user icon-user"></i>
-                            <h3 class="user border-bottom">
-                                <%=usuario.first_name + ' ' + usuario.last_name%>
-                            </h3>
-                            <article class="data-user">
+                    <% if(typeof errors != "undefined") { %>
+                        <div class="errores">
+                            <ul>
+                                <% for(var i = 0; i < errors.length; i++) { %>
+                                    <li>
+                                        <%= errors[i].msg %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                        <% } %>
+                            <form action="/users/profile/edit/<%= usuario.id %>" method="POST">
+                                <section class="profile-content">
+                                    <i class="fas fa-user icon-user"></i>
+                                    <h3 class="user border-bottom">
+                                        <%=usuario.first_name + ' ' + usuario.last_name%>
+                                    </h3>
+                                    <article class="data-user">
 
-                                <ul>
+                                        <ul>
 
-                                    <div class="items">
-                                        <label for="address"><span>Dirección: </span> </label>
-                                        <input type="text" name="address" value="<%=usuario.address%>">
-                                    </div>
-                                    <div class="items">
-                                        <label for="town"><span>Localidad: </span></label>
-                                        <input type="text" name="town" value="<%=usuario.town%>">
-                                    </div>
-                                    <div class="items">
-                                        <label for="country"><span>País: </span></label>
-                                        <select id="country" name="country">
+                                            <div class="items">
+                                                <label for="address"><span>Dirección: </span> </label>
+                                                <input type="text" name="address" value="<%=usuario.address%>">
+                                            </div>
+                                            <div class="items">
+                                                <label for="town"><span>Localidad: </span></label>
+                                                <input type="text" name="town" value="<%=usuario.town%>">
+                                            </div>
+                                            <div class="items">
+                                                <label for="country"><span>País: </span></label>
+                                                <select id="country" name="country">
                                             <option value="<%=usuario.country%>"selected><%=usuario.country%></option>
                                         </select>
-                                    </div>
-                                    <div class="items">
-                                        <label for="email"><span>Email: </span></label>
-                                        <input type="text" name="email" value="<%=usuario.email%>">
-                                    </div>
-                                    <!-- <div class="items">
+                                            </div>
+                                            <div class="items">
+                                                <label for="email"><span>Email: </span></label>
+                                                <input type="text" name="email" value="<%=usuario.email%>">
+                                            </div>
+                                            <!-- <div class="items">
                                         <label for="password"><span>Nueva contraseña: </span></label>
                                         <input type="password" name="password" value="">
                                     </div> -->
-                                </ul>
-                            </article>
-                            <article class="profile-btn">
-                                <a href="/users/profile/<%= usuario.id%>" class="btn-border-max">
-                                    << volver al perfil</a>
-                                        <button type="submit" class="btn-border-max">guardar cambios</button>
-                            </article>
-                        </section>
-                    </form>
+                                        </ul>
+                                    </article>
+                                    <article class="profile-btn">
+                                        <a href="/users/profile/<%= usuario.id%>" class="btn-border-max">
+                                            << volver al perfil</a>
+                                                <button type="submit" class="btn-border-max">guardar cambios</button>
+                                    </article>
+                                </section>
+                            </form>
                 </section>
+
             </main>
             <%- include('../partials/footer')%>
     </body>

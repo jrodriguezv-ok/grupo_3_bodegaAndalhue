@@ -93,20 +93,28 @@ const usersController = {
     },
 
     updateProfile: (req, res, next) => {
-        db.User.update({
-                address: req.body.address,
-                town: req.body.town,
-                country: req.body.country,
-                email: req.body.email,
-                /* password: bcrypt.hashSync(req.body.password, 10) */
-            }, {
-                where: {
-                    id: req.params.id
-                }
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render("users/editProfile", {
+                errors: errors.errors,
+                usuario: req.session.usuarioLogueado
             })
-            .then(function(updatedProfile) {
-                res.redirect('/users/profile/' + req.params.id)
-            })
+        } else {
+            db.User.update({
+                    address: req.body.address,
+                    town: req.body.town,
+                    country: req.body.country,
+                    email: req.body.email,
+                    /* password: bcrypt.hashSync(req.body.password, 10) */
+                }, {
+                    where: {
+                        id: req.params.id
+                    }
+                })
+                .then(function(updatedProfile) {
+                    res.redirect('/users/profile/' + req.params.id)
+                })
+        }
     },
 
     logOut: function(req, res) {
