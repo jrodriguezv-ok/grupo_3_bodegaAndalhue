@@ -28,7 +28,7 @@ class Bodycontentleft extends Component {
         return (
                     <div className = "card shadow mb-4">
                         <div className = "card-header py-3">
-                            <h6 className = "m-0 font-weight-bold text-primary" > { this.state.lastProduct.price }</h6>
+                            <h6 className = "m-0 font-weight-bold text-primary" > Precio del último producto agregado: ${ this.state.lastProduct.price }</h6>
                         </div>
                         <div className = "card-body">
                             <div className = "text-center" >
